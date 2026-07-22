@@ -1,0 +1,296 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: tactics.tactics
+  size: 1
+  alias: tactic
+permalink: /tactics/{{ tactic.slug }}/
+---
+
+<article class="tactic-detail">
+  <div class="container">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb">
+      <a href="/">Início</a>
+      <span>/</span>
+      <a href="/tactics/">Táticas</a>
+      <span>/</span>
+      <span>{{ tactic.title }}</span>
+    </nav>
+
+    <!-- Cabeçalho -->
+    <header class="tactic-header">
+      <div class="tactic-header__content">
+        <h1>{{ tactic.title }}</h1>
+        <div class="tactic-meta">
+          <span class="tag tag--{{ tactic.side }}">{{ tactic.side }}</span>
+          <span class="tag tag--map">{{ tactic.map }}</span>
+          <span class="difficulty">Dificuldade: {{ tactic.difficulty }}/10</span>
+        </div>
+      </div>
+      <div class="tactic-header__image">
+        {% image tactic.image, tactic.title %}
+      </div>
+    </header>
+
+    <!-- Conteúdo Principal -->
+    <div class="tactic-content">
+      <section class="tactic-description">
+        <h2>Descrição</h2>
+        <p>{{ tactic.description }}</p>
+      </section>
+
+      <!-- Estatísticas -->
+      <section class="tactic-stats">
+        <h2>Performance</h2>
+        <div class="stats-grid">
+          <div class="stat-box">
+            <span class="stat-label">Taxa de Sucesso</span>
+            <div class="stat-bar">
+              <div class="stat-fill" style="width: {{ tactic.successRate }}%"></div>
+            </div>
+            <span class="stat-value">{{ tactic.successRate }}%</span>
+          </div>
+
+          <div class="stat-box">
+            <span class="stat-label">Dificuldade de Execução</span>
+            <div class="difficulty-stars">
+              {% for i in range(1, tactic.difficulty + 1) %}
+                <span class="star filled">★</span>
+              {% endfor %}
+              {% for i in range(tactic.difficulty + 1, 11) %}
+                <span class="star">☆</span>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Passo a Passo -->
+      <section class="tactic-steps">
+        <h2>Passo a Passo</h2>
+        <div class="steps-timeline">
+          {% for step in tactic.steps %}
+            <div class="step">
+              <div class="step-time">{{ step.time }}</div>
+              <div class="step-content">
+                <p>{{ step.description }}</p>
+                <small>Jogadores: {{ step.players | join(', ') }}</small>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+
+      <!-- Vídeo (quando integrar YouTube) -->
+      {% if tactic.videoUrl %}
+        <section class="tactic-video">
+          <h2>Demonstração em Vídeo</h2>
+          <div class="video-container">
+            <iframe src="{{ tactic.videoUrl }}" allowfullscreen></iframe>
+          </div>
+        </section>
+      {% endif %}
+
+      <!-- Análise de Contador -->
+      <section class="tactic-counters">
+        <h2>Como Counter</h2>
+        <div class="counters-grid">
+          {% for counter in tactic.counters %}
+            <div class="counter-card">
+              <h4>{{ counter.title }}</h4>
+              <p>{{ counter.description }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </section>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="tactic-sidebar">
+      <!-- Links Relacionados -->
+      <div class="related-tactics">
+        <h3>Táticas Relacionadas</h3>
+        <ul>
+          {% for related in tactics.tactics %}
+            {% if related.map == tactic.map and related.id != tactic.id %}
+              <li>
+                <a href="/tactics/{{ related.slug }}/">{{ related.title }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </div>
+
+      <!-- Compartilhar -->
+      <div class="share-buttons">
+        <h3>Compartilhar</h3>
+        <a href="https://twitter.com/intent/tweet?url=..." class="share-btn">Twitter</a>
+        <a href="https://www.instagram.com/cstaticsbr" class="share-btn">Instagram</a>
+      </div>
+    </aside>
+  </div>
+</article>
+
+<style>
+.tactic-detail {
+  padding: 2rem 0;
+}
+
+.breadcrumb {
+  margin-bottom: 2rem;
+  color: #888;
+}
+
+.breadcrumb a {
+  color: #e74c3c;
+}
+
+.tactic-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+  align-items: center;
+}
+
+.tactic-header__image {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.tactic-header__image img {
+  width: 100%;
+}
+
+.tactic-meta {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.tactic-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+}
+
+.tactic-stats {
+  margin: 2rem 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.stat-box {
+  background: #16213e;
+  padding: 1.5rem;
+  border-radius: 10px;
+}
+
+.stat-bar {
+  background: #0f3460;
+  height: 30px;
+  border-radius: 15px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.stat-fill {
+  background: linear-gradient(90deg, #e74c3c, #c0392b);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+}
+
+.steps-timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.step {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-left: 2px solid #e74c3c;
+}
+
+.step::before {
+  content: '';
+  position: absolute;
+  left: -7px;
+  top: 0;
+  width: 12px;
+  height: 12px;
+  background: #e74c3c;
+  border-radius: 50%;
+}
+
+.step-time {
+  font-weight: 700;
+  color: #e74c3c;
+  margin-bottom: 0.5rem;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  margin: 2rem 0;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+
+.tactic-sidebar {
+  background: #16213e;
+  padding: 2rem;
+  border-radius: 10px;
+  height: fit-content;
+}
+
+.related-tactics ul {
+  list-style: none;
+  margin-top: 1rem;
+}
+
+.related-tactics li {
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #333;
+}
+
+.related-tactics a {
+  color: #e74c3c;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .tactic-header {
+    grid-template-columns: 1fr;
+  }
+
+  .tactic-content {
+    grid-template-columns: 1fr;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

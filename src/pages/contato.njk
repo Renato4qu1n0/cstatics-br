@@ -1,0 +1,103 @@
+---
+layout: layouts/base.njk
+permalink: /contato/
+title: Contato - CSTatics Brasil
+---
+
+<section class="contact-section">
+  <div class="container">
+    <h1 class="text-center">Entre em Contato</h1>
+    <p class="text-center text-muted" style="max-width: 600px; margin: 0 auto 2rem;">
+      Tem sugestões de táticas? Encontrou algum erro? Quer fazer uma parceria? 
+      Nos mande uma mensagem!
+    </p>
+
+    <div class="contact-content">
+      {% include "components/contact-form.njk" %}
+
+      <div class="contact-info">
+  <h3>Outras Formas de Contato</h3>
+  
+  <div class="contact-item">
+    <h4>
+      <i class="fab fa-instagram"></i> Instagram
+    </h4>
+    <p>
+      <a href="https://instagram.com/cstaticsbr" target="_blank">@cstaticsbr</a>
+    </p>
+  </div>
+
+  <div class="contact-item">
+    <h4>
+      <i class="fab fa-youtube"></i> YouTube
+    </h4>
+    <p>
+      <a href="https://youtube.com/@cstaticsbr" target="_blank">CSTatics Brasil</a>
+    </p>
+  </div>
+
+  <div class="contact-item">
+    <h4>
+      <i class="fab fa-tiktok"></i> TikTok
+    </h4>
+    <p>
+      <a href="https://tiktok.com/@cstaticsbr" target="_blank">@cstaticsbr</a>
+    </p>
+  </div>
+
+  <div class="contact-item">
+    <h4>
+      <i class="fas fa-envelope"></i> Email Direto
+    </h4>
+    <p>
+      <a href="mailto:cstaticsbr@protonmail.com">cstaticsbr@protonmail.com</a>
+    </p>
+  </div>
+</div>
+    </div>
+  </div>
+</section>
+
+<style>
+.contact-section {
+  padding: 4rem 2rem;
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 3rem;
+  margin-top: 2rem;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.contact-info {
+  background: #16213e;
+  padding: 2rem;
+  border-radius: 10px;
+  height: fit-content;
+}
+
+.contact-item {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #333;
+}
+
+.contact-item h4 {
+  color: #FFFFFF;
+  margin-bottom: 0.5rem;
+}
+
+.contact-item:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+}
+</style>

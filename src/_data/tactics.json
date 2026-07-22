@@ -1,0 +1,52 @@
+{
+  "tactics": [
+    {
+      "id": 1,
+      "slug": "default-mirage-t",
+      "title": "Default de T no Mirage - Versão Agressiva",
+      "category": "default",
+      "side": "t-side",
+      "map": "Mirage",
+      "shortDescription": "Estratégia de default agressivo para ganhar controle de mapa no T side",
+      "image": "assets/images/tactics/mirage-t-default.svg",
+      "successRate": 87,
+      "difficulty": 6,
+      "players": [1, 2, 3, 4, 5],
+      "description": "Uma abordagem ofensiva para o T side do Mirage que prioriza...",
+      "steps": [
+        {
+          "time": "0s",
+          "description": "Todos os Ts fazem drop para o A",
+          "players": [1, 2]
+        },
+        {
+          "time": "15s",
+          "description": "Verificação de Ramp, aguardando informação",
+          "players": [3, 4]
+        }
+      ],
+      "videoUrl": "https://youtube.com/watch?v=...",
+      "tags": ["default", "agressivo", "anti-eco"],
+      "difficulty": "Intermediário",
+      "meta": {
+        "created": "2024-01-15",
+        "updated": "2024-07-21",
+        "author": "Pro Player XYZ"
+      }
+    },
+    {
+      "id": 2,
+      "slug": "anti-eco-nuke",
+      "title": "Anti Eco no Nuke - Posicionamentos de CT",
+      "category": "anti-eco",
+      "side": "ct-side",
+      "map": "Nuke",
+      "shortDescription": "Defesa eficiente contra round de eco inimigo",
+      "image": "assets/images/tactics/nuke-anti-eco.svg",
+      "successRate": 92,
+      "difficulty": 4,
+      "description": "...",
+      "tags": ["anti-eco", "defesa", "posicionamentos"]
+    }
+  ]
+}

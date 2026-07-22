@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if title %}{{ title }}{% else %}CSTatics Brasil - Táticas de CS2{% endif %}</title>
+  <meta name="description" content="{{ description or 'Táticas profissionais e estratégias competitivas de Counter-Strike 2.' }}">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{ title or 'CSTatics Brasil' }}">
+  <meta property="og:description" content="{{ description or 'Táticas profissionais de CS2' }}">
+  <meta property="og:image" content="/images/favicon.svg">
+  <meta property="og:url" content="https://cstaticsbr.com.br{{ page.url }}">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="/images/favicon-96x96.png">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="/assets/css/components.css">
+  <link rel="stylesheet" href="/assets/css/responsive.css">
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  {% include "components/navbar.njk" %}
+  
+  <main>
+    {{ content | safe }}
+  </main>
+  
+  {% include "components/footer.njk" %}
+  
+  <!-- Scripts -->
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>

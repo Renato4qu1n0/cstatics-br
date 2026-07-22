@@ -1,0 +1,24 @@
+{
+  "categories": [
+    {
+      "name": "Default",
+      "slug": "default",
+      "description": "Estratégias de início de round padrão"
+    },
+    {
+      "name": "Anti Eco",
+      "slug": "anti-eco",
+      "description": "Defesas contra rounds de economia"
+    },
+    {
+      "name": "Bomba",
+      "slug": "bomba",
+      "description": "Plantas e defesas de bomba"
+    }
+  ],
+  "maps": ["Mirage", "Nuke", "Inferno", "Vertigo", "Ancient", "Dust2"],
+  "sides": [
+    { "name": "T Side", "slug": "t-side", "color": "red" },
+    { "name": "CT Side", "slug": "ct-side", "color": "blue" }
+  ]
+}

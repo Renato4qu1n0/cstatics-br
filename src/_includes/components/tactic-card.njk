@@ -1,0 +1,31 @@
+<article class="tactic-card">
+  <div class="tactic-card__image">
+    {% image tactic.image, tactic.title %}
+  </div>
+  
+  <div class="tactic-card__content">
+    <div class="tactic-card__tags">
+      <span class="tag tag--{{ tactic.side }}">{{ tactic.side }}</span>
+      <span class="tag tag--map">{{ tactic.map }}</span>
+    </div>
+
+    <h3 class="tactic-card__title">{{ tactic.title }}</h3>
+    
+    <p class="tactic-card__description">{{ tactic.shortDescription }}</p>
+
+    <div class="tactic-card__stats">
+      <div class="stat">
+        <span class="stat__label">Taxa de Sucesso</span>
+        <span class="stat__value">{{ tactic.successRate }}%</span>
+      </div>
+      <div class="stat">
+        <span class="stat__label">Dificuldade</span>
+        <span class="stat__value">{{ tactic.difficulty }}/10</span>
+      </div>
+    </div>
+
+    <a href="/tactics/{{ tactic.slug }}/" class="tactic-card__link">
+      Ver Detalhes →
+    </a>
+  </div>
+</article>
