@@ -1,0 +1,61 @@
+{
+  "name": "Mirage",
+  "slug": "mirage",
+  "description": "Mapa de ritmo acelerado com rotas curtas, posicionamentos decisivos e controle técnico de A e B.",
+  "radar": "/img/maps/mirage-logo.png",
+  "quickStats": {
+    "tr": 24,
+    "ct": 19,
+    "executions": true,
+    "retakes": true,
+    "defaults": true,
+    "antiEco": true,
+    "pistol": true
+  },
+  "strategies": [
+    {
+      "id": "mirage-split-a",
+      "title": "Split A",
+      "slug": "split-a",
+      "side": "TR",
+      "type": "Execute",
+      "round": "Full Buy",
+      "time": "1:42",
+      "site": "A",
+      "difficulty": "Medium",
+      "utilities": ["Smoke", "Flash", "Molotov"],
+      "objective": "Tomar A com pressão instantânea e controlar a retaguarda.",
+      "description": "A estratégia foca em limpar o caminho de entrada e controlar o post plant com dupla pressão antes do primeiro contato.",
+      "steps": [
+        "Dois jogadores pegam Meio e cobrem o suporte da entrada.",
+        "Smoke Window e Connector fecham a rota de resposta.",
+        "Molotov no lado de A obriga a troca de posição do defensor.",
+        "A entrada final acontece com flash em Palace.",
+        "Último contato em Mid ou A Short.",
+        "A equipe mantém a pressão até o plant.",
+        "Double stack para defender a rota de retake."
+      ]
+    },
+    {
+      "id": "mirage-b-default",
+      "title": "Default B",
+      "slug": "default-b",
+      "side": "CT",
+      "type": "Default",
+      "round": "Half Buy",
+      "time": "1:28",
+      "site": "B",
+      "difficulty": "Easy",
+      "utilities": ["Smoke", "Flash"],
+      "objective": "Segurar B com ocupação sólida e retaguarda de apoio.",
+      "description": "Estratégia simples, estável e muito útil para rounds de meia compra com baixa margem de erro.",
+      "steps": [
+        "Um jogador acompanha a rota de B e mantém o squeeze.",
+        "A dupla de apoio fica em Window e Catwalk.",
+        "Smoke de B abre cobertura para a troca de posição.",
+        "Flash em B permite o controle de curta distância.",
+        "Posicionamento final em B Deep e B Site."
+      ]
+    }
+  ]
+}

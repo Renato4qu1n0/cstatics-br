@@ -1,0 +1,45 @@
+<div class="filter-bar" data-strategy-filters>
+  <div class="filter-bar__top">
+    <label class="filter-search">
+      <span class="sr-only">Pesquisar estratégia</span>
+      <input id="strategySearch" type="search" placeholder="Pesquisar por nome ou descrição" data-filter-search>
+    </label>
+  </div>
+
+  <div class="filter-bar__controls">
+    <div class="filter-group" data-filter-group="side">
+      <button class="filter-pill is-active" data-filter-value="all" data-filter-type="side">Todos</button>
+      <button class="filter-pill" data-filter-value="TR" data-filter-type="side">TR</button>
+      <button class="filter-pill" data-filter-value="CT" data-filter-type="side">CT</button>
+    </div>
+
+    <div class="filter-group" data-filter-group="site">
+      <select data-filter-type="site" aria-label="Filtrar por bombsite">
+        <option value="all">Bombsite</option>
+        <option value="A">A</option>
+        <option value="B">B</option>
+        <option value="Mid">Mid</option>
+      </select>
+    </div>
+
+    <div class="filter-group" data-filter-group="type">
+      <select data-filter-type="type" aria-label="Filtrar por tipo">
+        <option value="all">Tipo</option>
+        <option value="Execute">Execute</option>
+        <option value="Default">Default</option>
+        <option value="Rush">Rush</option>
+        <option value="Anti Eco">Anti Eco</option>
+      </select>
+    </div>
+
+    <div class="filter-group" data-filter-group="round">
+      <select data-filter-type="round" aria-label="Filtrar por round">
+        <option value="all">Round</option>
+        <option value="Full Buy">Full Buy</option>
+        <option value="Half Buy">Half Buy</option>
+        <option value="Eco">Eco</option>
+        <option value="Pistol">Pistol</option>
+      </select>
+    </div>
+  </div>
+</div>

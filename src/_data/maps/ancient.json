@@ -1,0 +1,58 @@
+{
+  "name": "Ancient",
+  "slug": "ancient",
+  "description": "Mapa com rotações inteligentes e caminhos de apoio muito densos, favorecendo controle de informação.",
+  "radar": "/img/maps/ancient-logo.jpg",
+  "quickStats": {
+    "tr": 18,
+    "ct": 14,
+    "executions": true,
+    "retakes": true,
+    "defaults": true,
+    "antiEco": true,
+    "pistol": true
+  },
+  "strategies": [
+    {
+      "id": "ancient-b-sync",
+      "title": "B Sync",
+      "slug": "b-sync",
+      "side": "TR",
+      "type": "Execute",
+      "round": "Full Buy",
+      "time": "1:48",
+      "site": "B",
+      "difficulty": "Hard",
+      "utilities": ["Smoke", "Flash", "HE"],
+      "objective": "Tomar B com entrada sincronizada e apoio às laterais.",
+      "description": "A estratégia combina sincronização de entrada com smoke em pontos críticos para abrir a rota de post plant.",
+      "steps": [
+        "Dois jogadores iniciam pelo pilar e alavancam a rota de B.",
+        "Smoke na janela de entrada para bloquear a visão.",
+        "Flash em baixo do bomb para limpar o suporte.",
+        "Plant rápido com suporte do terceiro jogador.",
+        "Aro de defesa na entrada de retake."
+      ]
+    },
+    {
+      "id": "ancient-b-default",
+      "title": "B Default",
+      "slug": "b-default",
+      "side": "CT",
+      "type": "Default",
+      "round": "Half Buy",
+      "time": "1:35",
+      "site": "B",
+      "difficulty": "Medium",
+      "utilities": ["Smoke", "Flash"],
+      "objective": "Manter o controle de B e entregar informação para o retake.",
+      "description": "Padrão de defesa sólido e direto, ideal para rounds onde a equipe precisa manter a rota pequena.",
+      "steps": [
+        "O líder segura o eixo de B com visão de apoio.",
+        "Smoke em entrance para fechar o acesso de suporte.",
+        "Flash para ouvrir o cruzamento de B.",
+        "Post plant no controle do pilar."
+      ]
+    }
+  ]
+}

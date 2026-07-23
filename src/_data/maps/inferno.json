@@ -1,0 +1,58 @@
+{
+  "name": "Inferno",
+  "slug": "inferno",
+  "description": "Mapa com linhas de visão curtas, rotas ágeis e pressões muito fortes em A e Mid.",
+  "radar": "/img/maps/inferno-logo.jpg",
+  "quickStats": {
+    "tr": 20,
+    "ct": 16,
+    "executions": true,
+    "retakes": true,
+    "defaults": true,
+    "antiEco": true,
+    "pistol": true
+  },
+  "strategies": [
+    {
+      "id": "inferno-a-corner",
+      "title": "A Corner",
+      "slug": "a-corner",
+      "side": "TR",
+      "type": "Execute",
+      "round": "Full Buy",
+      "time": "1:36",
+      "site": "A",
+      "difficulty": "Medium",
+      "utilities": ["Smoke", "Molotov", "HE"],
+      "objective": "Entrar em A com múltiplos cortes e plant rápido.",
+      "description": "Controle de entrada em A com força de pressão de suporte e molotov no caminho de retaguarda.",
+      "steps": [
+        "Um jogador toma a rota de Mid.",
+        "Smoke para a entrada do bomb e o suporte de Site.",
+        "Molotov em Ramp para bloquear o retorno.",
+        "Flash em A Short para limpar o posicionamento central.",
+        "Plant alinhado com a entrada principal em A."
+      ]
+    },
+    {
+      "id": "inferno-mid-control",
+      "title": "Mid Control",
+      "slug": "mid-control",
+      "side": "CT",
+      "type": "Default",
+      "round": "Full Buy",
+      "time": "1:22",
+      "site": "Mid",
+      "difficulty": "Easy",
+      "utilities": ["Smoke", "Flash"],
+      "objective": "Não deixar a pressão do T entrar em A sem reação.",
+      "description": "A ocupação de Mid impede o split e cria a janela para o retorno de apoio em A.",
+      "steps": [
+        "Um jogador segura o caminho de Mid.",
+        "Smoke na rota de entrada para impedir o crossfire.",
+        "Flash de apoio abrindo a janela do post plant.",
+        "Suporte em A com controle do pilar visível."
+      ]
+    }
+  ]
+}

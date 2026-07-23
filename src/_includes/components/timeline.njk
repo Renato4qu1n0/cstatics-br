@@ -1,0 +1,10 @@
+<ol class="timeline">
+  {% for step in strategy.steps %}
+    <li class="timeline__item">
+      <div class="timeline__time">{{ strategy.time }}</div>
+      <div class="timeline__content">
+        <p>{{ step }}</p>
+      </div>
+    </li>
+  {% endfor %}
+</ol>

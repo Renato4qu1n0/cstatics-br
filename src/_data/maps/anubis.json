@@ -1,0 +1,58 @@
+{
+  "name": "Anubis",
+  "slug": "anubis",
+  "description": "Mapa com rotas apoiadas por pilares verticais e muita interação entre Bombsite e Mid.",
+  "radar": "/img/maps/anubis-logo.jpg",
+  "quickStats": {
+    "tr": 17,
+    "ct": 13,
+    "executions": true,
+    "retakes": true,
+    "defaults": true,
+    "antiEco": true,
+    "pistol": true
+  },
+  "strategies": [
+    {
+      "id": "anubis-b-pressure",
+      "title": "B Pressure",
+      "slug": "b-pressure",
+      "side": "TR",
+      "type": "Rush",
+      "round": "Full Buy",
+      "time": "1:26",
+      "site": "B",
+      "difficulty": "Medium",
+      "utilities": ["Smoke", "Flash"],
+      "objective": "Parar o retake e pressionar o site com apoio de Mid.",
+      "description": "A pressão em B trabalha a rota de chance e o post plant com suporte de Mid.",
+      "steps": [
+        "Três jogadores reforçam a entrada de B.",
+        "Smoke coloca a rota de apoio em desvantagem.",
+        "Flash em B Site corta a visão de defesa.",
+        "Plant no meio do bombsite.",
+        "A manutenção do contato acontece com o jogador de apoio."
+      ]
+    },
+    {
+      "id": "anubis-a-default",
+      "title": "A Default",
+      "slug": "a-default",
+      "side": "CT",
+      "type": "Default",
+      "round": "Half Buy",
+      "time": "1:31",
+      "site": "A",
+      "difficulty": "Easy",
+      "utilities": ["Smoke", "Flash"],
+      "objective": "Preservar o controle de A e evitar o split rápido.",
+      "description": "Estratégia estável para defender A com pouca troca de posicionamento.",
+      "steps": [
+        "Jogador 1 fica com o eixo de A.",
+        "Jogador 2 apoia as pilares laterais.",
+        "Smoke fecha o céu de alcance do site.",
+        "Post plant com visão de plantilla e suporte de Mid."
+      ]
+    }
+  ]
+}

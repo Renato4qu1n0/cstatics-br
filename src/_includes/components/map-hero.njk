@@ -1,0 +1,36 @@
+<section class="map-hero">
+  <div class="map-hero__cover">
+    <img src="{{ map.radar }}" alt="Radar do mapa {{ map.name }}" loading="lazy">
+  </div>
+
+  <div class="map-hero__body">
+    <span class="eyebrow">Mapa</span>
+    <h1>{{ map.name }}</h1>
+    <p>{{ map.description }}</p>
+
+    <div class="map-hero__stats">
+      <div class="stat-badge">
+        <strong>{{ map.strategies.length }}</strong>
+        <span>estratégias</span>
+      </div>
+      <div class="stat-badge">
+        <strong>{{ map.quickStats.tr }}</strong>
+        <span>TR</span>
+      </div>
+      <div class="stat-badge">
+        <strong>{{ map.quickStats.ct }}</strong>
+        <span>CT</span>
+      </div>
+    </div>
+
+    <div class="map-hero__facts">
+      {% for item in ['Execuções', 'Retakes', 'Defaults', 'Anti Eco', 'Pistol'] %}
+        <span class="map-hero__fact">• {{ item }}</span>
+      {% endfor %}
+    </div>
+
+    <div class="map-hero__actions">
+      <a class="btn btn-primary" href="/tactics/">← Voltar para mapas</a>
+    </div>
+  </div>
+</section>

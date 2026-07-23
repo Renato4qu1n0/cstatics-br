@@ -1,0 +1,59 @@
+{
+  "name": "Nuke",
+  "slug": "nuke",
+  "description": "Mapa vertical com posições abstratas e muito valor para entradas de suporte e anti eco.",
+  "radar": "/img/maps/nuke-logo.jpg",
+  "quickStats": {
+    "tr": 22,
+    "ct": 18,
+    "executions": true,
+    "retakes": true,
+    "defaults": true,
+    "antiEco": true,
+    "pistol": true
+  },
+  "strategies": [
+    {
+      "id": "nuke-anti-eco",
+      "title": "Anti Eco",
+      "slug": "anti-eco",
+      "side": "CT",
+      "type": "Anti Eco",
+      "round": "Eco",
+      "time": "1:20",
+      "site": "A",
+      "difficulty": "Medium",
+      "utilities": ["Smoke", "Flash"],
+      "objective": "Forçar o T a entrar desacoplado e reduzir a troca de dano.",
+      "description": "A vantagem está em fechar a rota de entrada e manter o suporte de pilar com visão no bomb.",
+      "steps": [
+        "Jogador 1 fica em Lower com visão de Silo.",
+        "Jogador 2 controla a ponte de A.",
+        "Smoke em cima de A para fechar a rota de entrada.",
+        "Flash corta o pilar e a visão na janela dominante.",
+        "Retake com apoio em segunda linha."
+      ]
+    },
+    {
+      "id": "nuke-rush-a",
+      "title": "Rush A",
+      "slug": "rush-a",
+      "side": "TR",
+      "type": "Rush",
+      "round": "Full Buy",
+      "time": "1:34",
+      "site": "A",
+      "difficulty": "Hard",
+      "utilities": ["Smoke", "Molotov", "HE"],
+      "objective": "Acelerar a entrada em A e dominar o bomb com pressão ofensiva.",
+      "description": "Uma rotina agressiva que trabalha o crossfire em Lower e leva o plant para o espaço central de A.",
+      "steps": [
+        "Dupla encerra a entrada pela ponta de A.",
+        "Molotov abre a visão para a linha de apoio.",
+        "Change de posição em A Main.",
+        "Liderança do plant e retenção da rota.",
+        "A equipe mantém a pressão no post plant."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: strategies
+  size: 1
+  alias: strategy
+permalink: /tactics/{{ strategy.mapSlug }}/{{ strategy.slug }}/
+---
+
+<section class="strategy-detail-page">
+  <div class="container">
+    {% set current = strategy.title %}
+    {% include "components/breadcrumb.njk" %}
+
+    <div class="strategy-detail-page__shell">
+      <header class="strategy-detail-page__hero">
+        <div class="strategy-detail-page__radar">
+          <img src="{{ strategy.radar }}" alt="Radar do mapa {{ strategy.mapName }}" loading="lazy">
+        </div>
+
+        <div class="strategy-detail-page__meta">
+          <span class="eyebrow">Estratégia</span>
+          <h1>{{ strategy.title }}</h1>
+          <p class="strategy-detail-page__objective">{{ strategy.objective }}</p>
+
+          <div class="detail-tags">
+            <span class="pill pill--map">{{ strategy.mapName }}</span>
+            <span class="pill pill--side">{{ strategy.side }}</span>
+            <span class="pill pill--type">{{ strategy.type }}</span>
+            <span class="pill pill--round">{{ strategy.round }}</span>
+          </div>
+
+          <div class="detail-grid">
+            <div class="detail-grid__item">
+              <span class="label">Tempo</span>
+              <strong>{{ strategy.time }}</strong>
+            </div>
+            <div class="detail-grid__item">
+              <span class="label">Bombsite</span>
+              <strong>{{ strategy.site }}</strong>
+            </div>
+            <div class="detail-grid__item">
+              <span class="label">Dificuldade</span>
+              <strong>{{ strategy.difficulty }}</strong>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="strategy-detail-page__content">
+        <section class="detail-card">
+          <h2>Descrição detalhada</h2>
+          <p>{{ strategy.description }}</p>
+        </section>
+
+        <section class="detail-card">
+          <h2>Utilitárias</h2>
+          <div class="utility-list">
+            {% for utility in strategy.utilities %}
+              {% include "components/utility-badge.njk" %}
+            {% endfor %}
+          </div>
+        </section>
+
+        <section class="detail-card">
+          <h2>Execução</h2>
+          {% include "components/timeline.njk" %}
+        </section>
+
+        <section class="detail-card">
+          <h2>Mídias</h2>
+          <div class="media-placeholder-grid">
+            <div class="media-placeholder">
+              <span>Vídeo</span>
+              <strong>Em breve</strong>
+            </div>
+            <div class="media-placeholder">
+              <span>GIF</span>
+              <strong>Em breve</strong>
+            </div>
+            <div class="media-placeholder">
+              <span>Imagem</span>
+              <strong>Em breve</strong>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>

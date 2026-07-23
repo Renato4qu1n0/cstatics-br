@@ -1,0 +1,59 @@
+{
+  "name": "Train",
+  "slug": "train",
+  "description": "Mapa com linhas de visão longas e muita pressão emocional, favorecendo rotas previsíveis e disciplina.",
+  "radar": "/img/maps/cache-logo.png",
+  "quickStats": {
+    "tr": 16,
+    "ct": 12,
+    "executions": true,
+    "retakes": true,
+    "defaults": true,
+    "antiEco": true,
+    "pistol": true
+  },
+  "strategies": [
+    {
+      "id": "train-a-control",
+      "title": "A Control",
+      "slug": "a-control",
+      "side": "CT",
+      "type": "Default",
+      "round": "Full Buy",
+      "time": "1:30",
+      "site": "A",
+      "difficulty": "Medium",
+      "utilities": ["Smoke", "Flash"],
+      "objective": "Dar tempo para o time recuperar a rota de A sem deixar a equipe jogando fora de posição.",
+      "description": "Foca o controle de A com um jogador na rota de suporte e outro no pilar principal.",
+      "steps": [
+        "Jogador 1 segura a rota principal.",
+        "Jogador 2 abriga o pilar de A.",
+        "Smoke para bloquear a rota de apoio.",
+        "Flash para limpe a visão de posição central.",
+        "A equipe assume o controle do site."
+      ]
+    },
+    {
+      "id": "train-b-entry",
+      "title": "B Entry",
+      "slug": "b-entry",
+      "side": "TR",
+      "type": "Execute",
+      "round": "Full Buy",
+      "time": "1:44",
+      "site": "B",
+      "difficulty": "Medium",
+      "utilities": ["Smoke", "Flash", "Molotov"],
+      "objective": "Entrar em B com ritmo e abrir uma rota simples para o plant.",
+      "description": "É uma execução que prioriza tempo e pressão no eixo de entrada, sem perder controle de retaguarda.",
+      "steps": [
+        "Dois jogadores fazem a entrada em B.",
+        "Smoke fecha a visão de posição dominante.",
+        "Molotov bloqueia o retake da rota de apoio.",
+        "Flash abre o espaço para o plant no bombsite.",
+        "A equipe mantém o controle do duo de suporte."
+      ]
+    }
+  ]
+}

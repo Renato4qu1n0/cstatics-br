@@ -1,0 +1,36 @@
+<article class="strategy-row" data-strategy-row data-side="{{ strategy.side }}" data-site="{{ strategy.site }}" data-type="{{ strategy.type }}" data-round="{{ strategy.round }}">
+  <div class="strategy-row__main">
+    <div class="strategy-row__title-wrap">
+      <h3>{{ strategy.title }}</h3>
+      <p>{{ strategy.description }}</p>
+    </div>
+    <div class="strategy-row__meta">
+      <span class="pill pill--side">{{ strategy.side }}</span>
+      <span class="pill pill--type">{{ strategy.type }}</span>
+      <span class="pill pill--round">{{ strategy.round }}</span>
+      <span class="pill pill--site">{{ strategy.site }}</span>
+    </div>
+  </div>
+
+  <div class="strategy-row__details">
+    <div class="strategy-row__cell">
+      <span class="label">Tempo</span>
+      <strong>{{ strategy.time }}</strong>
+    </div>
+    <div class="strategy-row__cell">
+      <span class="label">Dificuldade</span>
+      <strong>{{ strategy.difficulty }}</strong>
+    </div>
+    <div class="strategy-row__cell strategy-row__cell--utilities">
+      <span class="label">Utilitárias</span>
+      <div class="utility-list">
+        {% for utility in strategy.utilities %}
+          <span class="utility-badge">{{ utility }}</span>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="strategy-row__actions">
+      <a class="btn btn-secondary" href="/tactics/{{ strategy.mapSlug }}/{{ strategy.slug }}/">Ver Estratégia</a>
+    </div>
+  </div>
+</article>

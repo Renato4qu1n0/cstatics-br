@@ -1,0 +1,23 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: maps
+  size: 1
+  alias: map
+permalink: /tactics/{{ map.slug }}/
+---
+
+<section class="map-catalog">
+  <div class="container map-catalog__layout">
+    <div class="map-catalog__sidebar">
+      {% set current = map.name %}
+      {% include "components/breadcrumb.njk" %}
+      {% include "components/map-hero.njk" %}
+      {% include "components/filter-bar.njk" %}
+    </div>
+
+    <div class="map-catalog__content">
+      {% include "components/strategy-table.njk" %}
+    </div>
+  </div>
+</section>

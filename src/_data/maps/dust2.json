@@ -1,0 +1,58 @@
+{
+  "name": "Dust2",
+  "slug": "dust2",
+  "description": "Mapa clássico com rotas rápidas, padrão de pressão e muito valor em B e Mid.",
+  "radar": "/img/maps/dust2-logo.jpg",
+  "quickStats": {
+    "tr": 19,
+    "ct": 15,
+    "executions": true,
+    "retakes": true,
+    "defaults": true,
+    "antiEco": true,
+    "pistol": true
+  },
+  "strategies": [
+    {
+      "id": "dust2-b-rush",
+      "title": "B Rush",
+      "slug": "b-rush",
+      "side": "TR",
+      "type": "Rush",
+      "round": "Full Buy",
+      "time": "1:38",
+      "site": "B",
+      "difficulty": "Medium",
+      "utilities": ["Smoke", "Flash", "Molotov"],
+      "objective": "Dobrar o site e abrir a rota de apoio em B.",
+      "description": "A execução rápida em B trabalha com visão e pressão envolvente para limitar a defesa do CT.",
+      "steps": [
+        "A equipe entra em B com duas linhas.",
+        "Smoke de B Window trava a visão lateral.",
+        "Flash em o caminho central do site.",
+        "Molotov no canto de apoio abre o espaço de plant.",
+        "Plant em B Site."
+      ]
+    },
+    {
+      "id": "dust2-mid-hold",
+      "title": "Mid Hold",
+      "slug": "mid-hold",
+      "side": "CT",
+      "type": "Default",
+      "round": "Half Buy",
+      "time": "1:25",
+      "site": "Mid",
+      "difficulty": "Easy",
+      "utilities": ["Smoke", "Flash"],
+      "objective": "Fechar o Mid e forçar o T a escolher uma rota sem vantagem.",
+      "description": "Uma defesa simples, porém muito eficiente em rounds com pouca informação.",
+      "steps": [
+        "Jogador 1 segura a metade da rota de Mid.",
+        "Jogador 2 acompanha apoio de B.",
+        "Smoke interrompe a rota de entrada e retaguarda.",
+        "Flash fornece visão para o suporte."
+      ]
+    }
+  ]
+}

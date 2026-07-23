@@ -1,0 +1,14 @@
+<section class="strategy-table" data-strategy-catalog>
+  <div class="strategy-table__header">
+    <div>
+      <h2>Lista completa</h2>
+      <p><span data-results-count>{{ map.strategies.length }}</span> estratégias encontradas</p>
+    </div>
+  </div>
+
+  <div class="strategy-table__rows">
+    {% for strategy in map.strategies %}
+      {% include "components/strategy-row.njk" %}
+    {% endfor %}
+  </div>
+</section>
