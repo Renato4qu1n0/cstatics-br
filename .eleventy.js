@@ -8,6 +8,8 @@ module.exports = function(eleventyConfig) {
 
   // Copiar assets
   eleventyConfig.addPassthroughCopy("src/assets/");
+  eleventyConfig.addPassthroughCopy("src/images/");
+  eleventyConfig.addPassthroughCopy("src/img/");
   eleventyConfig.addPassthroughCopy("src/favicon.ico");
 
   // Watch targets
