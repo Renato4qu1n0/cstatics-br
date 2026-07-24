@@ -4,11 +4,13 @@ pagination:
   data: executions.executions
   size: 1
   alias: exec
+  addAllPagesToCollections: true
 permalink: "/execucoes/{{ exec.slug }}/"
 ogType: article
 eleventyComputed:
   title: "{{ exec.title }} - Execução de CS2 | CSTatics Brasil"
   description: "{{ exec.shortDescription }}"
+  ogImage: "/images/og-{{ exec.map }}.png"
 ---
 
 {%- set diffMap = { facil: "Fácil", media: "Média", dificil: "Difícil" } -%}

@@ -4,297 +4,199 @@ pagination:
   data: tactics.tactics
   size: 1
   alias: tactic
+  addAllPagesToCollections: true
 permalink: /tactics/{{ tactic.slug }}/
 ogType: article
 eleventyComputed:
   title: "{{ tactic.title }} - Tática de {{ tactic.map }} no CS2 | CSTatics Brasil"
   description: "{{ tactic.shortDescription }}"
+  ogImage: "/images/og-{{ tactic.mapSlug or (tactic.map | lower) }}.png"
 ---
 
-<article class="tactic-detail">
+{%- set sideLabel = "T" if tactic.side == "t-side" else "CT" -%}
+{%- set catMap = { default: "Default", "anti-eco": "Anti-eco", execucao: "Execução", retake: "Retake" } -%}
+{%- set pageUrl = site.url + "/tactics/" + tactic.slug + "/" -%}
+
+<article class="lineup-detail">
   <div class="container">
-    <!-- Breadcrumb -->
-    <nav class="breadcrumb">
-      <a href="/">Início</a>
-      <span>/</span>
-      <a href="/tactics/">Táticas</a>
-      <span>/</span>
-      <span>{{ tactic.title }}</span>
+    <nav class="breadcrumbs" aria-label="Navegação estrutural">
+      <a class="breadcrumbs__link" href="/">Início</a>
+      <span class="breadcrumbs__separator">/</span>
+      <a class="breadcrumbs__link" href="/tactics/">Táticas</a>
+      <span class="breadcrumbs__separator">/</span>
+      <a class="breadcrumbs__link" href="/mapas/{{ tactic.mapSlug or (tactic.map | lower) }}/">{{ tactic.map }}</a>
+      <span class="breadcrumbs__separator">/</span>
+      <span class="breadcrumbs__current">{{ tactic.title }}</span>
     </nav>
 
-    <!-- Cabeçalho -->
-    <header class="tactic-header">
-      <div class="tactic-header__content">
-        <h1>{{ tactic.title }}</h1>
-        <div class="tactic-meta">
-          <span class="tag tag--{{ tactic.side }}">{{ tactic.side }}</span>
-          <span class="tag tag--map">{{ tactic.map }}</span>
-          <span class="difficulty">Dificuldade: {{ tactic.difficulty }}/10</span>
-        </div>
+    <header class="ld-header">
+      <div class="ld-header__tags">
+        <span class="tag tag--map">{{ tactic.map }}</span>
+        <span class="tag tag--{{ tactic.side }}">{{ sideLabel }}</span>
+        <span class="tag tag--category">{{ catMap[tactic.category] or tactic.category }}</span>
+        {% if tactic.difficultyLabel %}<span class="lineup-card__diff lineup-card__diff--media">{{ tactic.difficultyLabel }}</span>{% endif %}
       </div>
-      <div class="tactic-header__image">
-        {% image tactic.image, tactic.title %}
-      </div>
+      <h1 class="ld-header__title">{{ tactic.title }}</h1>
+      <p class="ld-header__lead">{{ tactic.shortDescription }}</p>
     </header>
 
-    <!-- Conteúdo Principal -->
-    <div class="tactic-content">
-      <section class="tactic-description">
-        <h2>Descrição</h2>
-        <p>{{ tactic.description }}</p>
-      </section>
-
-      <!-- Estatísticas -->
-      <section class="tactic-stats">
-        <h2>Performance</h2>
-        <div class="stats-grid">
-          <div class="stat-box">
-            <span class="stat-label">Taxa de Sucesso</span>
-            <div class="stat-bar">
-              <div class="stat-fill" style="width: {{ tactic.successRate }}%"></div>
-            </div>
-            <span class="stat-value">{{ tactic.successRate }}%</span>
-          </div>
-
-          <div class="stat-box">
-            <span class="stat-label">Dificuldade de Execução</span>
-            <div class="difficulty-stars">
-              {% for i in range(1, tactic.difficulty + 1) %}
-                <span class="star filled">★</span>
-              {% endfor %}
-              {% for i in range(tactic.difficulty + 1, 11) %}
-                <span class="star">☆</span>
-              {% endfor %}
+    <div class="ld-grid">
+      <div class="ld-main">
+        {% if not tactic.verified %}
+          <div class="alert alert--warning">
+            <span class="alert__icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+            <div class="alert__content">
+              <h4>Tática em validação</h4>
+              <p>Estamos conferindo e gravando esta tática. Use como referência e teste no treino antes de levar para a partida. Achou um erro? <a href="/contribuir/">Ajude a validar</a>.</p>
             </div>
           </div>
-        </div>
-      </section>
+        {% endif %}
 
-      <!-- Passo a Passo -->
-      <section class="tactic-steps">
-        <h2>Passo a Passo</h2>
-        <div class="steps-timeline">
-          {% for step in tactic.steps %}
-            <div class="step">
-              <div class="step-time">{{ step.time }}</div>
-              <div class="step-content">
-                <p>{{ step.description }}</p>
-                <small>Jogadores: {{ step.players | join(', ') }}</small>
+        <section class="ld-section">
+          <h2>Como funciona</h2>
+          <p>{{ tactic.description }}</p>
+        </section>
+
+        <section class="ld-section">
+          <h2>Desempenho</h2>
+          <div class="tct-perf">
+            <div class="tct-perf__item">
+              <span class="tct-perf__label datum">Taxa de sucesso</span>
+              <div class="tct-bar"><span style="width: {{ tactic.successRate or 0 }}%"></span></div>
+              <span class="tct-perf__val datum">{{ tactic.successRate or "—" }}%</span>
+            </div>
+            <div class="tct-perf__item">
+              <span class="tct-perf__label datum">Dificuldade</span>
+              <div class="tct-stars" aria-label="Dificuldade {{ tactic.difficulty }} de 10">
+                {% for i in range(0, 10) %}<span class="tct-star {% if i < tactic.difficulty %}on{% endif %}">◆</span>{% endfor %}
               </div>
+              <span class="tct-perf__val datum">{{ tactic.difficulty }}/10</span>
             </div>
-          {% endfor %}
-        </div>
-      </section>
-
-      <!-- Vídeo (quando integrar YouTube) -->
-      {% if tactic.videoUrl %}
-        <section class="tactic-video">
-          <h2>Demonstração em Vídeo</h2>
-          <div class="video-container">
-            <iframe src="{{ tactic.videoUrl }}" allowfullscreen></iframe>
           </div>
         </section>
-      {% endif %}
 
-      <!-- Análise de Contador -->
-      <section class="tactic-counters">
-        <h2>Como Counter</h2>
-        <div class="counters-grid">
-          {% for counter in tactic.counters %}
-            <div class="counter-card">
-              <h4>{{ counter.title }}</h4>
-              <p>{{ counter.description }}</p>
-            </div>
-          {% endfor %}
-        </div>
-      </section>
-    </div>
-
-    <!-- Sidebar -->
-    <aside class="tactic-sidebar">
-      <!-- Links Relacionados -->
-      <div class="related-tactics">
-        <h3>Táticas Relacionadas</h3>
-        <ul>
-          {% for related in tactics.tactics %}
-            {% if related.map == tactic.map and related.id != tactic.id %}
+        <section class="ld-section">
+          <h2>Linha do tempo</h2>
+          <ol class="exec-timeline">
+            {% for step in tactic.steps %}
               <li>
-                <a href="/tactics/{{ related.slug }}/">{{ related.title }}</a>
+                <span class="exec-timeline__time datum">{{ step.time }}</span>
+                <span class="exec-timeline__desc">
+                  {{ step.description }}
+                  {% if step.players %}<em class="tct-players datum">Jogadores {{ step.players | join(', ') }}</em>{% endif %}
+                </span>
               </li>
-            {% endif %}
-          {% endfor %}
-        </ul>
+            {% endfor %}
+          </ol>
+        </section>
+
+        {% if tactic.videoUrl %}
+          <section class="ld-section">
+            <h2>Vídeo</h2>
+            <div class="video-container"><iframe src="{{ tactic.videoUrl }}" title="{{ tactic.title }}" allowfullscreen loading="lazy"></iframe></div>
+          </section>
+        {% endif %}
+
+        {% if tactic.counters and tactic.counters | length %}
+          <section class="ld-section">
+            <h2>Como fazer o counter</h2>
+            <div class="tct-counters">
+              {% for counter in tactic.counters %}
+                <div class="tct-counter hud">
+                  <i class="hud-brackets" aria-hidden="true"></i>
+                  <h4>{{ counter.title }}</h4>
+                  <p>{{ counter.description }}</p>
+                </div>
+              {% endfor %}
+            </div>
+          </section>
+        {% endif %}
       </div>
 
-      <!-- Compartilhar -->
-      <div class="share-buttons">
-        <h3>Compartilhar</h3>
-        <a href="https://twitter.com/intent/tweet?url=..." class="share-btn">Twitter</a>
-        <a href="https://www.instagram.com/cstaticsbr" class="share-btn">Instagram</a>
-      </div>
-    </aside>
+      <aside class="ld-sidebar">
+        <div class="ld-card hud">
+          <h3>Ficha rápida</h3>
+          <ul class="ld-facts">
+            <li><span>Mapa</span><strong>{{ tactic.map }}</strong></li>
+            <li><span>Lado</span><strong>{{ sideLabel }}</strong></li>
+            <li><span>Categoria</span><strong>{{ catMap[tactic.category] or tactic.category }}</strong></li>
+            <li><span>Dificuldade</span><strong>{{ tactic.difficultyLabel or (tactic.difficulty ~ "/10") }}</strong></li>
+            <li><span>Taxa de sucesso</span><strong>{{ tactic.successRate or "—" }}%</strong></li>
+          </ul>
+        </div>
+
+        {% set related = tactics.tactics | byMap(tactic.mapSlug or (tactic.map | lower)) %}
+        {% if related | length > 1 %}
+          <div class="ld-card hud">
+            <h3>Táticas de {{ tactic.map }}</h3>
+            <ul class="ld-related">
+              {% for r in related %}
+                {% if r.slug != tactic.slug %}<li><a href="/tactics/{{ r.slug }}/">{{ r.title }}</a></li>{% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        <div class="ld-card hud">
+          <h3>Compartilhar</h3>
+          <div class="ld-share">
+            <a class="share-btn" href="https://wa.me/?text={{ (tactic.title + ' — ' + pageUrl) | urlencode }}" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            <a class="share-btn" href="https://twitter.com/intent/tweet?url={{ pageUrl | urlencode }}&text={{ tactic.title | urlencode }}" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i> X / Twitter</a>
+            <button class="share-btn" type="button" data-copy-link="{{ pageUrl }}"><i class="fa-solid fa-link"></i> Copiar link</button>
+          </div>
+        </div>
+      </aside>
+    </div>
   </div>
 </article>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": {{ tactic.title | json | safe }},
+  "description": {{ tactic.shortDescription | json | safe }},
+  "step": [
+    {% for step in tactic.steps %}
+    { "@type": "HowToStep", "position": {{ loop.index }}, "name": {{ step.description | json | safe }}, "text": {{ step.description | json | safe }} }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Início", "item": {{ site.url | json | safe }} },
+    { "@type": "ListItem", "position": 2, "name": "Táticas", "item": {{ (site.url + "/tactics/") | json | safe }} },
+    { "@type": "ListItem", "position": 3, "name": {{ tactic.map | json | safe }}, "item": {{ (site.url + "/mapas/" + (tactic.mapSlug or (tactic.map | lower)) + "/") | json | safe }} },
+    { "@type": "ListItem", "position": 4, "name": {{ tactic.title | json | safe }}, "item": {{ pageUrl | json | safe }} }
+  ]
+}
+</script>
+
 <style>
-.tactic-detail {
-  padding: 2rem 0;
-}
+  .lineup-detail { padding: var(--spacing-xl) 0 clamp(3.5rem, 8vw, 6rem); }
 
-.breadcrumb {
-  margin-bottom: 2rem;
-  color: #888;
-}
+  .tct-perf { display: grid; gap: var(--spacing-lg); }
+  .tct-perf__item { display: grid; grid-template-columns: 130px 1fr auto; align-items: center; gap: var(--spacing-md); }
+  .tct-perf__label { font-size: var(--font-size-xs); letter-spacing: .1em; text-transform: uppercase; color: var(--color-text-muted); }
+  .tct-perf__val { color: var(--color-primary); font-weight: 700; }
+  .tct-bar { height: 8px; background: rgba(255,255,255,.06); border: 1px solid var(--color-border); overflow: hidden; }
+  .tct-bar span { display: block; height: 100%; background: linear-gradient(90deg, var(--color-primary-dark), var(--color-primary)); }
+  .tct-stars { display: flex; gap: 3px; }
+  .tct-star { color: var(--color-border-light); font-size: .8rem; }
+  .tct-star.on { color: var(--color-primary); }
 
-.breadcrumb a {
-  color: #e74c3c;
-}
+  .tct-players { display: block; margin-top: 4px; font-size: var(--font-size-xs); letter-spacing: .06em; text-transform: uppercase; color: var(--color-text-muted); font-style: normal; }
 
-.tactic-header {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  margin-bottom: 3rem;
-  align-items: center;
-}
+  .tct-counters { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: var(--spacing-md); }
+  .tct-counter { padding: var(--spacing-lg); }
+  .tct-counter h4 { font-family: var(--font-display); text-transform: uppercase; font-size: var(--font-size-base); margin-bottom: var(--spacing-sm); color: var(--color-text); }
+  .tct-counter p { color: var(--color-text-light); font-size: var(--font-size-sm); line-height: 1.6; margin: 0; }
 
-.tactic-header__image {
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.tactic-header__image img {
-  width: 100%;
-}
-
-.tactic-meta {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
-  flex-wrap: wrap;
-}
-
-.tactic-content {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 3rem;
-}
-
-.tactic-stats {
-  margin: 2rem 0;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-  margin-top: 1rem;
-}
-
-.stat-box {
-  background: #16213e;
-  padding: 1.5rem;
-  border-radius: 10px;
-}
-
-.stat-bar {
-  background: #0f3460;
-  height: 30px;
-  border-radius: 15px;
-  overflow: hidden;
-  margin: 1rem 0;
-}
-
-.stat-fill {
-  background: linear-gradient(90deg, #e74c3c, #c0392b);
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-weight: 700;
-}
-
-.steps-timeline {
-  position: relative;
-  padding-left: 2rem;
-}
-
-.step {
-  position: relative;
-  margin-bottom: 2rem;
-  padding-bottom: 2rem;
-  border-left: 2px solid #e74c3c;
-}
-
-.step::before {
-  content: '';
-  position: absolute;
-  left: -7px;
-  top: 0;
-  width: 12px;
-  height: 12px;
-  background: #e74c3c;
-  border-radius: 50%;
-}
-
-.step-time {
-  font-weight: 700;
-  color: #e74c3c;
-  margin-bottom: 0.5rem;
-}
-
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-  margin: 2rem 0;
-}
-
-.video-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-}
-
-.tactic-sidebar {
-  background: #16213e;
-  padding: 2rem;
-  border-radius: 10px;
-  height: fit-content;
-}
-
-.related-tactics ul {
-  list-style: none;
-  margin-top: 1rem;
-}
-
-.related-tactics li {
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #333;
-}
-
-.related-tactics a {
-  color: #e74c3c;
-  text-decoration: none;
-}
-
-@media (max-width: 768px) {
-  .tactic-header {
-    grid-template-columns: 1fr;
-  }
-
-  .tactic-content {
-    grid-template-columns: 1fr;
-  }
-
-  .stats-grid {
-    grid-template-columns: 1fr;
-  }
-}
+  @media (max-width: 1023px) { .ld-grid { grid-template-columns: 1fr; gap: var(--spacing-xl); } }
+  @media (max-width: 479px) { .tct-perf__item { grid-template-columns: 1fr auto; } .tct-perf__item .tct-bar, .tct-perf__item .tct-stars { grid-column: 1 / -1; order: 3; } }
 </style>

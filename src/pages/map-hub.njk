@@ -4,10 +4,12 @@ pagination:
   data: maps.maps
   size: 1
   alias: map
+  addAllPagesToCollections: true
 permalink: "/mapas/{{ map.slug }}/"
 eleventyComputed:
   title: "{{ map.name }} CS2 - Lineups e táticas | CSTatics Brasil"
   description: "{{ map.description }}"
+  ogImage: "/images/og-{{ map.slug }}.png"
 ---
 
 {%- set mapLineups = lineups.lineups | byMap(map.slug) -%}

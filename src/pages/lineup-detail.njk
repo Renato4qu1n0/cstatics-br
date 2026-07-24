@@ -4,11 +4,13 @@ pagination:
   data: lineups.lineups
   size: 1
   alias: lineup
+  addAllPagesToCollections: true
 permalink: "/lineups/{{ lineup.slug }}/"
 ogType: article
 eleventyComputed:
   title: "{{ lineup.title }} - Lineup de {{ lineup.map | capitalize }} no CS2 | CSTatics Brasil"
   description: "{{ lineup.shortDescription }}"
+  ogImage: "/images/og-{{ lineup.map }}.png"
 ---
 
 {%- set utilMap = { smoke: "Smoke", flash: "Flash", molotov: "Molotov", he: "Granada HE" } -%}
