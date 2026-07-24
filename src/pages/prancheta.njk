@@ -50,8 +50,18 @@ description: "Prancheta tática de Counter-Strike 2: posicione jogadores, marque
       </div>
     </div>
 
+    <div class="bd-steps hud">
+      <i class="hud-brackets" aria-hidden="true"></i>
+      <span class="bd-steps__label datum">Etapas</span>
+      <div class="bd-steps__list" id="bdStepList"></div>
+      <button class="bd-step-add" id="bdStepAdd" type="button" title="Nova etapa (duplica a atual)"><i class="fa-solid fa-plus"></i> Etapa</button>
+      <button class="bd-step-del" id="bdStepDel" type="button" title="Remover etapa atual" aria-label="Remover etapa"><i class="fa-solid fa-xmark"></i></button>
+      <button class="bd-play" id="bdPlay" type="button" title="Reproduzir a sequência"><i class="fa-solid fa-play"></i> <span>Reproduzir</span></button>
+    </div>
+
     <div class="bd-stage hud">
       <i class="hud-brackets" aria-hidden="true"></i>
+      <div class="bd-progress" id="bdProgress" aria-hidden="true"><span></span></div>
       <svg id="boardSvg" viewBox="0 0 400 300" role="application" aria-label="Prancheta tática">
         <defs>
           <marker id="bdArrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
@@ -69,7 +79,11 @@ description: "Prancheta tática de Counter-Strike 2: posicione jogadores, marque
     <p class="bd-note datum">
       Escolha uma ferramenta e clique no mapa para posicionar · arraste um item para mover ·
       clique num item e depois no <strong>×</strong> (ou tecle Delete) para remover ·
-      duplo-clique num texto para editar. Esquema tático estilizado — não é planta medida do jogo.
+      duplo-clique num texto para editar.
+      <br>
+      <strong>Animar:</strong> crie <strong>Etapas</strong> (cada uma copia a anterior), mova os itens
+      para a nova posição em cada etapa e clique em <strong>Reproduzir</strong> — a jogada roda no tempo.
+      Esquema tático estilizado, não é planta medida do jogo.
     </p>
   </div>
 
@@ -144,6 +158,43 @@ description: "Prancheta tática de Counter-Strike 2: posicione jogadores, marque
     transition: box-shadow var(--transition-fast);
   }
   .bd-share:hover { box-shadow: 0 6px 22px rgba(255,176,32,.3); }
+
+  /* ---- barra de etapas ---- */
+  .bd-steps { display: flex; align-items: center; gap: var(--spacing-sm); flex-wrap: wrap; padding: 8px var(--spacing-md); margin-bottom: var(--spacing-md); }
+  .bd-steps__label { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-text-muted); }
+  .bd-steps__list { display: flex; gap: 5px; flex-wrap: wrap; }
+  .bd-step {
+    width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center;
+    background: rgba(8,9,12,.5); color: var(--color-text-light); border: 1px solid var(--color-border);
+    font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; cursor: pointer;
+    clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 5px 100%, 0 calc(100% - 5px));
+    transition: all var(--transition-fast);
+  }
+  .bd-step:hover { border-color: var(--color-border-light); color: var(--color-text); }
+  .bd-step.active { background: var(--color-primary); border-color: var(--color-primary); color: #0b0d11; }
+
+  .bd-step-add, .bd-step-del {
+    height: 30px; display: inline-flex; align-items: center; gap: 5px; padding: 0 10px;
+    background: rgba(8,9,12,.5); color: var(--color-text-light); border: 1px solid var(--color-border); cursor: pointer;
+    font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: .08em; text-transform: uppercase;
+    clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 5px 100%, 0 calc(100% - 5px));
+    transition: all var(--transition-fast);
+  }
+  .bd-step-add:hover, .bd-step-del:hover { border-color: var(--color-primary); color: var(--color-primary); }
+  .bd-step-add:disabled, .bd-step-del:disabled { opacity: .35; cursor: not-allowed; }
+
+  .bd-play {
+    margin-left: auto; height: 34px; display: inline-flex; align-items: center; gap: 8px; padding: 0 20px;
+    background: linear-gradient(135deg, var(--color-success), #23a866); color: #06140c; border: 0; cursor: pointer;
+    font-family: var(--font-display); font-weight: 600; font-size: 0.74rem; letter-spacing: .12em; text-transform: uppercase;
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+    transition: box-shadow var(--transition-fast);
+  }
+  .bd-play:hover { box-shadow: 0 6px 20px rgba(53,208,127,.3); }
+  .bd-play.is-playing { background: linear-gradient(135deg, #ff5449, #c0392b); color: #fff; }
+
+  .bd-progress { position: absolute; top: 8px; left: 8px; right: 8px; height: 2px; background: rgba(255,255,255,.06); z-index: 3; pointer-events: none; }
+  .bd-progress span { display: block; height: 100%; width: 0; background: var(--color-success); box-shadow: 0 0 8px var(--color-success); }
 
   /* ---- stage ---- */
   .bd-stage { position: relative; padding: 8px; }
