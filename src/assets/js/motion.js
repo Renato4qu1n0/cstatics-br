@@ -38,6 +38,40 @@
     revealTargets.forEach((el) => observer.observe(el));
   }
 
+  /* ---- 1b. Diagramas táticos --------------------------------- */
+  const diagrams = document.querySelectorAll('[data-diagram]');
+
+  if (diagrams.length) {
+    const play = (el) => {
+      el.classList.remove('is-playing');
+      void el.offsetWidth; // reflow: permite reiniciar a animação
+      el.classList.add('is-playing');
+    };
+
+    if (reduced || !('IntersectionObserver' in window)) {
+      diagrams.forEach((el) => el.classList.add('is-playing'));
+    } else {
+      const diagramObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            play(entry.target);
+            diagramObserver.unobserve(entry.target);
+          });
+        },
+        { threshold: 0.35 }
+      );
+      diagrams.forEach((el) => diagramObserver.observe(el));
+    }
+
+    document.addEventListener('click', (e) => {
+      const btn = e.target.closest('[data-diagram-replay]');
+      if (!btn) return;
+      const fig = btn.closest('[data-diagram]');
+      if (fig) play(fig);
+    });
+  }
+
   /* ---- 2. Contadores ----------------------------------------- */
   const counters = document.querySelectorAll('[data-count]');
   if (counters.length) {

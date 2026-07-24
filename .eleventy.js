@@ -30,6 +30,24 @@ module.exports = function(eleventyConfig) {
     return JSON.stringify(value);
   });
 
+  // Trajetória da utilitária: curva quadrática entre dois callouts.
+  // O ponto de controle sai perpendicular ao segmento, o que dá um arco
+  // legível em vez de uma reta (a altura real do arremesso não aparece no topo).
+  eleventyConfig.addFilter("arcPath", (from, to, curvature) => {
+    if (!from || !to) return "";
+    const k = typeof curvature === "number" ? curvature : 0.2;
+    const dx = to.x - from.x;
+    const dy = to.y - from.y;
+    const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+    const mx = (from.x + to.x) / 2;
+    const my = (from.y + to.y) / 2;
+    // normal unitária (-dy, dx)
+    const cx = mx + (-dy / dist) * dist * k;
+    const cy = my + (dx / dist) * dist * k;
+    const r = (n) => Math.round(n * 10) / 10;
+    return `M ${r(from.x)} ${r(from.y)} Q ${r(cx)} ${r(cy)} ${r(to.x)} ${r(to.y)}`;
+  });
+
   // Filtra uma lista por chave/valor — ex.: maps.maps | filterBy("active", true)
   eleventyConfig.addFilter("filterBy", (items, key, value) => {
     if (!Array.isArray(items)) return [];

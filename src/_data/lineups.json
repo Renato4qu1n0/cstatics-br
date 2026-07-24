@@ -27,8 +27,18 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["execução A", "padrão", "essencial"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "execução A",
+        "padrão",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "rampa-t",
+      "to": "ct"
     },
     {
       "slug": "smoke-jungle-mirage-rampa-t",
@@ -57,8 +67,17 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["execução A", "padrão"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "execução A",
+        "padrão"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "rampa-t",
+      "to": "jungle"
     },
     {
       "slug": "smoke-stairs-mirage-rampa-t",
@@ -87,8 +106,18 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["execução A", "padrão", "essencial"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "execução A",
+        "padrão",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "rampa-t",
+      "to": "stairs"
     },
     {
       "slug": "smoke-window-mirage-meio",
@@ -117,8 +146,18 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["controle de meio", "padrão", "essencial"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "controle de meio",
+        "padrão",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "mid",
+      "to": "window"
     },
     {
       "slug": "smoke-connector-mirage",
@@ -147,8 +186,17 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["controle de meio", "split"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "controle de meio",
+        "split"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "mid",
+      "to": "connector"
     },
     {
       "slug": "molotov-sandbags-mirage-a",
@@ -177,8 +225,17 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["A curto", "anti-eco"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "A curto",
+        "anti-eco"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "a-curto",
+      "to": "sandbags"
     },
     {
       "slug": "flash-entrada-a-mirage",
@@ -207,8 +264,18 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["execução A", "apoio", "essencial"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "execução A",
+        "apoio",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "rampa-t",
+      "to": "a-site"
     },
     {
       "slug": "molotov-rampa-mirage-ct",
@@ -237,8 +304,18 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["defesa", "CT", "atraso"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "defesa",
+        "CT",
+        "atraso"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "a-site",
+      "to": "rampa-t"
     },
     {
       "slug": "smoke-ct-inferno-b-banana",
@@ -267,8 +344,18 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["execução B", "padrão", "essencial"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "execução B",
+        "padrão",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "banana-top",
+      "to": "ct"
     },
     {
       "slug": "smoke-coffins-inferno",
@@ -297,8 +384,17 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["execução B", "padrão"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "execução B",
+        "padrão"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "banana-top",
+      "to": "coffins"
     },
     {
       "slug": "smoke-library-inferno",
@@ -327,8 +423,17 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["execução A", "padrão"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "execução A",
+        "padrão"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "mid",
+      "to": "library"
     },
     {
       "slug": "smoke-arch-inferno",
@@ -357,8 +462,17 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["controle de meio", "padrão"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "controle de meio",
+        "padrão"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "mid",
+      "to": "arch"
     },
     {
       "slug": "molotov-banana-inferno-controle",
@@ -387,8 +501,18 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["controle de banana", "padrão", "essencial"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "controle de banana",
+        "padrão",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "banana",
+      "to": "banana-top"
     },
     {
       "slug": "flash-banana-inferno",
@@ -417,8 +541,17 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["controle de banana", "apoio"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "controle de banana",
+        "apoio"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "banana",
+      "to": "banana-top"
     },
     {
       "slug": "smoke-xbox-dust2-meio",
@@ -447,8 +580,18 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["controle de meio", "padrão", "essencial"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "controle de meio",
+        "padrão",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "t-spawn",
+      "to": "xbox"
     },
     {
       "slug": "smoke-ct-dust2-cross",
@@ -477,8 +620,18 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["controle de meio", "padrão", "essencial"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "controle de meio",
+        "padrão",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "mid",
+      "to": "ct"
     },
     {
       "slug": "smoke-long-doors-dust2",
@@ -507,8 +660,18 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["long", "execução A", "essencial"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "long",
+        "execução A",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "long",
+      "to": "long-doors"
     },
     {
       "slug": "molotov-canto-longo-dust2",
@@ -537,8 +700,17 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["long", "anti-eco"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "long",
+        "anti-eco"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "long",
+      "to": "long-canto"
     },
     {
       "slug": "flash-curto-dust2",
@@ -567,8 +739,18 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["A curto", "split", "apoio"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "A curto",
+        "split",
+        "apoio"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "a-curto",
+      "to": "a-site"
     },
     {
       "slug": "smoke-outside-nuke",
@@ -597,8 +779,18 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["outside", "controle", "essencial"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "outside",
+        "controle",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "outside",
+      "to": "heaven"
     },
     {
       "slug": "molotov-rampa-nuke-ct",
@@ -627,8 +819,18 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["defesa", "CT", "atraso"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "defesa",
+        "CT",
+        "atraso"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "b-site",
+      "to": "rampa"
     },
     {
       "slug": "smoke-execucao-a-ancient",
@@ -657,8 +859,17 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["execução A", "padrão"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "execução A",
+        "padrão"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "mid",
+      "to": "a-site"
     },
     {
       "slug": "molotov-meio-ancient",
@@ -687,8 +898,17 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["controle de meio", "padrão"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "controle de meio",
+        "padrão"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "t-spawn",
+      "to": "mid"
     },
     {
       "slug": "smoke-meio-anubis",
@@ -717,8 +937,18 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["controle de meio", "padrão", "essencial"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "controle de meio",
+        "padrão",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "t-spawn",
+      "to": "mid"
     },
     {
       "slug": "smoke-execucao-a-anubis",
@@ -747,8 +977,17 @@
       "gif": "",
       "image": "",
       "verified": false,
-      "tags": ["execução A", "padrão"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "execução A",
+        "padrão"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      },
+      "from": "mid",
+      "to": "a-site"
     }
   ]
 }

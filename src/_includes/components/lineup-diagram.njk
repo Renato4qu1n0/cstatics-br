@@ -1,0 +1,76 @@
+{# Diagrama tático animado. Espera `lineup`; resolve a geometria em mapgeo. #}
+{%- set geo = mapgeo[lineup.map] -%}
+{%- set origin = geo.callouts[lineup.from] -%}
+{%- set impact = geo.callouts[lineup.to] -%}
+
+{%- if geo and origin and impact -%}
+<figure class="diagram hud" data-diagram data-utility="{{ lineup.utility }}">
+  <i class="hud-brackets" aria-hidden="true"></i>
+
+  <figcaption class="diagram__head">
+    <span class="diagram__title datum">{{ lineup.map | capitalize }} · esquema tático</span>
+    <button class="diagram__replay datum" type="button" data-diagram-replay>
+      <i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Repetir
+    </button>
+  </figcaption>
+
+  <svg class="diagram__svg" viewBox="{{ geo.viewBox }}" role="img"
+       aria-label="Esquema do mapa {{ lineup.map | capitalize }}: arremesso de {{ origin.label }} com alvo em {{ impact.label }}.">
+
+    <g class="diagram__areas">
+      {% for a in geo.areas %}<polygon points="{{ a.points }}" />{% endfor %}
+    </g>
+
+    <g class="diagram__links">
+      {% for l in geo.links %}<line x1="{{ l[0] }}" y1="{{ l[1] }}" x2="{{ l[2] }}" y2="{{ l[3] }}" />{% endfor %}
+    </g>
+
+    <g class="diagram__sites">
+      {% for s in geo.labels %}<text x="{{ s.x }}" y="{{ s.y }}">{{ s.text }}</text>{% endfor %}
+    </g>
+
+    <g class="diagram__dots">
+      {% for key, c in geo.callouts %}
+        {% if key != lineup.from and key != lineup.to %}
+          <circle cx="{{ c.x }}" cy="{{ c.y }}" r="1.8" />
+        {% endif %}
+      {% endfor %}
+    </g>
+
+    <!-- trajetória -->
+    <path class="diagram__arc" d="{{ origin | arcPath(impact) }}" pathLength="1" />
+
+    <!-- zona de efeito (translate no grupo externo; escala no interno,
+         senão o transform do CSS sobrescreveria o translate do SVG) -->
+    <g class="diagram__impact" transform="translate({{ impact.x }} {{ impact.y }})">
+      <g class="diagram__impact-in">
+        <circle class="diagram__impact-wave" r="17" />
+        <circle class="diagram__impact-core" r="8" />
+      </g>
+    </g>
+
+    <!-- ponto de arremesso -->
+    <g class="diagram__origin" transform="translate({{ origin.x }} {{ origin.y }})">
+      <g class="diagram__origin-in">
+        <circle class="diagram__origin-ring" r="9" />
+        <circle class="diagram__origin-dot" r="3.5" />
+      </g>
+    </g>
+
+    <g class="diagram__tags">
+      <text class="diagram__tag diagram__tag--origin" x="{{ origin.x }}" y="{{ origin.y - 14 }}">{{ origin.label }}</text>
+      <text class="diagram__tag diagram__tag--impact" x="{{ impact.x }}" y="{{ impact.y - 24 }}">{{ impact.label }}</text>
+    </g>
+  </svg>
+
+  <div class="diagram__legend">
+    <span class="diagram__legend-item"><i class="diagram__key diagram__key--origin"></i> Saída: <strong>{{ origin.label }}</strong></span>
+    <span class="diagram__legend-item"><i class="diagram__key diagram__key--impact"></i> Alvo: <strong>{{ impact.label }}</strong></span>
+  </div>
+
+  <p class="diagram__disclaimer">
+    Esquema para entender a jogada e a leitura de mapa. Não é planta medida do
+    jogo — o alinhamento exato de mira vem no vídeo.
+  </p>
+</figure>
+{%- endif -%}

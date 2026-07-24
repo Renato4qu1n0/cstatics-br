@@ -64,6 +64,11 @@ eleventyComputed:
         </section>
 
         <section class="ld-section">
+          <h2>Esquema da jogada</h2>
+          {% include "components/lineup-diagram.njk" %}
+        </section>
+
+        <section class="ld-section">
           <h2>Vídeo / demonstração</h2>
           {% if lineup.videoUrl %}
             <div class="video-container">
