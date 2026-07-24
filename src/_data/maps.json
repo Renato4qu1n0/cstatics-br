@@ -55,6 +55,16 @@
       "summary": "Mapa novo do pool competitivo. Controle de meio e água decide as partidas."
     },
     {
+      "name": "Train",
+      "slug": "train",
+      "logo": "/img/maps/train-badge.svg",
+      "vector": true,
+      "active": true,
+      "sites": ["A", "B"],
+      "description": "Guia de Train no CS2: lineups de smoke e molotov, controle dos trens, ângulos verticais e táticas para os bombsites A e B.",
+      "summary": "De volta ao pool competitivo. Controle dos vagões e dos ângulos altos decide o round."
+    },
+    {
       "name": "Cache",
       "slug": "cache",
       "logo": "/img/maps/cache-logo.png",

@@ -16,7 +16,7 @@ eleventyComputed:
 
 <section class="maphub-hero">
   <div class="container maphub-hero__inner">
-    <div class="maphub-hero__logo hud">
+    <div class="maphub-hero__logo hud {% if map.vector %}maphub-hero__logo--vector{% endif %}">
       <i class="hud-brackets" aria-hidden="true"></i>
       <img src="{{ map.logo }}" alt="Mapa {{ map.name }} do CS2" loading="eager">
     </div>
@@ -166,6 +166,8 @@ eleventyComputed:
     filter: grayscale(1) invert(1) contrast(1.2) brightness(1.08);
     mix-blend-mode: screen;
   }
+
+  .maphub-hero__logo--vector img { filter: none; mix-blend-mode: normal; }
 
   .maphub-hero__title {
     font-size: clamp(2.4rem, 7vw, 4.2rem);

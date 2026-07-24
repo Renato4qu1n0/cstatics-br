@@ -18,7 +18,7 @@ description: "Selecione um mapa e acesse lineups, execuções e defesas de Count
 
     <div class="maps-grid">
       {% for map in maps.maps %}
-        <a href="/mapas/{{ map.slug }}/" class="map-card hud {% if not map.active %}map-card--legacy{% endif %}" data-reveal>
+        <a href="/mapas/{{ map.slug }}/" class="map-card hud {% if not map.active %}map-card--legacy{% endif %} {% if map.vector %}map-card--vector{% endif %}" data-reveal>
           <i class="hud-brackets" aria-hidden="true"></i>
           <div class="scan" aria-hidden="true"></div>
 
@@ -123,6 +123,10 @@ description: "Selecione um mapa e acesse lineups, execuções e defesas de Count
 
   .map-card--legacy .map-card__meta { color: var(--color-text-muted); }
   .map-card--legacy .map-card__image img { opacity: 0.45; }
+
+  /* logos vetoriais (ex.: Train) já vêm na paleta certa — sem inverter */
+  .map-card--vector .map-card__image img { filter: none; mix-blend-mode: normal; opacity: 0.9; width: 66%; }
+  .map-card--vector:hover .map-card__image img { opacity: 1; filter: none; }
 
   .map-card__go {
     margin-top: var(--spacing-md);
