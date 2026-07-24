@@ -112,9 +112,14 @@
     surface.textContent = '';
     if (!g) return;
     svg.setAttribute('viewBox', g.viewBox || '0 0 400 300');
-    (g.areas || []).forEach((a) => surface.appendChild(el('polygon', { points: a.points, class: 'bd-area' })));
-    (g.links || []).forEach((l) => surface.appendChild(el('line', { x1: l[0], y1: l[1], x2: l[2], y2: l[3], class: 'bd-link' })));
-    (g.labels || []).forEach((s) => surface.appendChild(textEl(s.text, { x: s.x, y: s.y, class: 'bd-site' })));
+    if (g.radar) {
+      // radar real (imagem) substitui o esquema; os callouts se sobrepõem
+      surface.appendChild(el('image', { href: g.radar, x: 0, y: 0, width: 400, height: 300, preserveAspectRatio: 'xMidYMid slice', class: 'bd-radar' }));
+    } else {
+      (g.areas || []).forEach((a) => surface.appendChild(el('polygon', { points: a.points, class: 'bd-area' })));
+      (g.links || []).forEach((l) => surface.appendChild(el('line', { x1: l[0], y1: l[1], x2: l[2], y2: l[3], class: 'bd-link' })));
+      (g.labels || []).forEach((s) => surface.appendChild(textEl(s.text, { x: s.x, y: s.y, class: 'bd-site' })));
+    }
     Object.keys(g.callouts || {}).forEach((k) => {
       const c = g.callouts[k];
       surface.appendChild(el('circle', { cx: c.x, cy: c.y, r: 1.5, class: 'bd-dot' }));

@@ -10,25 +10,60 @@
       "shortDescription": "O pacote completo de utilitária que isola o bombsite A e viabiliza a entrada.",
       "description": "A execução de A no Mirage é a jogada mais treinada do mapa. Três smokes fecham CT, Jungle e Stairs ao mesmo tempo, reduzindo a defesa aos ângulos internos do site. A flash entra por último, no instante em que o time avança. Sem sincronia entre as quatro granadas, o take perde força e vira duelo aberto.",
       "throws": [
-        { "lineup": "smoke-ct-mirage-rampa-t", "label": "Smoke de CT — corta rotação e ninja" },
-        { "lineup": "smoke-jungle-mirage-rampa-t", "label": "Smoke de Jungle — nega o apoio" },
-        { "lineup": "smoke-stairs-mirage-rampa-t", "label": "Smoke de Stairs — fecha a escada" },
-        { "lineup": "flash-entrada-a-mirage", "label": "Flash de entrada — abre o duelo" }
+        {
+          "lineup": "smoke-ct-mirage-rampa-t",
+          "label": "Smoke de CT — corta rotação e ninja"
+        },
+        {
+          "lineup": "smoke-jungle-mirage-rampa-t",
+          "label": "Smoke de Jungle — nega o apoio"
+        },
+        {
+          "lineup": "smoke-stairs-mirage-rampa-t",
+          "label": "Smoke de Stairs — fecha a escada"
+        },
+        {
+          "lineup": "flash-entrada-a-mirage",
+          "label": "Flash de entrada — abre o duelo"
+        }
       ],
       "steps": [
-        { "time": "0:00", "description": "Time agrupa na rampa T. Define quem joga cada smoke antes de subir." },
-        { "time": "0:10", "description": "As três smokes saem em contagem — devem assentar praticamente juntas." },
-        { "time": "0:14", "description": "Flash de entrada por cima da rampa, jogada por quem não entra." },
-        { "time": "0:15", "description": "Entry entra logo após o estouro; o resto do time troca e ocupa o site." },
-        { "time": "0:25", "description": "Plant no lado combinado e reposicionamento para o pós-plant." }
+        {
+          "time": "0:00",
+          "description": "Time agrupa na rampa T. Define quem joga cada smoke antes de subir."
+        },
+        {
+          "time": "0:10",
+          "description": "As três smokes saem em contagem — devem assentar praticamente juntas."
+        },
+        {
+          "time": "0:14",
+          "description": "Flash de entrada por cima da rampa, jogada por quem não entra."
+        },
+        {
+          "time": "0:15",
+          "description": "Entry entra logo após o estouro; o resto do time troca e ocupa o site."
+        },
+        {
+          "time": "0:25",
+          "description": "Plant no lado combinado e reposicionamento para o pós-plant."
+        }
       ],
       "tips": [
         "Divida as smokes entre jogadores diferentes: um jogador sozinho não tem utilitária para o pacote inteiro.",
         "Guardar uma smoke para o pós-plant costuma valer mais do que gastar tudo na entrada."
       ],
       "verified": false,
-      "tags": ["execução", "bombsite A", "essencial"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "execução",
+        "bombsite A",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      }
     },
     {
       "slug": "controle-de-meio-mirage",
@@ -40,22 +75,47 @@
       "shortDescription": "Duas smokes que entregam o meio e dividem a defesa em duas metades.",
       "description": "Quem controla o meio do Mirage escolhe onde o round acontece. A smoke de janela abre a travessia; a de connector corta a rotação e isola o A. Com o meio tomado cedo, o time ameaça os dois bombsites e a defesa passa o round reagindo.",
       "throws": [
-        { "lineup": "smoke-window-mirage-meio", "label": "Smoke de Window — abre a travessia" },
-        { "lineup": "smoke-connector-mirage", "label": "Smoke de Connector — corta a rotação" }
+        {
+          "lineup": "smoke-window-mirage-meio",
+          "label": "Smoke de Window — abre a travessia"
+        },
+        {
+          "lineup": "smoke-connector-mirage",
+          "label": "Smoke de Connector — corta a rotação"
+        }
       ],
       "steps": [
-        { "time": "0:00", "description": "Smoke de janela sai no início do round, antes de qualquer exposição." },
-        { "time": "0:08", "description": "Dupla avança o meio por baixo e ocupa a posição." },
-        { "time": "0:20", "description": "Com o meio garantido, a smoke de connector fecha o apoio ao A." },
-        { "time": "0:30", "description": "O time converte: split no A pelo connector ou força o B com o mapa dividido." }
+        {
+          "time": "0:00",
+          "description": "Smoke de janela sai no início do round, antes de qualquer exposição."
+        },
+        {
+          "time": "0:08",
+          "description": "Dupla avança o meio por baixo e ocupa a posição."
+        },
+        {
+          "time": "0:20",
+          "description": "Com o meio garantido, a smoke de connector fecha o apoio ao A."
+        },
+        {
+          "time": "0:30",
+          "description": "O time converte: split no A pelo connector ou força o B com o mapa dividido."
+        }
       ],
       "tips": [
         "A smoke de connector jogada antes do controle de meio é fumaça desperdiçada.",
         "Controle de meio cedo é o que transforma um default em execução com informação."
       ],
       "verified": false,
-      "tags": ["controle de meio", "default"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "controle de meio",
+        "default"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      }
     },
     {
       "slug": "execucao-b-inferno",
@@ -67,25 +127,60 @@
       "shortDescription": "Do controle de banana ao plant: fogo, flash e duas smokes em sequência.",
       "description": "O B do Inferno cai em duas etapas. Primeiro a banana: molotov atrasa o CT agressivo e a flash abre a subida. Depois o take: as smokes de CT e Coffins isolam o site e tiram os dois melhores ângulos da defesa. Fazer a segunda etapa sem ter concluído a primeira é o erro mais comum do mapa.",
       "throws": [
-        { "lineup": "molotov-banana-inferno-controle", "label": "Molotov — atrasa o CT na banana" },
-        { "lineup": "flash-banana-inferno", "label": "Flash — abre a subida da banana" },
-        { "lineup": "smoke-ct-inferno-b-banana", "label": "Smoke de CT — corta a rotação" },
-        { "lineup": "smoke-coffins-inferno", "label": "Smoke de Coffins — tira o melhor ângulo" }
+        {
+          "lineup": "molotov-banana-inferno-controle",
+          "label": "Molotov — atrasa o CT na banana"
+        },
+        {
+          "lineup": "flash-banana-inferno",
+          "label": "Flash — abre a subida da banana"
+        },
+        {
+          "lineup": "smoke-ct-inferno-b-banana",
+          "label": "Smoke de CT — corta a rotação"
+        },
+        {
+          "lineup": "smoke-coffins-inferno",
+          "label": "Smoke de Coffins — tira o melhor ângulo"
+        }
       ],
       "steps": [
-        { "time": "0:00", "description": "Molotov na parte alta da banana, no início do round." },
-        { "time": "0:15", "description": "Flash por cima da parede e avanço em dupla para tomar a banana." },
-        { "time": "0:35", "description": "Com a banana controlada, o time agrupa no topo para o take." },
-        { "time": "0:45", "description": "Smokes de CT e Coffins saem juntas; entrada logo após assentarem." },
-        { "time": "0:55", "description": "Plant e reposicionamento — o caixão vira posição de pós-plant." }
+        {
+          "time": "0:00",
+          "description": "Molotov na parte alta da banana, no início do round."
+        },
+        {
+          "time": "0:15",
+          "description": "Flash por cima da parede e avanço em dupla para tomar a banana."
+        },
+        {
+          "time": "0:35",
+          "description": "Com a banana controlada, o time agrupa no topo para o take."
+        },
+        {
+          "time": "0:45",
+          "description": "Smokes de CT e Coffins saem juntas; entrada logo após assentarem."
+        },
+        {
+          "time": "0:55",
+          "description": "Plant e reposicionamento — o caixão vira posição de pós-plant."
+        }
       ],
       "tips": [
         "Não comprometa o take sem a banana controlada: o time toma pressão pelas costas.",
         "Guarde uma flash para o pós-plant, quando o CT tenta o retake."
       ],
       "verified": false,
-      "tags": ["execução", "bombsite B", "essencial"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "execução",
+        "bombsite B",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      }
     },
     {
       "slug": "controle-de-meio-dust2",
@@ -97,22 +192,48 @@
       "shortDescription": "As duas smokes que neutralizam o AWP e abrem a travessia do meio.",
       "description": "O meio do Dust2 é decidido por duas fumaças. A de Xbox tira o ângulo de quem segura a posição; a de CT permite a travessia para o corredor de baixo. Juntas, elas transformam a região mais perigosa do mapa em caminho seguro para pressionar o B.",
       "throws": [
-        { "lineup": "smoke-xbox-dust2-meio", "label": "Smoke de Xbox — tira o ângulo central" },
-        { "lineup": "smoke-ct-dust2-cross", "label": "Smoke de CT — libera a travessia" }
+        {
+          "lineup": "smoke-xbox-dust2-meio",
+          "label": "Smoke de Xbox — tira o ângulo central"
+        },
+        {
+          "lineup": "smoke-ct-dust2-cross",
+          "label": "Smoke de CT — libera a travessia"
+        }
       ],
       "steps": [
-        { "time": "0:00", "description": "Smoke de Xbox sai no início do round, da saída do T." },
-        { "time": "0:10", "description": "Dupla avança o meio e confirma que a posição está livre." },
-        { "time": "0:20", "description": "Smoke de CT fecha o ângulo da travessia." },
-        { "time": "0:25", "description": "Time atravessa em conjunto para o corredor de baixo e pressiona o B." }
+        {
+          "time": "0:00",
+          "description": "Smoke de Xbox sai no início do round, da saída do T."
+        },
+        {
+          "time": "0:10",
+          "description": "Dupla avança o meio e confirma que a posição está livre."
+        },
+        {
+          "time": "0:20",
+          "description": "Smoke de CT fecha o ângulo da travessia."
+        },
+        {
+          "time": "0:25",
+          "description": "Time atravessa em conjunto para o corredor de baixo e pressiona o B."
+        }
       ],
       "tips": [
         "Atravessar em fila indiana entrega trades de graça — cruze junto.",
         "Sem essas duas smokes, o meio do Dust2 é território de AWP."
       ],
       "verified": false,
-      "tags": ["controle de meio", "default", "essencial"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "controle de meio",
+        "default",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      }
     },
     {
       "slug": "take-de-a-dust2",
@@ -124,24 +245,337 @@
       "shortDescription": "Fecha as portas, limpa o canto e desce o curto — o A do Dust2 em três granadas.",
       "description": "O A do Dust2 cai quando Long e curto pressionam juntos. A smoke das portas neutraliza o AWP do corredor, a molotov limpa o canto sem custo de vida, e a flash do curto abre a descida no mesmo instante. É o split clássico que a defesa não consegue cobrir com dois jogadores.",
       "throws": [
-        { "lineup": "smoke-long-doors-dust2", "label": "Smoke das portas — neutraliza o AWP" },
-        { "lineup": "molotov-canto-longo-dust2", "label": "Molotov — limpa o canto do Long" },
-        { "lineup": "flash-curto-dust2", "label": "Flash do curto — abre a descida" }
+        {
+          "lineup": "smoke-long-doors-dust2",
+          "label": "Smoke das portas — neutraliza o AWP"
+        },
+        {
+          "lineup": "molotov-canto-longo-dust2",
+          "label": "Molotov — limpa o canto do Long"
+        },
+        {
+          "lineup": "flash-curto-dust2",
+          "label": "Flash do curto — abre a descida"
+        }
       ],
       "steps": [
-        { "time": "0:00", "description": "Time se divide: três no Long, dois no curto." },
-        { "time": "0:15", "description": "Smoke das portas e molotov no canto saem juntas." },
-        { "time": "0:22", "description": "Long avança e toma o pit." },
-        { "time": "0:25", "description": "Flash do curto no mesmo timing; a dupla desce e fecha o split." },
-        { "time": "0:35", "description": "Plant no lado que o Long cobre e pós-plant em crossfire." }
+        {
+          "time": "0:00",
+          "description": "Time se divide: três no Long, dois no curto."
+        },
+        {
+          "time": "0:15",
+          "description": "Smoke das portas e molotov no canto saem juntas."
+        },
+        {
+          "time": "0:22",
+          "description": "Long avança e toma o pit."
+        },
+        {
+          "time": "0:25",
+          "description": "Flash do curto no mesmo timing; a dupla desce e fecha o split."
+        },
+        {
+          "time": "0:35",
+          "description": "Plant no lado que o Long cobre e pós-plant em crossfire."
+        }
       ],
       "tips": [
         "A sincronia entre Long e curto é o que ganha o round — descer antes é entregar a dupla.",
         "Combine com o controle de meio para negar a rotação do CT."
       ],
       "verified": false,
-      "tags": ["execução", "bombsite A", "split"],
-      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+      "tags": [
+        "execução",
+        "bombsite A",
+        "split"
+      ],
+      "meta": {
+        "created": "2026-07-23",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      }
+    },
+    {
+      "slug": "take-outside-nuke",
+      "title": "Take de outside no Nuke",
+      "map": "nuke",
+      "side": "t",
+      "site": "b",
+      "difficulty": "media",
+      "shortDescription": "O pacote que fecha heaven e hut, cega a área e toma o outside para forçar o B.",
+      "description": "Tomar o outside é o que abre o B do Nuke pelo lado T. As smokes de heaven e hut tiram os ângulos altos, a molotov limpa o trophy e a flash cega o que sobrou — o time atravessa a área externa e ameaça o site de baixo.",
+      "throws": [
+        {
+          "lineup": "smoke-heaven-nuke",
+          "label": "Smoke de Heaven — fecha o ângulo alto"
+        },
+        {
+          "lineup": "smoke-hut-nuke",
+          "label": "Smoke de Hut — completa o controle"
+        },
+        {
+          "lineup": "molotov-trophy-nuke",
+          "label": "Molotov — limpa o trophy"
+        },
+        {
+          "lineup": "flash-outside-nuke",
+          "label": "Flash — abre a travessia"
+        }
+      ],
+      "steps": [
+        {
+          "time": "0:00",
+          "description": "Time agrupa na aproximação do outside e define quem joga cada utilitária."
+        },
+        {
+          "time": "0:08",
+          "description": "Smokes de heaven e hut saem juntas; molotov limpa o trophy."
+        },
+        {
+          "time": "0:14",
+          "description": "Flash por cima e travessia em conjunto para o outside."
+        },
+        {
+          "time": "0:25",
+          "description": "Com o outside controlado, o time força o B de baixo ou o wrap para o A."
+        }
+      ],
+      "tips": [
+        "Nuke é vertical: comunique de onde pode vir o tiro de cima.",
+        "Guarde utilitária para a entrada no site depois de tomar o outside."
+      ],
+      "verified": false,
+      "tags": [
+        "execução",
+        "outside",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      }
+    },
+    {
+      "slug": "execucao-a-ancient",
+      "title": "Execução de A no Ancient",
+      "map": "ancient",
+      "side": "t",
+      "site": "a",
+      "difficulty": "media",
+      "shortDescription": "Donut, temple e molotov: o pacote que isola o A e viabiliza o plant atrás do donut.",
+      "description": "O A do Ancient cai por execução coordenada. A smoke de donut cria o cover para o plant, a de temple tira o crossfire, e a molotov expulsa o CT do cover default. Sem sincronia entre as três, o take vira duelo aberto.",
+      "throws": [
+        {
+          "lineup": "smoke-donut-ancient",
+          "label": "Smoke de Donut — cover do plant"
+        },
+        {
+          "lineup": "smoke-temple-ancient",
+          "label": "Smoke de Temple — corta o crossfire"
+        },
+        {
+          "lineup": "molotov-a-ancient",
+          "label": "Molotov — limpa o cover default"
+        }
+      ],
+      "steps": [
+        {
+          "time": "0:00",
+          "description": "Time controla o meio e agrupa na rampa A."
+        },
+        {
+          "time": "0:12",
+          "description": "Smokes de donut e temple saem em contagem; molotov no cover."
+        },
+        {
+          "time": "0:18",
+          "description": "Entrada com flash de apoio assim que as fumaças assentam."
+        },
+        {
+          "time": "0:28",
+          "description": "Plant atrás do donut e reposicionamento para o pós-plant."
+        }
+      ],
+      "tips": [
+        "No Ancient, execução sem utilitária sincronizada quase nunca funciona.",
+        "Guarde uma smoke para o pós-plant."
+      ],
+      "verified": false,
+      "tags": [
+        "execução",
+        "bombsite A"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      }
+    },
+    {
+      "slug": "execucao-b-ancient",
+      "title": "Execução de B no Ancient",
+      "map": "ancient",
+      "side": "t",
+      "site": "b",
+      "difficulty": "media",
+      "shortDescription": "Cave e B lane: o par de smokes que abre o B pelo meio e corta a rotação.",
+      "description": "Com o meio controlado, o B do Ancient cai fechando a cave (que te pega pelas costas) e o B lane (o ângulo longo do CT). Com os dois isolados, o time escala no site e planta com apoio.",
+      "throws": [
+        {
+          "lineup": "smoke-cave-ancient",
+          "label": "Smoke de Cave — protege as costas"
+        },
+        {
+          "lineup": "smoke-blane-ancient",
+          "label": "Smoke de B Lane — corta o ângulo longo"
+        }
+      ],
+      "steps": [
+        {
+          "time": "0:00",
+          "description": "Time toma o meio e agrupa na entrada do B."
+        },
+        {
+          "time": "0:10",
+          "description": "Smokes de cave e B lane saem juntas."
+        },
+        {
+          "time": "0:16",
+          "description": "Escalada no site com flash de apoio."
+        },
+        {
+          "time": "0:26",
+          "description": "Plant e ocupação dos covers para o pós-plant."
+        }
+      ],
+      "tips": [
+        "Cave fechada evita ser pego pela rotação do A.",
+        "Combine com uma flash para a entrada."
+      ],
+      "verified": false,
+      "tags": [
+        "execução",
+        "bombsite B"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      }
+    },
+    {
+      "slug": "execucao-a-anubis",
+      "title": "Execução de A no Anubis",
+      "map": "anubis",
+      "side": "t",
+      "site": "a",
+      "difficulty": "media",
+      "shortDescription": "Heaven e palace: as smokes que tiram os ângulos que sustentam a defesa do A.",
+      "description": "Com o meio controlado, o A do Anubis cai fechando heaven (o ângulo alto) e palace (a posição lateral). Com os dois isolados, o time entra pelo conector e planta em segurança.",
+      "throws": [
+        {
+          "lineup": "smoke-heaven-anubis",
+          "label": "Smoke de Heaven — fecha o ângulo alto"
+        },
+        {
+          "lineup": "smoke-palace-anubis",
+          "label": "Smoke de Palace — tira a posição lateral"
+        }
+      ],
+      "steps": [
+        {
+          "time": "0:00",
+          "description": "Time controla o meio e agrupa no conector do A."
+        },
+        {
+          "time": "0:10",
+          "description": "Smokes de heaven e palace saem juntas."
+        },
+        {
+          "time": "0:16",
+          "description": "Entrada pelo conector com flash de apoio."
+        },
+        {
+          "time": "0:26",
+          "description": "Plant e ocupação dos covers do site."
+        }
+      ],
+      "tips": [
+        "Sem controle de meio, a entrada do A fica muito mais cara.",
+        "Guarde utilitária para o pós-plant."
+      ],
+      "verified": false,
+      "tags": [
+        "execução",
+        "bombsite A"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      }
+    },
+    {
+      "slug": "take-a-train",
+      "title": "Take de A no Train",
+      "map": "train",
+      "side": "t",
+      "site": "a",
+      "difficulty": "dificil",
+      "shortDescription": "Ivy, popdog, oil e Z: o pacote completo que isola o A e libera o plant nos trens.",
+      "description": "O A do Train é sobre controlar os ângulos e as alturas. A smoke de ivy garante o acesso, as de popdog e oil tiram os pontos altos da defesa, e a de Z fecha a passagem lateral. Com tudo isolado, o time planta atrás dos trens.",
+      "throws": [
+        {
+          "lineup": "smoke-ivy-train",
+          "label": "Smoke de Ivy — garante o acesso"
+        },
+        {
+          "lineup": "smoke-popdog-train",
+          "label": "Smoke de Popdog — tira o ângulo alto"
+        },
+        {
+          "lineup": "smoke-oil-train",
+          "label": "Smoke de Oil — isola o site"
+        },
+        {
+          "lineup": "smoke-z-train",
+          "label": "Smoke de Z — fecha a lateral"
+        }
+      ],
+      "steps": [
+        {
+          "time": "0:00",
+          "description": "Smoke de ivy sai cedo; o time sobe e agrupa."
+        },
+        {
+          "time": "0:15",
+          "description": "Smokes de popdog, oil e Z saem em contagem para o take."
+        },
+        {
+          "time": "0:22",
+          "description": "Entrada pelos trens com flash de apoio."
+        },
+        {
+          "time": "0:32",
+          "description": "Plant atrás dos trens e pós-plant usando os vagões como cover."
+        }
+      ],
+      "tips": [
+        "Train premia controle de ângulos e alturas — atravessar exposto é morte.",
+        "Guarde uma flash para o retake do CT."
+      ],
+      "verified": false,
+      "tags": [
+        "execução",
+        "bombsite A"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      }
     }
   ]
 }

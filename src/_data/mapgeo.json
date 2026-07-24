@@ -1,8 +1,9 @@
 {
-  "_nota": "Esquemas TÁTICOS, não plantas medidas do jogo. A topologia (o que liga com o quê, e onde cada callout fica em relação aos outros) é fiel; as proporções são estilizadas para leitura. Serve para ensinar a jogada, não para alinhamento fino de mira.",
+  "_nota": "Esquemas TÁTICOS com callouts reais. A topologia (o que liga com o quê e a posição relativa dos callouts) é fiel; as proporções são estilizadas para leitura. Cada mapa aceita um 'radar' (imagem de fundo): quando preenchido com o caminho de um radar real, ele é desenhado no lugar do esquema. Vazio = usa o esquema.",
 
   "mirage": {
     "viewBox": "0 0 400 300",
+    "radar": "",
     "areas": [
       { "points": "270,70 360,70 360,140 300,140 270,115" },
       { "points": "40,70 130,70 130,140 40,140" },
@@ -32,14 +33,19 @@
       "connector": { "x": 234, "y": 106, "label": "Connector" },
       "window":    { "x": 200, "y": 120, "label": "Window" },
       "mid":       { "x": 200, "y": 168, "label": "Meio" },
+      "top-mid":   { "x": 200, "y": 230, "label": "Top mid" },
+      "catwalk":   { "x": 176, "y": 150, "label": "Catwalk" },
       "ct":        { "x": 200, "y": 40,  "label": "CT" },
       "b-site":    { "x": 85,  "y": 105, "label": "Site B" },
-      "apps":      { "x": 90,  "y": 205, "label": "Apartamentos" }
+      "apps":      { "x": 90,  "y": 205, "label": "Apartamentos" },
+      "market":    { "x": 128, "y": 150, "label": "Market" },
+      "bench":     { "x": 45,  "y": 88,  "label": "Bench" }
     }
   },
 
   "inferno": {
     "viewBox": "0 0 400 300",
+    "radar": "",
     "areas": [
       { "points": "70,60 175,60 175,125 110,125 70,105" },
       { "points": "265,55 360,55 360,120 265,120" },
@@ -64,18 +70,23 @@
       "banana-top": { "x": 302, "y": 150, "label": "Banana (topo)" },
       "b-site":     { "x": 310, "y": 92,  "label": "Site B" },
       "coffins":    { "x": 342, "y": 100, "label": "Coffins" },
+      "new-box":    { "x": 268, "y": 74,  "label": "New box" },
       "ct":         { "x": 220, "y": 32,  "label": "CT" },
       "mid":        { "x": 192, "y": 188, "label": "Meio" },
       "arch":       { "x": 192, "y": 142, "label": "Arch" },
       "a-site":     { "x": 118, "y": 98,  "label": "Site A" },
       "library":    { "x": 155, "y": 72,  "label": "Library" },
       "pit":        { "x": 85,  "y": 112, "label": "Pit" },
-      "apps":       { "x": 245, "y": 162, "label": "Apartamento" }
+      "apps":       { "x": 245, "y": 162, "label": "Apartamento" },
+      "graveyard":  { "x": 150, "y": 108, "label": "Cemitério" },
+      "boiler":     { "x": 245, "y": 205, "label": "Boiler" },
+      "second-mid": { "x": 172, "y": 175, "label": "Segundo meio" }
     }
   },
 
   "dust2": {
     "viewBox": "0 0 400 300",
+    "radar": "",
     "areas": [
       { "points": "280,50 365,50 365,120 300,120 280,100" },
       { "points": "45,55 135,55 135,125 45,125" },
@@ -101,17 +112,24 @@
       "long-canto": { "x": 352, "y": 128, "label": "Canto do Long" },
       "a-site":     { "x": 320, "y": 85,  "label": "Site A" },
       "pit":        { "x": 356, "y": 105, "label": "Pit" },
+      "goose":      { "x": 300, "y": 92,  "label": "Goose" },
       "a-curto":    { "x": 252, "y": 142, "label": "A curto" },
+      "catwalk":    { "x": 252, "y": 175, "label": "Catwalk" },
       "xbox":       { "x": 217, "y": 148, "label": "Xbox" },
       "mid":        { "x": 217, "y": 185, "label": "Meio" },
+      "lower":      { "x": 175, "y": 200, "label": "Lower" },
       "ct":         { "x": 217, "y": 32,  "label": "CT" },
+      "ct-mid":     { "x": 240, "y": 100, "label": "CT meio" },
       "b-site":     { "x": 88,  "y": 92,  "label": "Site B" },
-      "tunnels":    { "x": 120, "y": 196, "label": "Túneis" }
+      "tunnels":    { "x": 120, "y": 196, "label": "Túneis" },
+      "b-window":   { "x": 128, "y": 78,  "label": "Janela B" },
+      "b-door":     { "x": 48,  "y": 108, "label": "Porta B" }
     }
   },
 
   "nuke": {
     "viewBox": "0 0 400 300",
+    "radar": "",
     "areas": [
       { "points": "150,65 260,65 260,130 150,130" },
       { "points": "150,160 260,160 260,215 150,215" },
@@ -131,20 +149,29 @@
       { "x": 203, "y": 190, "text": "B" }
     ],
     "callouts": {
-      "t-spawn": { "x": 205, "y": 267, "label": "T spawn" },
-      "outside": { "x": 320, "y": 180, "label": "Outside" },
-      "rampa":   { "x": 279, "y": 165, "label": "Rampa" },
-      "a-site":  { "x": 203, "y": 96,  "label": "Site A" },
-      "b-site":  { "x": 203, "y": 190, "label": "Site B" },
-      "heaven":  { "x": 266, "y": 82,  "label": "Heaven" },
-      "hut":     { "x": 327, "y": 84,  "label": "Hut" },
-      "secret":  { "x": 322, "y": 122, "label": "Secret" },
-      "ct":      { "x": 90,  "y": 106, "label": "CT" }
+      "t-spawn":  { "x": 205, "y": 267, "label": "T spawn" },
+      "outside":  { "x": 320, "y": 180, "label": "Outside" },
+      "rampa":    { "x": 279, "y": 165, "label": "Rampa" },
+      "hell":     { "x": 279, "y": 205, "label": "Hell" },
+      "a-site":   { "x": 203, "y": 96,  "label": "Site A" },
+      "b-site":   { "x": 203, "y": 190, "label": "Site B" },
+      "heaven":   { "x": 266, "y": 82,  "label": "Heaven" },
+      "hut":      { "x": 327, "y": 84,  "label": "Hut" },
+      "secret":   { "x": 322, "y": 122, "label": "Secret" },
+      "silo":     { "x": 315, "y": 210, "label": "Silo" },
+      "trophy":   { "x": 345, "y": 150, "label": "Trophy" },
+      "a-main":   { "x": 250, "y": 118, "label": "A main" },
+      "lockers":  { "x": 172, "y": 112, "label": "Lockers" },
+      "vents":    { "x": 205, "y": 145, "label": "Vents" },
+      "squeaky":  { "x": 150, "y": 100, "label": "Squeaky" },
+      "ct":       { "x": 90,  "y": 106, "label": "CT" },
+      "ramp-bottom": { "x": 258, "y": 188, "label": "Fundo da rampa" }
     }
   },
 
   "ancient": {
     "viewBox": "0 0 400 300",
+    "radar": "",
     "areas": [
       { "points": "265,60 355,60 355,125 295,125 265,105" },
       { "points": "50,70 140,70 140,140 50,140" },
@@ -163,10 +190,15 @@
     ],
     "callouts": {
       "t-spawn":  { "x": 200, "y": 267, "label": "T spawn" },
-      "mid":      { "x": 202, "y": 165, "label": "Meio" },
+      "mid":      { "x": 202, "y": 168, "label": "Meio" },
       "a-site":   { "x": 310, "y": 92,  "label": "Site A" },
-      "a-rampa":  { "x": 282, "y": 138, "label": "Rampa A" },
-      "donut":    { "x": 262, "y": 165, "label": "Donut" },
+      "a-rampa":  { "x": 284, "y": 140, "label": "Rampa A" },
+      "temple":   { "x": 336, "y": 112, "label": "Temple" },
+      "donut":    { "x": 258, "y": 168, "label": "Donut" },
+      "cave":     { "x": 244, "y": 112, "label": "Cave" },
+      "house":    { "x": 226, "y": 86,  "label": "House" },
+      "window":   { "x": 176, "y": 122, "label": "Window" },
+      "b-lane":   { "x": 128, "y": 158, "label": "B lane" },
       "b-site":   { "x": 93,  "y": 105, "label": "Site B" },
       "ct":       { "x": 207, "y": 40,  "label": "CT" }
     }
@@ -174,6 +206,7 @@
 
   "anubis": {
     "viewBox": "0 0 400 300",
+    "radar": "",
     "areas": [
       { "points": "270,65 355,65 355,130 270,130" },
       { "points": "45,65 130,65 130,130 45,130" },
@@ -193,12 +226,53 @@
     ],
     "callouts": {
       "t-spawn":     { "x": 200, "y": 265, "label": "T spawn" },
-      "mid":         { "x": 200, "y": 165, "label": "Meio" },
-      "agua":        { "x": 200, "y": 198, "label": "Água" },
+      "mid":         { "x": 200, "y": 168, "label": "Meio" },
+      "agua":        { "x": 200, "y": 200, "label": "Água" },
       "a-site":      { "x": 310, "y": 97,  "label": "Site A" },
-      "a-conector":  { "x": 264, "y": 145, "label": "Conector A" },
+      "heaven":      { "x": 332, "y": 78,  "label": "Heaven" },
+      "a-conector":  { "x": 266, "y": 148, "label": "Conector A" },
+      "palace":      { "x": 250, "y": 110, "label": "Palace" },
+      "canal":       { "x": 265, "y": 188, "label": "Canal" },
+      "window":      { "x": 226, "y": 118, "label": "Window" },
+      "b-conector":  { "x": 135, "y": 152, "label": "Conector B" },
       "b-site":      { "x": 85,  "y": 97,  "label": "Site B" },
       "ct":          { "x": 200, "y": 37,  "label": "CT" }
+    }
+  },
+
+  "train": {
+    "viewBox": "0 0 400 300",
+    "radar": "",
+    "areas": [
+      { "points": "240,80 335,80 335,175 240,175" },
+      { "points": "48,85 145,85 145,165 48,165" },
+      { "points": "175,120 220,120 220,205 175,205" },
+      { "points": "290,180 345,180 345,245 290,245" },
+      { "points": "70,170 135,170 135,235 70,235" },
+      { "points": "150,250 250,250 250,285 150,285" },
+      { "points": "170,25 240,25 240,55 170,55" }
+    ],
+    "links": [
+      [200, 250, 200, 205], [200, 120, 205, 55], [220, 150, 240, 130],
+      [175, 150, 135, 150], [318, 180, 300, 175], [100, 170, 95, 165]
+    ],
+    "labels": [
+      { "x": 288, "y": 130, "text": "A" },
+      { "x": 96, "y": 120, "text": "B" }
+    ],
+    "callouts": {
+      "t-spawn":   { "x": 200, "y": 267, "label": "T spawn" },
+      "a-site":    { "x": 305, "y": 150, "label": "Site A" },
+      "b-site":    { "x": 96,  "y": 120, "label": "Site B" },
+      "ivy":       { "x": 318, "y": 212, "label": "Ivy" },
+      "popdog":    { "x": 258, "y": 100, "label": "Popdog" },
+      "oil":       { "x": 322, "y": 100, "label": "Oil" },
+      "connector": { "x": 197, "y": 150, "label": "Conector" },
+      "alley":     { "x": 150, "y": 178, "label": "Alley" },
+      "main":      { "x": 100, "y": 200, "label": "Main B" },
+      "ladder":    { "x": 258, "y": 168, "label": "Escada" },
+      "ct":        { "x": 205, "y": 40,  "label": "CT" },
+      "z-conn":    { "x": 232, "y": 130, "label": "Z" }
     }
   }
 }

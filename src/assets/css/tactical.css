@@ -453,6 +453,19 @@ body::before {
   color: var(--color-text-light);
 }
 
+/* fallback do card de tática (sem imagem) */
+.tactic-card__image--fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(61, 139, 255, 0.06), transparent 70%), #0a0d12;
+  border-bottom: 1px solid var(--color-border);
+}
+.tactic-card__image--fallback i { font-size: 2.2rem; color: var(--color-primary); opacity: 0.85; }
+.tactic-card__image--fallback span { font-size: var(--font-size-xs); letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-text-muted); }
+
 /* Stats do card de tática */
 .stat__label {
   font-family: var(--font-mono);

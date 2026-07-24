@@ -1,8 +1,13 @@
 <article class="tactic-card hud" data-tactic data-reveal data-map="{{ tactic.mapSlug or (tactic.map | lower) }}" data-side="{{ tactic.side }}" data-category="{{ tactic.category }}">
   <i class="hud-brackets" aria-hidden="true"></i>
   <div class="scan" aria-hidden="true"></div>
-  <div class="tactic-card__image">
-    <img src="/{{ tactic.image }}" alt="{{ tactic.title }}" loading="lazy" decoding="async">
+  <div class="tactic-card__image {% if not tactic.image %}tactic-card__image--fallback{% endif %}">
+    {% if tactic.image %}
+      <img src="/{{ tactic.image }}" alt="{{ tactic.title }}" loading="lazy" decoding="async">
+    {% else %}
+      <i class="fa-solid fa-chess-board" aria-hidden="true"></i>
+      <span class="datum">{{ tactic.map }}</span>
+    {% endif %}
   </div>
 
   <div class="tactic-card__content">

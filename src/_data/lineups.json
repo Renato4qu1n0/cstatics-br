@@ -988,6 +988,1149 @@
       },
       "from": "mid",
       "to": "a-site"
+    },
+    {
+      "slug": "smoke-market-mirage",
+      "title": "Smoke de Market no Mirage (execução de B)",
+      "map": "mirage",
+      "utility": "smoke",
+      "side": "t",
+      "site": "b",
+      "position": "Apartamentos",
+      "target": "Fecha o market na execução de B",
+      "difficulty": "media",
+      "movement": "parado",
+      "shortDescription": "A smoke que isola o market na tomada de B pelos apartamentos.",
+      "description": "Quase todo take de B no Mirage passa por fechar o market. Com o market smokado, o time desce dos apartamentos e entra no site sem tomar o crossfire de quem segura essa posição, a mais forte da defesa de B.",
+      "steps": [
+        "Posicione-se nos apartamentos, no ponto de arremesso combinado.",
+        "Alinhe a mira com a referência do market.",
+        "Lance a smoke parado e confirme o fechamento.",
+        "Desça e entre no B apoiado por flashes."
+      ],
+      "tips": [
+        "Combine com uma smoke de fundo e molotov para um take de B completo.",
+        "A maioria dos times profissionais fecha o market antes de tomar o B."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "execução B",
+        "apartamentos",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "apps",
+      "to": "market"
+    },
+    {
+      "slug": "flash-top-mid-mirage",
+      "title": "Flash de Top Mid no Mirage",
+      "map": "mirage",
+      "utility": "flash",
+      "side": "t",
+      "site": "mid",
+      "position": "Top mid",
+      "target": "Cega quem segura a janela e o meio",
+      "difficulty": "facil",
+      "movement": "parado",
+      "shortDescription": "Pop flash que abre a travessia do meio cegando a janela.",
+      "description": "Depois de fechar a janela com smoke, ainda há o ângulo baixo e o AWP de meio. Essa flash estoura por cima e cega quem tenta segurar a travessia, dando o tempo para o time cruzar para connector.",
+      "steps": [
+        "Fique no top mid, protegido do ângulo da janela.",
+        "Alinhe o arremesso por cima, no arco combinado.",
+        "Lance e avance no timing do estouro.",
+        "Cruze o meio em conjunto, nunca isolado."
+      ],
+      "tips": [
+        "Flash cedo demais é inútil: o valor está no timing com a travessia.",
+        "Vire de costas ao estouro para não se cegar."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "controle de meio",
+        "apoio"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "top-mid",
+      "to": "window"
+    },
+    {
+      "slug": "smoke-graveyard-inferno",
+      "title": "Smoke de Cemitério no Inferno (execução de A)",
+      "map": "inferno",
+      "utility": "smoke",
+      "side": "t",
+      "site": "a",
+      "position": "Meio",
+      "target": "Fecha o cemitério na entrada do A",
+      "difficulty": "media",
+      "movement": "parado",
+      "shortDescription": "Bloqueia o cemitério e reduz os ângulos de defesa na tomada do A.",
+      "description": "O cemitério dá um dos ângulos mais perigosos para quem defende o A do Inferno. Fechando essa visão junto com a biblioteca, o time entra no site enfrentando menos crossfires e ganha espaço para o plant.",
+      "steps": [
+        "Posicione-se no meio, no ponto de arremesso da aproximação do A.",
+        "Alinhe a mira com a referência do cemitério.",
+        "Lance a smoke parado junto com as demais do pacote de A.",
+        "Entre limpando os ângulos restantes com flash."
+      ],
+      "tips": [
+        "O pacote de A costuma somar cemitério, biblioteca e uma molotov no fundo.",
+        "Sem controle de meio, a entrada do A fica muito mais cara."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "execução A",
+        "padrão"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "mid",
+      "to": "graveyard"
+    },
+    {
+      "slug": "smoke-newbox-inferno",
+      "title": "Smoke de New Box no Inferno (execução de B)",
+      "map": "inferno",
+      "utility": "smoke",
+      "side": "t",
+      "site": "b",
+      "position": "Banana (topo)",
+      "target": "Fecha a new box dentro do B",
+      "difficulty": "media",
+      "movement": "jumpthrow",
+      "shortDescription": "Cobre a new box e tira mais um ângulo forte de quem defende o bombsite B.",
+      "description": "Além da smoke de CT, o defensor do B costuma segurar a new box. Fechar esse ângulo completa o isolamento do site e permite plantar em segurança, sem tomar o duelo de graça na entrada.",
+      "steps": [
+        "Do ponto de arremesso na banana, alinhe com a referência da new box.",
+        "Lance com jumpthrow no mesmo timing da smoke de CT.",
+        "Confirme as duas fumaças antes de comprometer a entrada.",
+        "Entre limpando os cantos que sobraram abertos."
+      ],
+      "tips": [
+        "New box + CT é o par que realmente segura o take de B.",
+        "Depois do plant, a new box vira posição de pós-plant do seu time."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "execução B",
+        "padrão"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "banana-top",
+      "to": "new-box"
+    },
+    {
+      "slug": "smoke-b-window-dust2",
+      "title": "Smoke de Janela de B no Dust2",
+      "map": "dust2",
+      "utility": "smoke",
+      "side": "t",
+      "site": "b",
+      "position": "Túneis",
+      "target": "Fecha a janela de B na saída dos túneis",
+      "difficulty": "facil",
+      "movement": "parado",
+      "shortDescription": "A smoke que cega a janela de B e permite sair dos túneis com segurança.",
+      "description": "A janela de B é de onde o CT observa e atira em quem sai dos túneis. Fechando essa visão, o time sai para o site sem ser trocado de longe e força o duelo em condições melhores.",
+      "steps": [
+        "Posicione-se nos túneis, no ponto de arremesso combinado.",
+        "Alinhe a mira com a referência da janela de B.",
+        "Lance a smoke parado no início da execução.",
+        "Saia dos túneis em conjunto, apoiado por flash."
+      ],
+      "tips": [
+        "Combine com uma flash de apoio para a saída dos túneis.",
+        "Fundamental contra o CT que joga a janela de B agressivo."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "execução B",
+        "túneis",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "tunnels",
+      "to": "b-window"
+    },
+    {
+      "slug": "molotov-b-door-dust2",
+      "title": "Molotov de Porta de B no Dust2 (defesa de CT)",
+      "map": "dust2",
+      "utility": "molotov",
+      "side": "ct",
+      "site": "b",
+      "position": "Site B",
+      "target": "Atrasa o avanço do T pela porta de B",
+      "difficulty": "facil",
+      "movement": "parado",
+      "shortDescription": "A incendiária de CT que segura a porta de B e compra tempo para a rotação.",
+      "description": "Defender o B sozinho é sobre ganhar tempo. Essa molotov queima a porta de B, quebrando o timing de quem sai dos túneis e dando os segundos necessários para a rotação do CT chegar.",
+      "steps": [
+        "Do site B, posicione-se sem se expor ao ângulo da porta.",
+        "Alinhe o arco com a referência da porta de B.",
+        "Lance ao primeiro som de avanço dos túneis.",
+        "Recue para um crossfire enquanto o fogo queima."
+      ],
+      "tips": [
+        "Utilitária de CT guardada vale muito mais que gasta cedo.",
+        "Comunique o uso: o time precisa saber que o B está atrasado."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "defesa",
+        "CT",
+        "atraso"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "b-site",
+      "to": "b-door"
+    },
+    {
+      "slug": "smoke-heaven-nuke",
+      "title": "Smoke de Heaven no Nuke",
+      "map": "nuke",
+      "utility": "smoke",
+      "side": "t",
+      "site": "b",
+      "position": "Outside",
+      "target": "Cobre heaven para tomar a área externa",
+      "difficulty": "media",
+      "movement": "parado",
+      "shortDescription": "A smoke que fecha heaven e permite atravessar o outside com segurança.",
+      "description": "Heaven domina toda a área externa do Nuke, especialmente contra AWP. Fechando esse ângulo, o time atravessa o outside e ameaça o B de baixo sem ser punido de cima.",
+      "steps": [
+        "Posicione-se na aproximação do outside, no ponto combinado.",
+        "Alinhe a mira com a referência de heaven.",
+        "Lance a smoke parado antes de expor o time.",
+        "Atravesse em conjunto e estabeleça o controle da área."
+      ],
+      "tips": [
+        "Nuke é vertical: sempre pergunte de onde vem o tiro de cima.",
+        "Sem heaven fechado, o outside custa caro contra sniper."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "outside",
+        "controle",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "outside",
+      "to": "heaven"
+    },
+    {
+      "slug": "smoke-secret-nuke",
+      "title": "Smoke de Secret no Nuke",
+      "map": "nuke",
+      "utility": "smoke",
+      "side": "t",
+      "site": "b",
+      "position": "T spawn",
+      "target": "Fecha o secret para o controle de outside",
+      "difficulty": "dificil",
+      "movement": "jumpthrow",
+      "shortDescription": "Bloqueia a visão de quem segura o secret e libera a volta pelo outside.",
+      "description": "A smoke de secret é uma das jogadas mais úteis do lado T no Nuke. Ela nega a visão de quem observa o outside pelo secret, abrindo a volta por baixo — seja para o B ou para o wrap até o A.",
+      "steps": [
+        "Encoste no lado direito da saída do T spawn.",
+        "Mire na referência do silo e ajuste a altura combinada.",
+        "Lance com jumpthrow e confirme a fumaça caindo no secret.",
+        "Converta o controle avançando por outside."
+      ],
+      "tips": [
+        "É uma smoke de alinhamento fino — treine bastante antes de levar para a partida.",
+        "Ótima quando você sabe que o CT observa o outside pelo secret."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "outside",
+        "secret"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "t-spawn",
+      "to": "secret"
+    },
+    {
+      "slug": "molotov-hell-nuke",
+      "title": "Molotov de Hell no Nuke (defesa de CT)",
+      "map": "nuke",
+      "utility": "molotov",
+      "side": "ct",
+      "site": "b",
+      "position": "Site B",
+      "target": "Atrasa o avanço do T pela rampa e hell",
+      "difficulty": "facil",
+      "movement": "parado",
+      "shortDescription": "A incendiária de CT que trava a subida por hell e segura o B.",
+      "description": "Hell é o caminho por baixo até o B. Essa molotov queima a passagem no momento do avanço e quebra o timing da execução, dando ao CT tempo para reposicionar e defender o site em número.",
+      "steps": [
+        "Do B, posicione-se sem expor o ângulo de hell.",
+        "Alinhe o arco com a subida por hell.",
+        "Lance ao ouvir o avanço, não no início do round.",
+        "Recue para um crossfire enquanto o fogo atrasa a entrada."
+      ],
+      "tips": [
+        "Guardar a molotov para o momento do avanço vale mais que jogá-la cedo.",
+        "Combine com a molotov de rampa para negar as duas subidas."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "defesa",
+        "CT",
+        "atraso"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "b-site",
+      "to": "hell"
+    },
+    {
+      "slug": "smoke-hut-nuke",
+      "title": "Smoke de Hut no Nuke",
+      "map": "nuke",
+      "utility": "smoke",
+      "side": "t",
+      "site": "b",
+      "position": "Outside",
+      "target": "Fecha o hut na tomada de outside",
+      "difficulty": "media",
+      "movement": "parado",
+      "shortDescription": "Cobre o hut e tira o ângulo alto que pune quem entra no outside.",
+      "description": "Junto com heaven, o hut é de onde o CT segura o outside. Fechar essa visão completa o controle da área externa e permite ao time escolher entre forçar o B de baixo ou o wrap para o A.",
+      "steps": [
+        "Posicione-se no outside, no ponto de arremesso combinado.",
+        "Alinhe a mira com a referência do hut.",
+        "Lance a smoke parado junto com a de heaven.",
+        "Avance com o outside controlado."
+      ],
+      "tips": [
+        "Heaven + hut é o par que entrega o outside.",
+        "Comunique quem cobre cada ângulo enquanto o time atravessa."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "outside",
+        "controle"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "outside",
+      "to": "hut"
+    },
+    {
+      "slug": "flash-outside-nuke",
+      "title": "Flash de Outside no Nuke",
+      "map": "nuke",
+      "utility": "flash",
+      "side": "t",
+      "site": "b",
+      "position": "Outside",
+      "target": "Cega a defesa para a entrada no outside",
+      "difficulty": "facil",
+      "movement": "parado",
+      "shortDescription": "A pop flash que cega heaven e abre a travessia do outside.",
+      "description": "Depois das smokes, a flash é o que ganha o duelo. Essa granada estoura por cima e cega quem ainda segura heaven, dando ao time a fração de segundo para tomar o outside.",
+      "steps": [
+        "Fique protegido na aproximação do outside.",
+        "Alinhe o arremesso por cima, no arco combinado.",
+        "Lance e avise o time no timing do avanço.",
+        "Avance imediatamente após o estouro."
+      ],
+      "tips": [
+        "Quem joga a flash apoia; quem avança olha o ângulo.",
+        "Duas flashes seguidas quebram até defensores atentos."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "outside",
+        "apoio"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "outside",
+      "to": "heaven"
+    },
+    {
+      "slug": "molotov-trophy-nuke",
+      "title": "Molotov de Trophy no Nuke",
+      "map": "nuke",
+      "utility": "molotov",
+      "side": "t",
+      "site": "b",
+      "position": "Outside",
+      "target": "Queima o trophy onde o CT segura o outside",
+      "difficulty": "media",
+      "movement": "parado",
+      "shortDescription": "Expulsa o CT escondido no trophy sem precisar trocar tiro.",
+      "description": "O trophy é uma posição comum de quem defende o outside por baixo. A incendiária limpa a posição de graça e abre o avanço do time para o B pela área externa.",
+      "steps": [
+        "Posicione-se no outside, protegido do ângulo do trophy.",
+        "Alinhe o arco com a referência do trophy.",
+        "Lance a incendiária e aguarde o fogo cobrir a área.",
+        "Avance com o companheiro cobrindo o resto do outside."
+      ],
+      "tips": [
+        "Ótima em anti-eco para forçar o CT a sair de posição.",
+        "Combine com as smokes de heaven e hut para tomar o outside inteiro."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "outside",
+        "anti-eco"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "outside",
+      "to": "trophy"
+    },
+    {
+      "slug": "smoke-donut-ancient",
+      "title": "Smoke de Donut no Ancient (execução de A)",
+      "map": "ancient",
+      "utility": "smoke",
+      "side": "t",
+      "site": "a",
+      "position": "Meio",
+      "target": "Fecha o donut na execução do A",
+      "difficulty": "media",
+      "movement": "parado",
+      "shortDescription": "A smoke que cobre o donut, cover essencial para o plant no A.",
+      "description": "O donut é o principal cover para plantar a bomba no A do Ancient. Fechar a visão que o CT tem dessa região garante que o time plante em segurança e ocupe o pós-plant.",
+      "steps": [
+        "Posicione-se no meio, no ponto de arremesso da aproximação do A.",
+        "Alinhe a mira com a referência do donut.",
+        "Lance a smoke parado junto com o restante do pacote.",
+        "Entre e plante atrás do donut smokado."
+      ],
+      "tips": [
+        "O pacote de A costuma somar donut, temple e uma molotov sob a varanda.",
+        "Pense no pós-plant antes de entrar: onde cada um segura depois da bomba."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "execução A",
+        "padrão",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "mid",
+      "to": "donut"
+    },
+    {
+      "slug": "smoke-temple-ancient",
+      "title": "Smoke de Temple no Ancient (execução de A)",
+      "map": "ancient",
+      "utility": "smoke",
+      "side": "t",
+      "site": "a",
+      "position": "Rampa A",
+      "target": "Fecha o temple e enfraquece o crossfire do A",
+      "difficulty": "media",
+      "movement": "parado",
+      "shortDescription": "Cobre o temple e tira um dos crossfires que sustentam a defesa do A.",
+      "description": "Temple e CT são os ângulos que fazem o A do Ancient ser tão difícil de entrar. Fechando o temple junto com o donut, o time reduz a defesa a posições previsíveis e abre a entrada pela rampa.",
+      "steps": [
+        "Posicione-se na rampa A, no ponto de arremesso combinado.",
+        "Alinhe a mira com a referência do temple.",
+        "Lance a smoke parado em contagem com o pacote de A.",
+        "Entre com flash de apoio assim que as fumaças assentarem."
+      ],
+      "tips": [
+        "No Ancient, execução sem utilitária sincronizada quase nunca funciona.",
+        "Defina antes quem joga cada granada — improviso custa o round."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "execução A",
+        "padrão"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "a-rampa",
+      "to": "temple"
+    },
+    {
+      "slug": "smoke-cave-ancient",
+      "title": "Smoke de Cave no Ancient (execução de B)",
+      "map": "ancient",
+      "utility": "smoke",
+      "side": "t",
+      "site": "b",
+      "position": "Meio",
+      "target": "Fecha a cave na tomada de B",
+      "difficulty": "media",
+      "movement": "parado",
+      "shortDescription": "A smoke que isola a cave e viabiliza a execução do bombsite B.",
+      "description": "A cave é o túnel escuro que liga o meio ao A e ameaça quem toma o B. Fechando essa passagem, o time evita ser pego pelas costas e ganha espaço para escalar no site pelo B lane.",
+      "steps": [
+        "Posicione-se no meio, no ponto de arremesso da aproximação do B.",
+        "Alinhe a mira com a referência da cave.",
+        "Lance a smoke parado antes de comprometer a entrada.",
+        "Escale no B pelo lane com a cave fechada."
+      ],
+      "tips": [
+        "Controle de meio no Ancient é o que transforma default em execução.",
+        "Combine com a smoke de CT do B para negar a rotação."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "execução B",
+        "controle de meio"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "mid",
+      "to": "cave"
+    },
+    {
+      "slug": "molotov-a-ancient",
+      "title": "Molotov de A no Ancient",
+      "map": "ancient",
+      "utility": "molotov",
+      "side": "t",
+      "site": "a",
+      "position": "Rampa A",
+      "target": "Queima o cover default do A",
+      "difficulty": "media",
+      "movement": "parado",
+      "shortDescription": "Limpa a posição default de quem segura o A sem trocar tiro.",
+      "description": "O CT do A costuma segurar um cover fixo perto do site. A incendiária expulsa o defensor de graça no momento da execução, abrindo o A para a entrada da rampa.",
+      "steps": [
+        "Posicione-se na rampa A, protegido do ângulo do site.",
+        "Alinhe o arco com a referência do cover.",
+        "Lance a incendiária no timing das smokes.",
+        "Entre assim que o fogo forçar o recuo."
+      ],
+      "tips": [
+        "Ótima em anti-eco e para quebrar o CT que joga estático.",
+        "Combine com as smokes de donut e temple para o take completo."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "execução A",
+        "anti-eco"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "a-rampa",
+      "to": "a-site"
+    },
+    {
+      "slug": "smoke-mid-ancient",
+      "title": "Smoke de Window no Ancient (controle de meio)",
+      "map": "ancient",
+      "utility": "smoke",
+      "side": "t",
+      "site": "mid",
+      "position": "Meio",
+      "target": "Fecha a window e libera o controle de meio",
+      "difficulty": "facil",
+      "movement": "parado",
+      "shortDescription": "A smoke que abre o meio do Ancient fechando a janela.",
+      "description": "Controlar o meio do Ancient começa fechando a window. Com essa visão negada, o time avança o meio com segurança e ganha os caminhos para o A pela cave e para o B pelo lane.",
+      "steps": [
+        "Vá até o ponto de arremesso na entrada do meio.",
+        "Alinhe a mira com a referência da window.",
+        "Lance a smoke parado, cedo no round.",
+        "Avance o meio em conjunto."
+      ],
+      "tips": [
+        "Meio controlado no Ancient abre pressão nos dois sites ao mesmo tempo.",
+        "Segure a informação: com o meio tomado, o CT precisa adivinhar o alvo."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "controle de meio",
+        "padrão",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "mid",
+      "to": "window"
+    },
+    {
+      "slug": "smoke-blane-ancient",
+      "title": "Smoke de B Lane no Ancient (execução de B)",
+      "map": "ancient",
+      "utility": "smoke",
+      "side": "t",
+      "site": "b",
+      "position": "Meio",
+      "target": "Fecha o B lane na execução de B",
+      "difficulty": "media",
+      "movement": "parado",
+      "shortDescription": "Cobre o B lane e corta a visão do CT na tomada do bombsite B.",
+      "description": "O B lane é o corredor de acesso ao B pelo meio. Fechá-lo com smoke impede que o CT segure o ângulo longo e permite ao time escalar no site com apoio.",
+      "steps": [
+        "Posicione-se no meio, no ponto de arremesso do B.",
+        "Alinhe a mira com a referência do B lane.",
+        "Lance a smoke parado junto com a de cave.",
+        "Escale no B com flash de apoio."
+      ],
+      "tips": [
+        "Cave + B lane é o par que abre o B do Ancient.",
+        "Depois do plant, ocupe os covers do site para o pós-plant."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "execução B",
+        "padrão"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "mid",
+      "to": "b-lane"
+    },
+    {
+      "slug": "smoke-heaven-anubis",
+      "title": "Smoke de Heaven no Anubis (execução de A)",
+      "map": "anubis",
+      "utility": "smoke",
+      "side": "t",
+      "site": "a",
+      "position": "Conector A",
+      "target": "Fecha heaven na execução do A",
+      "difficulty": "media",
+      "movement": "parado",
+      "shortDescription": "A smoke que cobre heaven e tira o ângulo alto da defesa do A.",
+      "description": "Heaven domina o A do Anubis por cima. Fechando essa visão na execução, o time entra no site sem tomar o tiro de cima e ganha espaço para o plant.",
+      "steps": [
+        "Posicione-se no conector do A, no ponto combinado.",
+        "Alinhe a mira com a referência de heaven.",
+        "Lance a smoke parado junto com o restante do pacote.",
+        "Entre e ocupe os covers para o pós-plant."
+      ],
+      "tips": [
+        "Guardar uma smoke para o pós-plant costuma valer mais que gastar tudo na entrada.",
+        "Combine com uma flash de apoio para a entrada."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "execução A",
+        "padrão",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "a-conector",
+      "to": "heaven"
+    },
+    {
+      "slug": "smoke-palace-anubis",
+      "title": "Smoke de Palace no Anubis (execução de A)",
+      "map": "anubis",
+      "utility": "smoke",
+      "side": "t",
+      "site": "a",
+      "position": "Meio",
+      "target": "Fecha o palace na aproximação do A",
+      "difficulty": "media",
+      "movement": "parado",
+      "shortDescription": "Bloqueia o palace e reduz os ângulos na entrada do A pelo meio.",
+      "description": "O palace é uma das posições que sustentam a defesa do A no Anubis. Fechá-lo, junto com o controle de meio, abre a entrada e força o CT a jogar ângulos mais previsíveis.",
+      "steps": [
+        "Posicione-se no meio, no ponto de arremesso da aproximação do A.",
+        "Alinhe a mira com a referência do palace.",
+        "Lance a smoke parado em contagem com o pacote de A.",
+        "Entre limpando os ângulos restantes."
+      ],
+      "tips": [
+        "Sem controle de meio, a entrada do A no Anubis fica muito mais cara.",
+        "Combine com a smoke de heaven para o take completo."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "execução A",
+        "padrão"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "mid",
+      "to": "palace"
+    },
+    {
+      "slug": "smoke-canal-anubis",
+      "title": "Smoke de Canal no Anubis",
+      "map": "anubis",
+      "utility": "smoke",
+      "side": "t",
+      "site": "mid",
+      "position": "T spawn",
+      "target": "Fecha o canal e ajuda no controle de água",
+      "difficulty": "media",
+      "movement": "parado",
+      "shortDescription": "A smoke que fecha o canal e apoia a tomada de água e meio.",
+      "description": "Quem controla a água e o canal no Anubis escolhe onde o round acontece. Essa smoke fecha o ângulo do canal e permite a travessia sem entregar o primeiro duelo.",
+      "steps": [
+        "Posicione-se no T spawn, no ponto de arremesso combinado.",
+        "Alinhe a mira com a referência do canal.",
+        "Lance a smoke parado cedo no round.",
+        "Avance para a água em conjunto."
+      ],
+      "tips": [
+        "Anubis recompensa quem toma espaço cedo — controle tardio já chega com rotação.",
+        "Combine com flash se a defesa joga o meio agressivo."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "controle de meio",
+        "água"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "t-spawn",
+      "to": "canal"
+    },
+    {
+      "slug": "molotov-conector-anubis",
+      "title": "Molotov de Conector no Anubis (defesa de CT)",
+      "map": "anubis",
+      "utility": "molotov",
+      "side": "ct",
+      "site": "a",
+      "position": "Site A",
+      "target": "Atrasa o avanço do T pelo conector do A",
+      "difficulty": "facil",
+      "movement": "parado",
+      "shortDescription": "A incendiária de CT que segura o conector e compra tempo no A.",
+      "description": "O conector é o principal acesso ao A do Anubis. Essa molotov queima a passagem no momento do avanço e quebra o timing da execução, dando ao CT tempo para a rotação chegar.",
+      "steps": [
+        "Do A, posicione-se sem expor o ângulo do conector.",
+        "Alinhe o arco com a referência do conector.",
+        "Lance ao ouvir o avanço, não no início do round.",
+        "Recue para um crossfire enquanto o fogo queima."
+      ],
+      "tips": [
+        "Utilitária de CT guardada vale mais que gasta cedo.",
+        "Comunique para o time que o A está atrasado."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "defesa",
+        "CT",
+        "atraso"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "a-site",
+      "to": "a-conector"
+    },
+    {
+      "slug": "smoke-window-anubis",
+      "title": "Smoke de Window no Anubis (controle de meio)",
+      "map": "anubis",
+      "utility": "smoke",
+      "side": "t",
+      "site": "mid",
+      "position": "Meio",
+      "target": "Fecha a window e libera o meio",
+      "difficulty": "facil",
+      "movement": "parado",
+      "shortDescription": "A smoke que abre o meio do Anubis fechando a window.",
+      "description": "A window sustenta boa parte da defesa de meio no Anubis. Fechando essa visão, o time avança o meio com segurança e conecta a pressão para os dois bombsites.",
+      "steps": [
+        "Vá até o ponto de arremesso na entrada do meio.",
+        "Alinhe a mira com a referência da window.",
+        "Lance a smoke parado no início do round.",
+        "Avance o meio em conjunto."
+      ],
+      "tips": [
+        "Meio controlado cedo abre split de A e pressão de B.",
+        "Cuidado com o AWP de meio antes da fumaça fechar."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "controle de meio",
+        "padrão",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "mid",
+      "to": "window"
+    },
+    {
+      "slug": "smoke-popdog-train",
+      "title": "Smoke de Popdog no Train (execução de A)",
+      "map": "train",
+      "utility": "smoke",
+      "side": "t",
+      "site": "a",
+      "position": "Ivy",
+      "target": "Fecha o popdog na tomada do A",
+      "difficulty": "media",
+      "movement": "jumpthrow",
+      "shortDescription": "A smoke que cobre o popdog e apoia a entrada no A do Train.",
+      "description": "O popdog é uma das posições que a defesa usa para segurar o A do Train por cima. Fechando essa visão, o time entra no site pelos trens com menos crossfires e ganha espaço para o plant.",
+      "steps": [
+        "Suba a ivy até o ponto de arremesso combinado.",
+        "Alinhe a mira com a referência do popdog.",
+        "Lance com jumpthrow no timing do pacote de A.",
+        "Entre pelos trens apoiado por flash."
+      ],
+      "tips": [
+        "Train é sobre controlar os ângulos dos trens e as alturas.",
+        "Combine com a smoke de oil para isolar o A."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "execução A",
+        "padrão",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "ivy",
+      "to": "popdog"
+    },
+    {
+      "slug": "smoke-oil-train",
+      "title": "Smoke de Oil no Train (execução de A)",
+      "map": "train",
+      "utility": "smoke",
+      "side": "t",
+      "site": "a",
+      "position": "Ivy",
+      "target": "Fecha o oil na execução do A",
+      "difficulty": "media",
+      "movement": "parado",
+      "shortDescription": "Cobre o oil e tira mais um ângulo de quem defende o A pelos trens.",
+      "description": "Junto com o popdog, o oil é um ponto forte da defesa do A. Fechá-lo completa o isolamento do site e permite ao time plantar atrás dos trens em segurança.",
+      "steps": [
+        "Posicione-se na ivy, no ponto de arremesso combinado.",
+        "Alinhe a mira com a referência do oil.",
+        "Lance a smoke parado junto com a de popdog.",
+        "Entre limpando os ângulos entre os trens."
+      ],
+      "tips": [
+        "Popdog + oil é o par que segura a entrada do A pelos trens.",
+        "Depois do plant, use os trens como cover do pós-plant."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "execução A",
+        "padrão"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "ivy",
+      "to": "oil"
+    },
+    {
+      "slug": "smoke-ivy-train",
+      "title": "Smoke de Ivy no Train",
+      "map": "train",
+      "utility": "smoke",
+      "side": "t",
+      "site": "a",
+      "position": "T spawn",
+      "target": "Controle de ivy para o acesso ao A",
+      "difficulty": "facil",
+      "movement": "parado",
+      "shortDescription": "A smoke que dá controle de ivy, o caminho do T para o A.",
+      "description": "Ivy é a rota principal do T para o A do Train. Fechar a visão que a defesa tem dessa passagem permite ao time subir com segurança e agrupar antes da execução.",
+      "steps": [
+        "Posicione-se no T spawn, no ponto de arremesso combinado.",
+        "Alinhe a mira com a referência de ivy.",
+        "Lance a smoke parado no início do round.",
+        "Suba a ivy em conjunto e agrupe para o take."
+      ],
+      "tips": [
+        "Controle de ivy cedo é o que garante o take de A no timing.",
+        "Cuidado com o CT agressivo em ivy antes da fumaça fechar."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "controle",
+        "execução A"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "t-spawn",
+      "to": "ivy"
+    },
+    {
+      "slug": "molotov-main-train",
+      "title": "Molotov de Main no Train (controle de B)",
+      "map": "train",
+      "utility": "molotov",
+      "side": "t",
+      "site": "b",
+      "position": "Conector",
+      "target": "Atrasa a defesa e ganha o main de B",
+      "difficulty": "facil",
+      "movement": "parado",
+      "shortDescription": "A incendiária que segura a defesa e garante o controle do main de B.",
+      "description": "O main é o acesso principal ao B do Train. Essa molotov queima a passagem e atrasa o CT agressivo, dando ao time o tempo de tomar o controle da região com segurança.",
+      "steps": [
+        "Posicione-se no conector, no ponto de arremesso combinado.",
+        "Alinhe o arco com a entrada do main de B.",
+        "Lance a incendiária no timing de início de round.",
+        "Avance o main conforme o fogo atrasa a defesa."
+      ],
+      "tips": [
+        "É a utilitária de abertura mais comum do B pelo lado T.",
+        "Guarde uma flash para o pós-fogo, quando o CT tenta retomar."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "controle",
+        "execução B",
+        "essencial"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "connector",
+      "to": "main"
+    },
+    {
+      "slug": "smoke-connector-train",
+      "title": "Smoke de Conector no Train (controle de meio)",
+      "map": "train",
+      "utility": "smoke",
+      "side": "t",
+      "site": "mid",
+      "position": "T spawn",
+      "target": "Fecha o conector e libera o meio",
+      "difficulty": "media",
+      "movement": "parado",
+      "shortDescription": "A smoke que abre o meio do Train fechando o conector.",
+      "description": "O conector liga o meio aos dois lados do Train. Fechá-lo com smoke permite ao time atravessar o meio sem tomar tiro e conectar a pressão para o A e o B.",
+      "steps": [
+        "Posicione-se no T spawn, no ponto de arremesso combinado.",
+        "Alinhe a mira com a referência do conector.",
+        "Lance a smoke parado cedo no round.",
+        "Atravesse o meio em conjunto."
+      ],
+      "tips": [
+        "Meio controlado no Train abre split de A e pressão de B.",
+        "Atravessar isolado é morte fácil — cruze junto."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "controle de meio",
+        "padrão"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "t-spawn",
+      "to": "connector"
+    },
+    {
+      "slug": "smoke-z-train",
+      "title": "Smoke de Z no Train (execução de A)",
+      "map": "train",
+      "utility": "smoke",
+      "side": "t",
+      "site": "a",
+      "position": "Conector",
+      "target": "Fecha o Z na entrada do A",
+      "difficulty": "media",
+      "movement": "parado",
+      "shortDescription": "Cobre o Z e corta o ângulo da defesa na aproximação do A.",
+      "description": "O Z é uma das passagens que a defesa usa para pegar quem avança para o A. Fechando essa visão, o time avança pelo conector com menos risco e mantém o take organizado.",
+      "steps": [
+        "Posicione-se no conector, no ponto de arremesso combinado.",
+        "Alinhe a mira com a referência do Z.",
+        "Lance a smoke parado junto com o pacote de A.",
+        "Avance para os trens com o Z fechado."
+      ],
+      "tips": [
+        "Combine com as smokes de popdog e oil para o take completo do A.",
+        "Comunique quem cobre cada ângulo enquanto o time avança."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": [
+        "execução A",
+        "padrão"
+      ],
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      },
+      "from": "connector",
+      "to": "z-conn"
     }
   ]
 }

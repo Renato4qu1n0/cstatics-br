@@ -22,17 +22,21 @@
   <svg class="diagram__svg" viewBox="{{ geo.viewBox }}" role="img"
        aria-label="Esquema do mapa {{ dgMap | capitalize }} com {{ dgThrows | length }} arremesso(s) de utilitária.">
 
-    <g class="diagram__areas">
-      {% for a in geo.areas %}<polygon points="{{ a.points }}" />{% endfor %}
-    </g>
+    {% if geo.radar %}
+      <image href="{{ geo.radar }}" x="0" y="0" width="400" height="300" preserveAspectRatio="xMidYMid slice" class="diagram__radar" />
+    {% else %}
+      <g class="diagram__areas">
+        {% for a in geo.areas %}<polygon points="{{ a.points }}" />{% endfor %}
+      </g>
 
-    <g class="diagram__links">
-      {% for l in geo.links %}<line x1="{{ l[0] }}" y1="{{ l[1] }}" x2="{{ l[2] }}" y2="{{ l[3] }}" />{% endfor %}
-    </g>
+      <g class="diagram__links">
+        {% for l in geo.links %}<line x1="{{ l[0] }}" y1="{{ l[1] }}" x2="{{ l[2] }}" y2="{{ l[3] }}" />{% endfor %}
+      </g>
 
-    <g class="diagram__sites">
-      {% for s in geo.labels %}<text x="{{ s.x }}" y="{{ s.y }}">{{ s.text }}</text>{% endfor %}
-    </g>
+      <g class="diagram__sites">
+        {% for s in geo.labels %}<text x="{{ s.x }}" y="{{ s.y }}">{{ s.text }}</text>{% endfor %}
+      </g>
+    {% endif %}
 
     <g class="diagram__dots">
       {% for key, c in geo.callouts %}<circle cx="{{ c.x }}" cy="{{ c.y }}" r="1.8" />{% endfor %}
