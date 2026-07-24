@@ -117,7 +117,9 @@
   }
 
   .hero__title {
-    font-size: clamp(2.4rem, 6.4vw, 4.6rem);
+    /* piso baixo o suficiente para não quebrar linha em celular
+       (o line-reveal usa overflow:hidden e cortaria a 2ª linha) */
+    font-size: clamp(1.9rem, 6vw, 4.6rem);
     font-weight: 700;
     margin: var(--spacing-lg) 0 var(--spacing-lg);
     letter-spacing: -0.02em;

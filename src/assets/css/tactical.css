@@ -1007,21 +1007,20 @@ body::before {
   overflow: hidden;
 }
 
+/* estado natural = visível; a animação apenas decora (backwards mostra o
+   quadro inicial durante o delay). Sem animação, o conteúdo aparece igual. */
 .line-reveal > span {
   display: block;
-  transform: translateY(105%);
-  animation: line-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: var(--d, 0s);
+  animation: line-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s) backwards;
 }
 
 @keyframes line-rise {
+  from { transform: translateY(105%); }
   to { transform: translateY(0); }
 }
 
 .boot-in {
-  opacity: 0;
-  animation: boot-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  animation-delay: var(--d, 0s);
+  animation: boot-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s) backwards;
 }
 
 @keyframes boot-in {

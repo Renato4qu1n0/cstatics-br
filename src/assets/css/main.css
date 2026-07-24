@@ -113,6 +113,25 @@
 
 html {
   scroll-behavior: smooth;
+  /* rede de segurança anti-overflow horizontal (clip não quebra sticky) */
+  overflow-x: clip;
+}
+
+/* nada estoura a largura em telas estreitas */
+img,
+svg,
+video,
+canvas,
+iframe {
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  overflow-wrap: break-word;
 }
 
 body {
