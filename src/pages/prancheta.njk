@@ -67,10 +67,22 @@ description: "Prancheta tática de Counter-Strike 2: posicione jogadores, marque
     <div class="bd-toast" id="bdToast" role="status" aria-live="polite"></div>
 
     <p class="bd-note datum">
-      Clique numa ferramenta e clique no mapa para posicionar · arraste para mover ·
-      clique num item e tecle Delete para remover · duplo-clique no texto para editar.
-      Esquema tático estilizado — não é planta medida do jogo.
+      Escolha uma ferramenta e clique no mapa para posicionar · arraste um item para mover ·
+      clique num item e depois no <strong>×</strong> (ou tecle Delete) para remover ·
+      duplo-clique num texto para editar. Esquema tático estilizado — não é planta medida do jogo.
     </p>
+  </div>
+
+  <div class="bd-modal" id="bdModal" hidden>
+    <div class="bd-modal__box hud">
+      <i class="hud-brackets" aria-hidden="true"></i>
+      <p class="bd-modal__msg" id="bdModalMsg"></p>
+      <input class="bd-modal__input" id="bdModalInput" type="text" autocomplete="off" maxlength="80" placeholder="Digite aqui…">
+      <div class="bd-modal__actions">
+        <button class="btn btn--secondary" id="bdModalCancel" type="button">Cancelar</button>
+        <button class="btn btn-primary" id="bdModalOk" type="button">OK</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -156,20 +168,37 @@ description: "Prancheta tática de Counter-Strike 2: posicione jogadores, marque
   /* elementos editáveis */
   .bd-el { cursor: grab; }
   .bd-el.is-selected { cursor: grabbing; }
-  .bd-player__dot { stroke: rgba(0,0,0,.4); stroke-width: 1; }
-  .bd-player--t .bd-player__dot { fill: var(--t); }
-  .bd-player--ct .bd-player__dot { fill: var(--ct); }
-  .bd-player__label { fill: #0b0d11; font-family: var(--font-mono); font-size: 8px; font-weight: 700; text-anchor: middle; }
-  .bd-util__aoe { fill: var(--fx); opacity: .16; }
-  .bd-util__core { fill: var(--fx); opacity: .85; }
-  .bd-util__label { fill: #0b0d11; font-family: var(--font-mono); font-size: 7px; font-weight: 700; text-anchor: middle; }
+
+  /* jogador: disco + anel + número + sigla do lado */
+  .bd-player__disc { stroke: rgba(0,0,0,.45); stroke-width: 1; }
+  .bd-player--t .bd-player__disc { fill: var(--t); }
+  .bd-player--ct .bd-player__disc { fill: var(--ct); }
+  .bd-player__ring { fill: none; stroke: rgba(255,255,255,.35); stroke-width: 1; }
+  .bd-player__label { fill: #0b0d11; font-family: var(--font-mono); font-size: 8.5px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+  .bd-player__side { font-family: var(--font-mono); font-size: 5.5px; font-weight: 700; letter-spacing: .06em; text-anchor: middle; paint-order: stroke; stroke: #0a0d12; stroke-width: 2.4px; }
+  .bd-player--t .bd-player__side { fill: var(--t); }
+  .bd-player--ct .bd-player__side { fill: var(--ct); }
+
+  /* utilitária: área de efeito + token + ícone real (FA) + nome */
+  .bd-util__aoe { fill: var(--fx); opacity: .15; }
+  .bd-util__token { fill: var(--fx); stroke: rgba(0,0,0,.4); stroke-width: 1; }
+  .bd-util__glyph { font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: 9px; fill: #0b0d11; text-anchor: middle; dominant-baseline: central; }
+  .bd-util__name { font-family: var(--font-mono); font-size: 6px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; fill: var(--fx); text-anchor: middle; paint-order: stroke; stroke: #0a0d12; stroke-width: 2.6px; }
+
   .bd-arrow__line { stroke: #ffb020; stroke-width: 2.4; stroke-linecap: round; vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 4px rgba(255,176,32,.4)); }
   .bd-arrow__hit { stroke: transparent; stroke-width: 10; }
   .bd-text__t { fill: var(--color-text); font-family: var(--font-mono); font-size: 9px; font-weight: 500; paint-order: stroke; stroke: #0a0d12; stroke-width: 3px; }
 
-  .bd-el.is-selected .bd-player__dot,
-  .bd-el.is-selected .bd-util__core { stroke: #fff; stroke-width: 2; }
-  .bd-el.is-selected .bd-arrow__line { stroke: #fff; }
+  /* botão de excluir (aparece no item selecionado) */
+  .bd-del { cursor: pointer; }
+  .bd-del__bg { fill: #ff5449; stroke: #0a0d12; stroke-width: 1; }
+  .bd-del__x { stroke: #fff; stroke-width: 1.4; stroke-linecap: round; }
+  .bd-del:hover .bd-del__bg { fill: #ff7066; }
+
+  /* seleção */
+  .bd-el.is-selected .bd-player__disc,
+  .bd-el.is-selected .bd-util__token { stroke: #fff; stroke-width: 2; }
+  .bd-el.is-selected .bd-arrow__line { stroke: #fff; filter: none; }
   .bd-el.is-selected .bd-text__t { fill: var(--color-primary); }
 
   /* toast */
@@ -182,6 +211,27 @@ description: "Prancheta tática de Counter-Strike 2: posicione jogadores, marque
   .bd-toast.show { opacity: 1; transform: translate(-50%, 0); }
 
   .bd-note { color: var(--color-text-muted); font-size: var(--font-size-xs); line-height: 1.7; margin: var(--spacing-md) 0 0; }
+
+  /* ---- modal estilizado ---- */
+  .bd-modal {
+    position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center;
+    background: rgba(4,5,8,.72); backdrop-filter: blur(3px); padding: var(--spacing-lg);
+  }
+  .bd-modal[hidden] { display: none; }
+  .bd-modal__box { position: relative; width: min(92vw, 420px); padding: var(--spacing-xl); }
+  .bd-modal__msg {
+    font-family: var(--font-display); text-transform: uppercase; letter-spacing: .02em;
+    font-size: var(--font-size-lg); margin: 0 0 var(--spacing-lg); color: var(--color-text);
+  }
+  .bd-modal__input {
+    width: 100%; font-family: var(--font-mono); font-size: var(--font-size-base);
+    background: rgba(8,9,12,.7); color: var(--color-text); border: 1px solid var(--color-border);
+    border-radius: 0; padding: 12px 14px; margin-bottom: var(--spacing-lg);
+  }
+  .bd-modal__input:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 1px var(--color-primary), 0 0 22px rgba(255,176,32,.14); }
+  .bd-modal__input[hidden] { display: none; }
+  .bd-modal__actions { display: flex; gap: var(--spacing-md); justify-content: flex-end; }
+  .bd-modal__actions .btn { padding: .7rem 1.5rem; }
 
   @media (max-width: 640px) {
     .bd-actions { margin-left: 0; width: 100%; }

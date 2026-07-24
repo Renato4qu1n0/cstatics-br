@@ -21,8 +21,13 @@
   const MAPS = (readJSON('maps-data', { maps: [] }).maps || readJSON('maps-data', []) || [])
     .filter((m) => m && m.active && GEO[m.slug]);
 
-  const FX = { smoke: '#cbd5e1', flash: '#ffe08a', molotov: '#ff6a2c', he: '#ff5449' };
-  const UTIL_CHAR = { smoke: 'S', flash: 'F', molotov: 'M', he: 'H' };
+  // glyph = codepoint do Font Awesome 6 (renderizado como fonte no <text> do SVG)
+  const UTIL = {
+    smoke:   { color: '#cbd5e1', glyph: '', name: 'Smoke' },
+    flash:   { color: '#ffe08a', glyph: '', name: 'Flash' },
+    molotov: { color: '#ff6a2c', glyph: '', name: 'Molotov' },
+    he:      { color: '#ff5449', glyph: '', name: 'HE' }
+  };
   const UTIL_TOOLS = ['smoke', 'flash', 'molotov', 'he'];
   const STORE_KEY = 'cstatics-board-v1';
 
@@ -107,18 +112,30 @@
   }
 
   /* ---------- elementos ---------- */
+  // botão de excluir (aparece no item selecionado)
+  function delBadge(cx, cy, id) {
+    return el('g', { class: 'bd-del', 'data-del': id, transform: `translate(${cx} ${cy})` }, [
+      el('circle', { r: 5.5, class: 'bd-del__bg' }),
+      el('path', { d: 'M-2 -2 L2 2 M2 -2 L-2 2', class: 'bd-del__x' })
+    ]);
+  }
+
   function nodeFor(o) {
     let node;
     if (o.type === 'player') {
       node = el('g', { class: 'bd-el bd-player bd-player--' + o.side, transform: `translate(${o.x} ${o.y})`, 'data-id': o.id }, [
-        el('circle', { r: 8, class: 'bd-player__dot' }),
-        textEl(o.label, { y: 3, class: 'bd-player__label' })
+        el('circle', { r: 8.5, class: 'bd-player__disc' }),
+        el('circle', { r: 8.5, class: 'bd-player__ring' }),
+        textEl(o.label, { class: 'bd-player__label' }),
+        textEl(o.side === 't' ? 'T' : 'CT', { y: 16, class: 'bd-player__side' })
       ]);
     } else if (o.type === 'util') {
-      node = el('g', { class: 'bd-el bd-util', transform: `translate(${o.x} ${o.y})`, 'data-id': o.id, style: '--fx:' + (FX[o.kind] || '#cbd5e1') }, [
-        el('circle', { r: 14, class: 'bd-util__aoe' }),
-        el('circle', { r: 7, class: 'bd-util__core' }),
-        textEl(UTIL_CHAR[o.kind] || '', { y: 2.6, class: 'bd-util__label' })
+      const u = UTIL[o.kind] || UTIL.smoke;
+      node = el('g', { class: 'bd-el bd-util', transform: `translate(${o.x} ${o.y})`, 'data-id': o.id, style: '--fx:' + u.color }, [
+        el('circle', { r: 15, class: 'bd-util__aoe' }),
+        el('circle', { r: 9, class: 'bd-util__token' }),
+        textEl(u.glyph, { class: 'bd-util__glyph' }),
+        textEl(u.name, { y: 20, class: 'bd-util__name' })
       ]);
     } else if (o.type === 'arrow') {
       node = el('g', { class: 'bd-el bd-arrow', 'data-id': o.id }, [
@@ -132,7 +149,11 @@
     } else {
       return null;
     }
-    if (o.id === sel) node.classList.add('is-selected');
+    if (o.id === sel) {
+      node.classList.add('is-selected');
+      if (o.type === 'arrow') node.appendChild(delBadge(round((o.x1 + o.x2) / 2), round((o.y1 + o.y2) / 2), o.id));
+      else node.appendChild(delBadge(13, -13, o.id));
+    }
     return node;
   }
 
@@ -157,6 +178,19 @@
   /* ---------- ponteiro ---------- */
   svg.addEventListener('pointerdown', (e) => {
     if (e.button !== undefined && e.button !== 0) return;
+
+    // clique no × de excluir tem prioridade sobre seleção/arraste
+    const delHit = e.target.closest ? e.target.closest('.bd-del') : null;
+    if (delHit) {
+      const id = delHit.getAttribute('data-del');
+      const prev = snapshot();
+      state.els = state.els.filter((o) => o.id !== id);
+      sel = null;
+      commit(prev);
+      render();
+      return;
+    }
+
     const p = toSvg(e);
     const hit = e.target.closest ? e.target.closest('.bd-el') : null;
 
@@ -186,16 +220,27 @@
       return;
     }
 
-    // ferramentas de colocação
+    // texto: modal estilizado (assíncrono)
+    if (tool === 'text') {
+      const pos = { x: p.x, y: p.y };
+      askText(null).then((txt) => {
+        if (txt == null) return;
+        txt = txt.trim();
+        if (!txt) return;
+        const prev = snapshot();
+        state.els.push({ id: nextId(), type: 'text', x: pos.x, y: pos.y, text: txt });
+        commit(prev);
+        render();
+      });
+      return;
+    }
+
+    // demais ferramentas de colocação
     const prev = snapshot();
     if (tool === 'player-t') addPlayer('t', p.x, p.y);
     else if (tool === 'player-ct') addPlayer('ct', p.x, p.y);
     else if (UTIL_TOOLS.indexOf(tool) >= 0) addUtil(tool, p.x, p.y);
-    else if (tool === 'text') {
-      const txt = window.prompt('Texto:');
-      if (!txt) return;
-      state.els.push({ id: nextId(), type: 'text', x: p.x, y: p.y, text: txt });
-    } else return;
+    else return;
     commit(prev);
     render();
   });
@@ -244,12 +289,13 @@
     if (!hit) return;
     const o = find(hit.getAttribute('data-id'));
     if (!o) return;
-    const prev = snapshot();
-    const t = window.prompt('Editar texto:', o.text);
-    if (t === null) return;
-    o.text = t;
-    commit(prev);
-    render();
+    askText(o.text).then((t) => {
+      if (t == null) return;
+      const prev = snapshot();
+      o.text = t.trim();
+      commit(prev);
+      render();
+    });
   });
 
   /* ---------- teclado ---------- */
@@ -295,12 +341,14 @@
   if (btnRedo) btnRedo.onclick = redo;
   if (btnClear) btnClear.onclick = () => {
     if (!state.els.length) return;
-    if (!window.confirm('Limpar toda a prancheta?')) return;
-    const prev = snapshot();
-    state.els = [];
-    sel = null;
-    commit(prev);
-    render();
+    askConfirm('Limpar toda a prancheta? Isso remove todos os itens colocados.').then((ok) => {
+      if (!ok) return;
+      const prev = snapshot();
+      state.els = [];
+      sel = null;
+      commit(prev);
+      render();
+    });
   };
 
   // seletor de mapa
@@ -382,6 +430,48 @@
       toast('Link pronto na barra de endereço.');
     }
   };
+
+  /* ---------- modal estilizado (substitui prompt/confirm) ---------- */
+  function openModal(opts) {
+    return new Promise((resolve) => {
+      const modal = document.getElementById('bdModal');
+      const msg = document.getElementById('bdModalMsg');
+      const input = document.getElementById('bdModalInput');
+      const ok = document.getElementById('bdModalOk');
+      const cancel = document.getElementById('bdModalCancel');
+      if (!modal) { resolve(opts.withInput ? null : false); return; }
+
+      msg.textContent = opts.msg || '';
+      input.hidden = !opts.withInput;
+      input.value = opts.initial || '';
+      ok.textContent = opts.okLabel || 'OK';
+      modal.hidden = false;
+
+      const done = (val) => {
+        modal.hidden = true;
+        ok.onclick = null; cancel.onclick = null; modal.onpointerdown = null;
+        document.removeEventListener('keydown', onKey, true);
+        resolve(val);
+      };
+      const onKey = (ev) => {
+        if (ev.key === 'Escape') { ev.preventDefault(); ev.stopPropagation(); done(opts.withInput ? null : false); }
+        else if (ev.key === 'Enter' && opts.withInput) { ev.preventDefault(); done(input.value); }
+      };
+
+      ok.onclick = () => done(opts.withInput ? input.value : true);
+      cancel.onclick = () => done(opts.withInput ? null : false);
+      modal.onpointerdown = (ev) => { if (ev.target === modal) done(opts.withInput ? null : false); };
+      document.addEventListener('keydown', onKey, true);
+
+      setTimeout(() => { if (opts.withInput) { input.focus(); input.select(); } else { ok.focus(); } }, 30);
+    });
+  }
+  function askText(initial) {
+    return openModal({ msg: initial != null ? 'Editar texto' : 'Adicionar texto', withInput: true, initial: initial || '', okLabel: initial != null ? 'Salvar' : 'Adicionar' });
+  }
+  function askConfirm(message) {
+    return openModal({ msg: message, withInput: false, okLabel: 'Limpar' });
+  }
 
   /* ---------- boot ---------- */
   function normalizeIds(els) {
