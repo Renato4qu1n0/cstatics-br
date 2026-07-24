@@ -107,7 +107,10 @@
     Object.keys(g.callouts || {}).forEach((k) => {
       const c = g.callouts[k];
       surface.appendChild(el('circle', { cx: c.x, cy: c.y, r: 1.5, class: 'bd-dot' }));
-      surface.appendChild(textEl(c.label, { x: c.x, y: c.y - 3, class: 'bd-callout' }));
+      // pula rótulos que duplicam as letras grandes de site (A / B)
+      if (k !== 'a-site' && k !== 'b-site') {
+        surface.appendChild(textEl(c.label, { x: c.x, y: c.y - 3.5, class: 'bd-callout' }));
+      }
     });
   }
 
@@ -171,9 +174,15 @@
   /* ---------- criação ---------- */
   function addPlayer(side, x, y) {
     const n = state.els.filter((o) => o.type === 'player' && o.side === side).length + 1;
-    state.els.push({ id: nextId(), type: 'player', side: side, x: x, y: y, label: String(n) });
+    const o = { id: nextId(), type: 'player', side: side, x: x, y: y, label: String(n) };
+    state.els.push(o);
+    return o;
   }
-  function addUtil(kind, x, y) { state.els.push({ id: nextId(), type: 'util', kind: kind, x: x, y: y }); }
+  function addUtil(kind, x, y) {
+    const o = { id: nextId(), type: 'util', kind: kind, x: x, y: y };
+    state.els.push(o);
+    return o;
+  }
 
   /* ---------- ponteiro ---------- */
   svg.addEventListener('pointerdown', (e) => {
@@ -235,14 +244,18 @@
       return;
     }
 
-    // demais ferramentas de colocação
+    // demais ferramentas de colocação:
+    // o clique posiciona; se arrastar no mesmo gesto, reposiciona antes de soltar
     const prev = snapshot();
-    if (tool === 'player-t') addPlayer('t', p.x, p.y);
-    else if (tool === 'player-ct') addPlayer('ct', p.x, p.y);
-    else if (UTIL_TOOLS.indexOf(tool) >= 0) addUtil(tool, p.x, p.y);
+    let created = null;
+    if (tool === 'player-t') created = addPlayer('t', p.x, p.y);
+    else if (tool === 'player-ct') created = addPlayer('ct', p.x, p.y);
+    else if (UTIL_TOOLS.indexOf(tool) >= 0) created = addUtil(tool, p.x, p.y);
     else return;
-    commit(prev);
+    sel = created.id;
     render();
+    drag = { mode: 'move', id: created.id, prev: prev, moved: false, start: clone(created), ox: p.x, oy: p.y, placement: true };
+    try { svg.setPointerCapture(e.pointerId); } catch (_) {}
   });
 
   svg.addEventListener('pointermove', (e) => {
@@ -274,7 +287,8 @@
       const len = o ? Math.hypot(o.x2 - o.x1, o.y2 - o.y1) : 0;
       if (len < 4) { state.els = state.els.filter((x) => x.id !== drag.id); sel = null; render(); }
       else commit(drag.prev);
-    } else if (drag.mode === 'move' && drag.moved) {
+    } else if (drag.mode === 'move' && (drag.placement || drag.moved)) {
+      // colocação sempre registra; mover item existente só se moveu de fato
       commit(drag.prev);
     }
     if (e && e.pointerId != null) { try { svg.releasePointerCapture(e.pointerId); } catch (_) {} }
