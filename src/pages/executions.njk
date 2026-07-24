@@ -1,0 +1,58 @@
+---
+layout: layouts/base.njk
+permalink: /execucoes/
+title: "Execuções de CS2 - Jogadas ensaiadas por mapa | CSTatics Brasil"
+description: "Execuções completas de Counter-Strike 2: pacotes de utilitária, timing e função de cada jogador, com o esquema da jogada animado. Mirage, Inferno, Dust2 e mais."
+---
+
+<section class="lineups-hero">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Jogadas ensaiadas</span>
+        <h1 class="section-head__title">Execuções</h1>
+      </div>
+      <div class="section-head__rule"></div>
+    </div>
+    <p class="lineups-hero__subtitle">
+      Não é uma granada só — é o pacote inteiro. Cada execução mostra as utilitárias
+      na ordem certa, o timing e a função de cada jogador, com o esquema animado no mapa.
+    </p>
+  </div>
+</section>
+
+<section class="lineups-section">
+  <div class="container">
+    <div class="exec-grid">
+      {% for exec in executions.executions %}
+        {% set diffLabel = { facil: "Fácil", media: "Média", dificil: "Difícil" } %}
+        <a class="exec-card hud" href="/execucoes/{{ exec.slug }}/" data-reveal>
+          <i class="hud-brackets" aria-hidden="true"></i>
+          <div class="scan" aria-hidden="true"></div>
+
+          <div class="exec-card__top">
+            <span class="tag tag--map">{{ exec.map | capitalize }}</span>
+            <span class="tag tag--{{ exec.side }}">{{ exec.side | upper }}</span>
+            <span class="lineup-card__diff lineup-card__diff--{{ exec.difficulty }}">{{ diffLabel[exec.difficulty] }}</span>
+          </div>
+
+          <h2 class="exec-card__title">{{ exec.title }}</h2>
+          <p class="exec-card__desc">{{ exec.shortDescription }}</p>
+
+          <div class="exec-card__foot">
+            <span class="exec-card__count datum"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> {{ exec.throws | length }} utilitárias</span>
+            <span class="exec-card__go datum">Ver execução →</span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .lineups-hero { padding: clamp(2.5rem, 6vw, 4rem) 0 var(--spacing-xl); }
+  .lineups-hero .section-head { margin-bottom: var(--spacing-lg); }
+  .lineups-hero .section-head__title { font-size: clamp(2.2rem, 6vw, 3.8rem); }
+  .lineups-hero__subtitle { color: var(--color-text-light); font-size: var(--font-size-lg); max-width: 64ch; line-height: 1.7; margin-bottom: 0; }
+  .lineups-section { padding: var(--spacing-xl) 0 clamp(3.5rem, 8vw, 6rem); }
+</style>

@@ -1,0 +1,186 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: executions.executions
+  size: 1
+  alias: exec
+permalink: "/execucoes/{{ exec.slug }}/"
+ogType: article
+eleventyComputed:
+  title: "{{ exec.title }} - Execução de CS2 | CSTatics Brasil"
+  description: "{{ exec.shortDescription }}"
+---
+
+{%- set diffMap = { facil: "Fácil", media: "Média", dificil: "Difícil" } -%}
+{%- set sideMap = { t: "T", ct: "CT" } -%}
+{%- set throwsResolved = exec.throws | resolveThrows(lineups.lineups) -%}
+{%- set pageUrl = site.url + "/execucoes/" + exec.slug + "/" -%}
+
+<article class="lineup-detail">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Navegação estrutural">
+      <a class="breadcrumbs__link" href="/">Início</a>
+      <span class="breadcrumbs__separator">/</span>
+      <a class="breadcrumbs__link" href="/execucoes/">Execuções</a>
+      <span class="breadcrumbs__separator">/</span>
+      <a class="breadcrumbs__link" href="/mapas/{{ exec.map }}/">{{ exec.map | capitalize }}</a>
+      <span class="breadcrumbs__separator">/</span>
+      <span class="breadcrumbs__current">{{ exec.title }}</span>
+    </nav>
+
+    <header class="ld-header">
+      <div class="ld-header__tags">
+        <span class="tag tag--map">{{ exec.map | capitalize }}</span>
+        <span class="tag tag--{{ exec.side }}">{{ sideMap[exec.side] }}</span>
+        <span class="tag tag--category">{{ throwsResolved | length }} utilitárias</span>
+        <span class="lineup-card__diff lineup-card__diff--{{ exec.difficulty }}">{{ diffMap[exec.difficulty] }}</span>
+      </div>
+      <h1 class="ld-header__title">{{ exec.title }}</h1>
+      <p class="ld-header__lead">{{ exec.shortDescription }}</p>
+    </header>
+
+    <div class="ld-grid">
+      <div class="ld-main">
+        {% if not exec.verified %}
+          <div class="alert alert--warning">
+            <span class="alert__icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+            <div class="alert__content">
+              <h4>Execução em validação</h4>
+              <p>Estamos gravando o vídeo e conferindo cada utilitária desta execução. Use como referência e confirme no treino antes de levar para a partida.</p>
+            </div>
+          </div>
+        {% endif %}
+
+        <section class="ld-section">
+          <h2>Como funciona</h2>
+          <p>{{ exec.description }}</p>
+        </section>
+
+        <section class="ld-section">
+          <h2>Esquema da execução</h2>
+          {%- set dgMap = exec.map -%}
+          {%- set dgSeq = true -%}
+          {%- set dgTitle = (exec.map | capitalize) ~ " · execução em sequência" -%}
+          {%- set dgThrows = throwsResolved -%}
+          {% include "components/tactic-diagram.njk" %}
+        </section>
+
+        <section class="ld-section">
+          <h2>Linha do tempo</h2>
+          <ol class="exec-timeline">
+            {% for step in exec.steps %}
+              <li>
+                <span class="exec-timeline__time datum">{{ step.time }}</span>
+                <span class="exec-timeline__desc">{{ step.description }}</span>
+              </li>
+            {% endfor %}
+          </ol>
+        </section>
+
+        {% if exec.tips and exec.tips | length %}
+          <section class="ld-section">
+            <h2>Dicas</h2>
+            <ul class="ld-tips">
+              {% for tip in exec.tips %}
+                <li><i class="fa-solid fa-lightbulb"></i> {{ tip }}</li>
+              {% endfor %}
+            </ul>
+          </section>
+        {% endif %}
+      </div>
+
+      <aside class="ld-sidebar">
+        <div class="ld-card hud">
+          <h3>Ficha rápida</h3>
+          <ul class="ld-facts">
+            <li><span>Mapa</span><strong>{{ exec.map | capitalize }}</strong></li>
+            <li><span>Lado</span><strong>{{ sideMap[exec.side] }}</strong></li>
+            <li><span>Bombsite</span><strong>{{ exec.site | upper if exec.site else "—" }}</strong></li>
+            <li><span>Dificuldade</span><strong>{{ diffMap[exec.difficulty] }}</strong></li>
+            <li><span>Utilitárias</span><strong>{{ throwsResolved | length }}</strong></li>
+          </ul>
+        </div>
+
+        <div class="ld-card hud">
+          <h3>Lineups desta execução</h3>
+          <ol class="exec-lineups">
+            {% for t in throwsResolved %}
+              <li style="--fx: {% if t.utility == 'flash' %}#ffe08a{% elif t.utility == 'molotov' %}#ff6a2c{% elif t.utility == 'he' %}#ff5449{% else %}#cbd5e1{% endif %};">
+                <span class="exec-lineups__num">{{ loop.index }}</span>
+                <a href="/lineups/{{ t.slug }}/">{{ t.title }}</a>
+              </li>
+            {% endfor %}
+          </ol>
+        </div>
+
+        <div class="ld-card hud">
+          <h3>Compartilhar</h3>
+          <div class="ld-share">
+            <a class="share-btn" href="https://wa.me/?text={{ (exec.title + ' — ' + pageUrl) | urlencode }}" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            <a class="share-btn" href="https://twitter.com/intent/tweet?url={{ pageUrl | urlencode }}&text={{ exec.title | urlencode }}" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i> X / Twitter</a>
+            <button class="share-btn" type="button" data-copy-link="{{ pageUrl }}"><i class="fa-solid fa-link"></i> Copiar link</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": {{ exec.title | json | safe }},
+  "description": {{ exec.shortDescription | json | safe }},
+  "step": [
+    {% for step in exec.steps %}
+    {
+      "@type": "HowToStep",
+      "position": {{ loop.index }},
+      "name": {{ step.description | json | safe }},
+      "text": {{ step.description | json | safe }}
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Início", "item": {{ site.url | json | safe }} },
+    { "@type": "ListItem", "position": 2, "name": "Execuções", "item": {{ (site.url + "/execucoes/") | json | safe }} },
+    { "@type": "ListItem", "position": 3, "name": {{ (exec.map | capitalize) | json | safe }}, "item": {{ (site.url + "/mapas/" + exec.map + "/") | json | safe }} },
+    { "@type": "ListItem", "position": 4, "name": {{ exec.title | json | safe }}, "item": {{ pageUrl | json | safe }} }
+  ]
+}
+</script>
+
+<style>
+  .lineup-detail { padding: var(--spacing-xl) 0 clamp(3.5rem, 8vw, 6rem); }
+
+  .exec-timeline { list-style: none; padding: 0; margin: 0; border-left: 1px solid var(--color-border); }
+  .exec-timeline li { position: relative; display: grid; grid-template-columns: 56px 1fr; gap: var(--spacing-md); padding: 0 0 var(--spacing-lg) var(--spacing-lg); }
+  .exec-timeline li:last-child { padding-bottom: 0; }
+  .exec-timeline li::before {
+    content: ''; position: absolute; left: -4.5px; top: 5px; width: 8px; height: 8px;
+    background: var(--color-primary); box-shadow: 0 0 0 3px var(--void);
+  }
+  .exec-timeline__time { color: var(--color-primary); font-weight: 700; font-size: var(--font-size-sm); }
+  .exec-timeline__desc { color: var(--color-text-light); line-height: 1.65; }
+
+  .exec-lineups { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.55rem; }
+  .exec-lineups li { display: flex; align-items: center; gap: 0.6rem; }
+  .exec-lineups__num {
+    flex-shrink: 0; width: 20px; height: 20px; display: inline-flex; align-items: center; justify-content: center;
+    background: var(--fx); color: #0b0d11; font-family: var(--font-mono); font-weight: 700; font-size: 0.66rem;
+    clip-path: polygon(0 0, calc(100% - 4px) 0, 100% 4px, 100% 100%, 4px 100%, 0 calc(100% - 4px));
+  }
+  .exec-lineups a { color: var(--color-primary); font-size: var(--font-size-sm); line-height: 1.35; }
+
+  @media (max-width: 1023px) {
+    .ld-grid { grid-template-columns: 1fr; gap: var(--spacing-xl); }
+  }
+</style>

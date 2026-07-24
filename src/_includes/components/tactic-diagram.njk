@@ -1,0 +1,100 @@
+{# Diagrama tático genérico (1..N arremessos).
+   Espera:
+     dgMap    — slug do mapa
+     dgThrows — lista de { from, to, utility, label }
+     dgTitle  — rótulo do cabeçalho
+     dgSeq    — true para numerar a sequência (execuções)
+#}
+{%- set geo = mapgeo[dgMap] -%}
+{%- set fxMap = { smoke: "#cbd5e1", flash: "#ffe08a", molotov: "#ff6a2c", he: "#ff5449" } -%}
+
+{%- if geo and dgThrows | length -%}
+<figure class="diagram hud {% if dgSeq %}diagram--multi{% endif %}" data-diagram>
+  <i class="hud-brackets" aria-hidden="true"></i>
+
+  <figcaption class="diagram__head">
+    <span class="diagram__title datum">{{ dgTitle or (dgMap | capitalize ~ " · esquema tático") }}</span>
+    <button class="diagram__replay datum" type="button" data-diagram-replay>
+      <i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Repetir
+    </button>
+  </figcaption>
+
+  <svg class="diagram__svg" viewBox="{{ geo.viewBox }}" role="img"
+       aria-label="Esquema do mapa {{ dgMap | capitalize }} com {{ dgThrows | length }} arremesso(s) de utilitária.">
+
+    <g class="diagram__areas">
+      {% for a in geo.areas %}<polygon points="{{ a.points }}" />{% endfor %}
+    </g>
+
+    <g class="diagram__links">
+      {% for l in geo.links %}<line x1="{{ l[0] }}" y1="{{ l[1] }}" x2="{{ l[2] }}" y2="{{ l[3] }}" />{% endfor %}
+    </g>
+
+    <g class="diagram__sites">
+      {% for s in geo.labels %}<text x="{{ s.x }}" y="{{ s.y }}">{{ s.text }}</text>{% endfor %}
+    </g>
+
+    <g class="diagram__dots">
+      {% for key, c in geo.callouts %}<circle cx="{{ c.x }}" cy="{{ c.y }}" r="1.8" />{% endfor %}
+    </g>
+
+    {% for t in dgThrows %}
+      {%- set origin = geo.callouts[t.from] -%}
+      {%- set impact = geo.callouts[t.to] -%}
+      {%- if origin and impact -%}
+      <g class="diagram__throw" style="--i: {{ loop.index0 }}; --fx: {{ fxMap[t.utility] or '#cbd5e1' }};">
+        <path class="diagram__arc" d="{{ origin | arcPath(impact) }}" pathLength="1" />
+
+        <g class="diagram__impact" transform="translate({{ impact.x }} {{ impact.y }})">
+          <g class="diagram__impact-in">
+            <circle class="diagram__impact-wave" r="17" />
+            <circle class="diagram__impact-core" r="8" />
+          </g>
+        </g>
+
+        <g class="diagram__origin" transform="translate({{ origin.x }} {{ origin.y }})">
+          <g class="diagram__origin-in">
+            <circle class="diagram__origin-ring" r="9" />
+            <circle class="diagram__origin-dot" r="{{ 6 if dgSeq else 3.5 }}" />
+            {% if dgSeq %}<text class="diagram__seq" y="2.6">{{ loop.index }}</text>{% endif %}
+          </g>
+        </g>
+
+        <g class="diagram__tags">
+          {% if not dgSeq %}
+            <text class="diagram__tag diagram__tag--origin" x="{{ origin.x }}" y="{{ origin.y - 14 }}">{{ origin.label }}</text>
+          {% endif %}
+          <text class="diagram__tag diagram__tag--impact" x="{{ impact.x }}" y="{{ impact.y - 24 }}">{{ impact.label }}</text>
+        </g>
+      </g>
+      {%- endif -%}
+    {% endfor %}
+  </svg>
+
+  <div class="diagram__legend">
+    {% if dgSeq %}
+      <ol class="diagram__seq-list">
+        {% for t in dgThrows %}
+          {%- set origin = geo.callouts[t.from] -%}
+          {%- set impact = geo.callouts[t.to] -%}
+          {% if origin and impact %}
+            <li style="--fx: {{ fxMap[t.utility] or '#cbd5e1' }};">
+              <span class="diagram__seq-num">{{ loop.index }}</span>
+              <span>{{ t.label or (origin.label ~ " → " ~ impact.label) }}</span>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ol>
+    {% else %}
+      {%- set t0 = dgThrows[0] -%}
+      <span class="diagram__legend-item"><i class="diagram__key diagram__key--origin"></i> Saída: <strong>{{ geo.callouts[t0.from].label }}</strong></span>
+      <span class="diagram__legend-item" style="--fx: {{ fxMap[t0.utility] or '#cbd5e1' }};"><i class="diagram__key diagram__key--impact"></i> Alvo: <strong>{{ geo.callouts[t0.to].label }}</strong></span>
+    {% endif %}
+  </div>
+
+  <p class="diagram__disclaimer">
+    Esquema para entender a jogada e a leitura de mapa. Não é planta medida do
+    jogo — o alinhamento exato de mira vem no vídeo.
+  </p>
+</figure>
+{%- endif -%}

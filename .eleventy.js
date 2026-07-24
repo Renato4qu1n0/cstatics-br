@@ -30,6 +30,31 @@ module.exports = function(eleventyConfig) {
     return JSON.stringify(value);
   });
 
+  // Resolve os arremessos de uma execucao a partir dos lineups referenciados
+  eleventyConfig.addFilter("resolveThrows", (throws, lineups) => {
+    if (!Array.isArray(throws) || !Array.isArray(lineups)) return [];
+    return throws
+      .map((t) => {
+        const l = lineups.find((x) => x.slug === t.lineup);
+        if (!l || !l.from || !l.to) return null;
+        return {
+          from: l.from,
+          to: l.to,
+          utility: l.utility,
+          label: t.label || l.title,
+          slug: l.slug,
+          title: l.title
+        };
+      })
+      .filter(Boolean);
+  });
+
+  // Busca um item de uma lista pelo slug
+  eleventyConfig.addFilter("findBySlug", (items, slug) => {
+    if (!Array.isArray(items)) return null;
+    return items.find((i) => i.slug === slug) || null;
+  });
+
   // Trajetória da utilitária: curva quadrática entre dois callouts.
   // O ponto de controle sai perpendicular ao segmento, o que dá um arco
   // legível em vez de uma reta (a altura real do arremesso não aparece no topo).

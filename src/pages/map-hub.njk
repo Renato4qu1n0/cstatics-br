@@ -12,6 +12,7 @@ eleventyComputed:
 
 {%- set mapLineups = lineups.lineups | byMap(map.slug) -%}
 {%- set mapTactics = tactics.tactics | byMap(map.slug) -%}
+{%- set mapExecs = executions.executions | byMap(map.slug) -%}
 
 <section class="maphub-hero">
   <div class="container maphub-hero__inner">
@@ -34,6 +35,7 @@ eleventyComputed:
 
       <dl class="maphub-hero__readout">
         <div><dt>Lineups</dt><dd class="datum">{{ mapLineups | length }}</dd></div>
+        <div><dt>Execuções</dt><dd class="datum">{{ mapExecs | length }}</dd></div>
         <div><dt>Táticas</dt><dd class="datum">{{ mapTactics | length }}</dd></div>
         <div><dt>Status</dt><dd class="datum {% if map.active %}is-on{% endif %}">{% if map.active %}Pool ativo{% else %}Legado{% endif %}</dd></div>
       </dl>
@@ -69,7 +71,42 @@ eleventyComputed:
   </div>
 </section>
 
+{% if mapExecs | length %}
 <section class="maphub-section maphub-section--alt">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <div>
+        <span class="eyebrow">Jogadas ensaiadas</span>
+        <h2 class="section-head__title">Execuções de {{ map.name }}</h2>
+      </div>
+      <div class="section-head__rule"></div>
+      <a href="/execucoes/" class="maphub-all datum">Ver todas →</a>
+    </div>
+
+    <div class="exec-grid">
+      {% for exec in mapExecs %}
+        {% set diffLabel = { facil: "Fácil", media: "Média", dificil: "Difícil" } %}
+        <a class="exec-card hud" href="/execucoes/{{ exec.slug }}/" data-reveal>
+          <i class="hud-brackets" aria-hidden="true"></i>
+          <div class="scan" aria-hidden="true"></div>
+          <div class="exec-card__top">
+            <span class="tag tag--{{ exec.side }}">{{ exec.side | upper }}</span>
+            <span class="lineup-card__diff lineup-card__diff--{{ exec.difficulty }}">{{ diffLabel[exec.difficulty] }}</span>
+          </div>
+          <h3 class="exec-card__title">{{ exec.title }}</h3>
+          <p class="exec-card__desc">{{ exec.shortDescription }}</p>
+          <div class="exec-card__foot">
+            <span class="exec-card__count datum"><i class="fa-solid fa-layer-group" aria-hidden="true"></i> {{ exec.throws | length }} utilitárias</span>
+            <span class="exec-card__go datum">Ver →</span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<section class="maphub-section">
   <div class="container">
     <div class="section-head" data-reveal>
       <div>
