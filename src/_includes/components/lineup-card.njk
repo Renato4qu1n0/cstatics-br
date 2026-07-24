@@ -1,0 +1,49 @@
+{# Card de lineup reutilizável. Espera a variável `lineup`. #}
+{% set util = lineup.utility %}
+{% if util == "smoke" %}{% set utilIcon = "fa-cloud" %}{% set utilLabel = "Smoke" %}
+{% elif util == "flash" %}{% set utilIcon = "fa-bolt" %}{% set utilLabel = "Flash" %}
+{% elif util == "molotov" %}{% set utilIcon = "fa-fire" %}{% set utilLabel = "Molotov" %}
+{% else %}{% set utilIcon = "fa-bomb" %}{% set utilLabel = "HE" %}{% endif %}
+
+{% if lineup.difficulty == "facil" %}{% set diffLabel = "Fácil" %}
+{% elif lineup.difficulty == "media" %}{% set diffLabel = "Média" %}
+{% else %}{% set diffLabel = "Difícil" %}{% endif %}
+
+<article class="lineup-card hud"
+  data-lineup
+  data-reveal
+  data-map="{{ lineup.map }}"
+  data-utility="{{ lineup.utility }}"
+  data-side="{{ lineup.side }}"
+  data-difficulty="{{ lineup.difficulty }}"
+  data-site="{{ lineup.site }}"
+  data-search="{{ (lineup.title ~ ' ' ~ lineup.position ~ ' ' ~ (lineup.tags | join(' '))) | lower }}">
+  <i class="hud-brackets" aria-hidden="true"></i>
+  <div class="scan" aria-hidden="true"></div>
+  <a class="lineup-card__link" href="/lineups/{{ lineup.slug }}/">
+    <div class="lineup-card__media lineup-card__media--{{ util }}">
+      <i class="fa-solid {{ utilIcon }}" aria-hidden="true"></i>
+      <span class="lineup-card__utility">{{ utilLabel }}</span>
+      {% if lineup.verified %}
+        <span class="lineup-card__badge lineup-card__badge--ok"><i class="fa-solid fa-circle-check"></i> Verificado</span>
+      {% else %}
+        <span class="lineup-card__badge lineup-card__badge--wip">Em validação</span>
+      {% endif %}
+    </div>
+
+    <div class="lineup-card__body">
+      <div class="lineup-card__tags">
+        <span class="tag tag--map">{{ lineup.map | capitalize }}</span>
+        <span class="tag tag--{{ lineup.side }}">{{ lineup.side | upper }}</span>
+      </div>
+
+      <h3 class="lineup-card__title">{{ lineup.title }}</h3>
+      <p class="lineup-card__desc">{{ lineup.shortDescription }}</p>
+
+      <div class="lineup-card__meta">
+        <span class="lineup-card__pos"><i class="fa-solid fa-location-dot" aria-hidden="true"></i> {{ lineup.position }}</span>
+        <span class="lineup-card__diff lineup-card__diff--{{ lineup.difficulty }}">{{ diffLabel }}</span>
+      </div>
+    </div>
+  </a>
+</article>

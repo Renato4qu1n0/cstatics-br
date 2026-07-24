@@ -1,0 +1,874 @@
+/* ============================================================
+   CSTATICS BRASIL — SISTEMA TÁTICO (HUD)
+   Camada de identidade visual. Carregada por último: sobrescreve
+   deliberadamente o visual "card macio" da base.
+   ============================================================ */
+
+/* ============================================================
+   1. AMBIENTE — malha tática + brilho de horizonte
+   ============================================================ */
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(255, 176, 32, 0.07), transparent 70%),
+    radial-gradient(ellipse 60% 40% at 85% 20%, rgba(61, 139, 255, 0.05), transparent 70%),
+    linear-gradient(rgba(255, 255, 255, 0.021) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.021) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 52px 52px, 52px 52px;
+}
+
+/* ============================================================
+   2. TIPOGRAFIA UTILITÁRIA — a "voz de readout"
+   ============================================================ */
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.7;
+}
+
+.eyebrow--ct { color: var(--ct); }
+
+/* Dado monoespaçado (números, rótulos de ficha) */
+.datum {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+}
+
+.display {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+  line-height: 0.98;
+}
+
+/* ============================================================
+   3. PAINEL HUD — chanfro de canto + borda em camadas
+   O clip-path corta o canto; a borda é pintada por 2 camadas
+   empilhadas (borda atrás, preenchimento 1px à frente).
+   ============================================================ */
+
+:root {
+  --hud-clip: polygon(
+    0 0,
+    calc(100% - var(--notch)) 0,
+    100% var(--notch),
+    100% 100%,
+    var(--notch) 100%,
+    0 calc(100% - var(--notch))
+  );
+}
+
+.hud {
+  position: relative;
+  isolation: isolate;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+}
+
+.hud::before,
+.hud::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  clip-path: var(--hud-clip);
+  transition: background var(--transition-normal);
+}
+
+/* camada de borda */
+.hud::before {
+  inset: 0;
+  z-index: -2;
+  background: var(--hud-border, var(--color-border));
+}
+
+/* camada de preenchimento */
+.hud::after {
+  inset: 1px;
+  z-index: -1;
+  background: var(--hud-bg, var(--panel));
+}
+
+.hud:hover { --hud-border: var(--color-primary); }
+.hud--ct:hover { --hud-border: var(--ct); }
+
+/* Brackets de canto animados (retícula) */
+.hud-brackets {
+  --bl: 12px;
+  --bc: var(--color-border-light);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  transition: background-size var(--transition-slow), opacity var(--transition-normal);
+  background-repeat: no-repeat;
+  background-image:
+    linear-gradient(var(--bc), var(--bc)), linear-gradient(var(--bc), var(--bc)),
+    linear-gradient(var(--bc), var(--bc)), linear-gradient(var(--bc), var(--bc)),
+    linear-gradient(var(--bc), var(--bc)), linear-gradient(var(--bc), var(--bc)),
+    linear-gradient(var(--bc), var(--bc)), linear-gradient(var(--bc), var(--bc));
+  background-size:
+    var(--bl) 1px, 1px var(--bl),
+    var(--bl) 1px, 1px var(--bl),
+    var(--bl) 1px, 1px var(--bl),
+    var(--bl) 1px, 1px var(--bl);
+  background-position:
+    0 0, 0 0,
+    100% 0, 100% 0,
+    0 100%, 0 100%,
+    100% 100%, 100% 100%;
+}
+
+.hud:hover .hud-brackets,
+.hud:focus-within .hud-brackets {
+  --bl: 28px;
+  --bc: var(--color-primary);
+}
+
+/* Varredura de scan no hover */
+.scan {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+  clip-path: var(--hud-clip);
+}
+
+.scan::after {
+  content: '';
+  position: absolute;
+  top: -60%;
+  left: -30%;
+  width: 40%;
+  height: 220%;
+  background: linear-gradient(90deg, transparent, rgba(255, 176, 32, 0.09), transparent);
+  transform: translateX(-120%) rotate(12deg);
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hud:hover .scan::after { transform: translateX(420%) rotate(12deg); }
+
+/* ============================================================
+   4. BOTÕES — angulares, com preenchimento por varredura
+   ============================================================ */
+
+.btn {
+  position: relative;
+  overflow: hidden;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  border-radius: 0;
+  padding: 0.95rem 1.9rem;
+  clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  transition: color var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-fast);
+  isolation: isolate;
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  transform: translateX(-101%);
+  transition: transform var(--transition-slow);
+}
+
+.btn:hover { transform: translateY(-2px); }
+.btn:active { transform: translateY(0); }
+
+.btn-primary,
+.btn--primary {
+  background: var(--color-primary);
+  color: #0b0d11;
+  box-shadow: 0 6px 22px rgba(255, 176, 32, 0.22);
+}
+
+.btn-primary::before,
+.btn--primary::before { background: var(--color-primary-light); }
+.btn-primary:hover::before,
+.btn--primary:hover::before { transform: translateX(0); }
+
+.btn-primary:hover,
+.btn--primary:hover {
+  color: #0b0d11;
+  box-shadow: 0 10px 34px rgba(255, 176, 32, 0.35);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--color-text);
+  border: 1px solid var(--color-border-light);
+}
+
+.btn--secondary::before { background: rgba(255, 176, 32, 0.12); }
+.btn--secondary:hover::before { transform: translateX(0); }
+
+.btn--secondary:hover {
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* ============================================================
+   5. CABEÇALHO DE SEÇÃO — rótulo mono + régua
+   ============================================================ */
+
+.section-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-2xl);
+  flex-wrap: wrap;
+}
+
+.section-head__title {
+  font-size: clamp(1.6rem, 3.4vw, 2.6rem);
+  margin: 0.5rem 0 0;
+  text-transform: uppercase;
+  letter-spacing: -0.015em;
+}
+
+.section-head__rule {
+  flex: 1;
+  height: 1px;
+  min-width: 40px;
+  background: linear-gradient(90deg, var(--color-border), transparent);
+  margin-bottom: 0.8rem;
+}
+
+/* Neutraliza o sublinhado centralizado antigo */
+.section-title h2::after { display: none; }
+
+/* ============================================================
+   6. NAVBAR — barra de comando
+   ============================================================ */
+
+.navbar {
+  background: rgba(8, 9, 12, 0.82);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: none;
+}
+
+.navbar__brand {
+  font-family: var(--font-display);
+  font-size: var(--font-size-xl);
+  letter-spacing: 0.06em;
+}
+
+.navbar__link {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+  padding: 0.5rem 0;
+}
+
+.navbar__link::after {
+  height: 1px;
+  background: var(--color-primary);
+  box-shadow: 0 0 10px var(--color-primary);
+}
+
+.navbar__link:hover { color: var(--color-primary); }
+
+/* ============================================================
+   7. CARDS — linguagem HUD
+   ============================================================ */
+
+.lineup-card,
+.tactic-card {
+  --hud-bg: var(--panel);
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  overflow: visible;
+  box-shadow: none;
+}
+
+.lineup-card:hover,
+.tactic-card:hover {
+  transform: translateY(-6px);
+  box-shadow: none;
+}
+
+.lineup-card__media {
+  clip-path: polygon(0 0, calc(100% - var(--notch)) 0, 100% var(--notch), 100% 100%, 0 100%);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.lineup-card__media i {
+  transition: transform var(--transition-slow), filter var(--transition-normal);
+}
+
+.lineup-card:hover .lineup-card__media i {
+  transform: scale(1.08) translateY(-2px);
+  filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.5));
+}
+
+.lineup-card__utility,
+.lineup-card__badge {
+  font-family: var(--font-mono);
+  letter-spacing: 0.14em;
+}
+
+.lineup-card__badge { border-radius: 0; }
+
+.lineup-card__title,
+.tactic-card__title {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: -0.005em;
+  line-height: 1.12;
+}
+
+.lineup-card__pos,
+.lineup-card__diff {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.06em;
+}
+
+.lineup-card__diff { border-radius: 0; padding: 3px 10px; }
+
+/* Tags táticas */
+.tag {
+  font-family: var(--font-mono);
+  border-radius: 0;
+  letter-spacing: 0.12em;
+  font-size: var(--font-size-xs);
+  padding: 3px 9px;
+  border: 1px solid transparent;
+}
+
+.tag--map {
+  background: transparent;
+  border-color: var(--color-border-light);
+  color: var(--color-text-light);
+}
+
+.tag--t,
+.tag--t-side {
+  background: rgba(255, 176, 32, 0.12);
+  border-color: rgba(255, 176, 32, 0.45);
+  color: var(--t);
+}
+
+.tag--ct,
+.tag--ct-side {
+  background: rgba(61, 139, 255, 0.12);
+  border-color: rgba(61, 139, 255, 0.45);
+  color: var(--ct);
+}
+
+.tag--category {
+  background: transparent;
+  border-color: var(--color-border-light);
+  color: var(--color-text-light);
+}
+
+/* Stats do card de tática */
+.stat__label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.12em;
+}
+
+.stat__value {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-primary);
+}
+
+.tactic-card__stats {
+  border-color: var(--color-border);
+}
+
+.tactic-card__link {
+  font-family: var(--font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: var(--font-size-sm);
+  border-radius: 0;
+  background: transparent;
+  border: 1px solid var(--color-border-light);
+  color: var(--color-text);
+  transition: all var(--transition-normal);
+}
+
+.tactic-card__link:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #0b0d11;
+}
+
+/* ============================================================
+   8. FILTROS — chips angulares
+   ============================================================ */
+
+.filter-bar {
+  background: rgba(18, 23, 31, 0.6);
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+}
+
+.filter-row__label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.18em;
+  color: var(--color-text-muted);
+}
+
+.chip {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 0;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  padding: 7px 14px;
+  clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+}
+
+.chip:hover { border-color: var(--color-border-light); color: var(--color-primary); }
+
+.chip.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #0b0d11;
+  font-weight: 700;
+}
+
+.search-input {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-sm);
+  border-radius: 0;
+  background: rgba(18, 23, 31, 0.6);
+  border: 1px solid var(--color-border);
+  padding: 1rem 1.1rem;
+}
+
+.search-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary), 0 0 24px rgba(255, 176, 32, 0.14);
+}
+
+.results-count {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* ============================================================
+   9. RADAR — elemento-assinatura
+   ============================================================ */
+
+.radar {
+  position: relative;
+  width: min(100%, 460px);
+  aspect-ratio: 1;
+  margin-inline: auto;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(61, 139, 255, 0.06), transparent 70%),
+    radial-gradient(circle at 50% 50%, rgba(8, 9, 12, 0.9), rgba(8, 9, 12, 0.55));
+  border: 1px solid var(--color-border);
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.8), 0 0 60px rgba(61, 139, 255, 0.06);
+  overflow: hidden;
+}
+
+/* anéis concêntricos + eixos */
+.radar__rings {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px) 50% 50% / 100% 50%,
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px) 50% 50% / 50% 100%;
+  background-repeat: no-repeat;
+}
+
+.radar__rings::before,
+.radar__rings::after {
+  content: '';
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 50%;
+}
+
+.radar__rings::before { inset: 16%; }
+.radar__rings::after { inset: 33%; }
+
+/* mapa wireframe */
+.radar__map {
+  position: absolute;
+  inset: 12%;
+  width: 76%;
+  height: 76%;
+  overflow: visible;
+}
+
+.radar__map path,
+.radar__map rect,
+.radar__map polygon,
+.radar__map line {
+  fill: rgba(61, 139, 255, 0.07);
+  stroke: rgba(122, 176, 255, 0.55);
+  stroke-width: 1.4;
+  vector-effect: non-scaling-stroke;
+}
+
+.radar__map line { stroke: rgba(122, 176, 255, 0.3); }
+
+/* varredura */
+.radar__sweep {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(61, 139, 255, 0.32) 0deg,
+    rgba(61, 139, 255, 0.1) 22deg,
+    transparent 60deg,
+    transparent 360deg
+  );
+  animation: radar-sweep 4.5s linear infinite;
+  mix-blend-mode: screen;
+}
+
+@keyframes radar-sweep {
+  to { transform: rotate(360deg); }
+}
+
+/* blips (jogadores) */
+.radar__blip {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  width: 11px;
+  height: 11px;
+  margin: -5.5px 0 0 -5.5px;
+  background: var(--blip, var(--t));
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--blip, var(--t));
+  opacity: 0;
+  transform: scale(0.2);
+  animation: blip-acquire 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+             blip-pulse 2.6s ease-in-out infinite;
+  animation-delay: var(--d, 0s), calc(var(--d, 0s) + 0.5s);
+}
+
+.radar__blip--ct { --blip: var(--ct); }
+
+.radar__blip::after {
+  content: '';
+  position: absolute;
+  inset: -9px;
+  border: 1px solid var(--blip, var(--t));
+  border-radius: 50%;
+  opacity: 0;
+  animation: blip-ring 2.6s ease-out infinite;
+  animation-delay: calc(var(--d, 0s) + 0.5s);
+}
+
+@keyframes blip-acquire {
+  from { opacity: 0; transform: scale(0.2); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes blip-pulse {
+  0%, 100% { box-shadow: 0 0 10px var(--blip, var(--t)); }
+  50%      { box-shadow: 0 0 22px var(--blip, var(--t)); }
+}
+
+@keyframes blip-ring {
+  0%   { opacity: 0.7; transform: scale(0.5); }
+  70%  { opacity: 0; transform: scale(1.5); }
+  100% { opacity: 0; transform: scale(1.5); }
+}
+
+/* callouts */
+.radar__callout {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+  transform: translate(-50%, -50%);
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  color: rgba(190, 214, 255, 0.75);
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0;
+  animation: fade-in-soft 0.7s ease forwards;
+  animation-delay: var(--d, 1s);
+}
+
+@keyframes fade-in-soft {
+  to { opacity: 1; }
+}
+
+/* moldura de dados do radar */
+.radar-frame { position: relative; }
+
+.radar-frame__label {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.2em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.radar-frame__label--tl { top: 0; left: 0; }
+.radar-frame__label--br { bottom: 0; right: 0; color: var(--ct); }
+
+/* ============================================================
+   10. MOVIMENTO — reveals no scroll + boot do hero
+   ============================================================ */
+
+/* Só ocultamos quando há JS para revelar — sem JS o conteúdo aparece normalmente. */
+.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  transition-delay: var(--reveal-delay, 0s);
+}
+
+.js [data-reveal].is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Revelação por corte (linhas do título) */
+.line-reveal {
+  display: block;
+  overflow: hidden;
+}
+
+.line-reveal > span {
+  display: block;
+  transform: translateY(105%);
+  animation: line-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes line-rise {
+  to { transform: translateY(0); }
+}
+
+.boot-in {
+  opacity: 0;
+  animation: boot-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--d, 0s);
+}
+
+@keyframes boot-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* ============================================================
+   10b. SUPERFÍCIES RESTANTES
+   ============================================================ */
+
+/* Seções aninhadas em páginas de detalhe não devem herdar o
+   `section { padding: 5rem 0 }` global — isso criava vãos enormes. */
+.ld-section,
+.tactic-description,
+.tactic-stats,
+.tactic-steps,
+.tactic-video,
+.tactic-counters {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.tactic-description h2,
+.tactic-stats h2,
+.tactic-steps h2,
+.tactic-video h2,
+.tactic-counters h2 {
+  font-size: var(--font-size-xl);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding-bottom: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* Rodapé */
+.footer {
+  background: transparent;
+  border-top: 1px solid var(--color-border);
+  margin-top: 0;
+}
+
+.footer__section h4 {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.footer__section a { transition: color var(--transition-fast); }
+.footer__section a:hover { color: var(--color-primary); transform: none; }
+
+.footer__social a {
+  border-radius: 0;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-light);
+  width: 42px;
+  height: 42px;
+  font-size: var(--font-size-lg);
+  clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 7px 100%, 0 calc(100% - 7px));
+}
+
+.footer__social a:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #0b0d11;
+  transform: translateY(-3px);
+  box-shadow: none;
+}
+
+.footer__bottom {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.1em;
+  border-top: 1px solid var(--color-border);
+  background: transparent;
+}
+
+/* Breadcrumbs */
+.breadcrumbs__link,
+.breadcrumbs__current,
+.breadcrumbs__separator {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.breadcrumbs__link:hover { color: var(--color-primary); }
+
+/* Alertas */
+.alert { border-radius: 0; border-left-width: 2px; }
+.alert__content h4 { font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.04em; }
+
+/* Placeholder de mídia e vídeo */
+.ld-media-placeholder,
+.video-container { border-radius: 0; }
+
+.ld-media-placeholder {
+  border: 1px dashed var(--color-border-light);
+  background: rgba(8, 9, 12, 0.6);
+}
+
+/* Botões de compartilhar */
+.share-btn {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 0;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 7px 100%, 0 calc(100% - 7px));
+}
+
+.share-btn:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #0b0d11;
+}
+
+/* Formulários */
+.form-group label {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-xs);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  border-radius: 0;
+  background: rgba(8, 9, 12, 0.6);
+  border: 1px solid var(--color-border);
+  font-family: var(--font-family);
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary), 0 0 24px rgba(255, 176, 32, 0.12);
+}
+
+.form-message { border-radius: 0; font-family: var(--font-mono); font-size: var(--font-size-sm); }
+.form-message.success { background: rgba(53, 208, 127, 0.14); color: var(--color-success); border: 1px solid rgba(53, 208, 127, 0.4); }
+.form-message.error { background: rgba(255, 84, 73, 0.14); color: var(--color-danger); border: 1px solid rgba(255, 84, 73, 0.4); }
+
+/* Estado vazio */
+.empty-state { border-radius: 0; }
+.empty-state__icon { color: var(--color-border-light); }
+
+/* Badge */
+.badge { border-radius: 0; font-family: var(--font-mono); letter-spacing: 0.14em; }
+
+/* ============================================================
+   11. ACESSIBILIDADE
+   ============================================================ */
+
+:where(a, button, input, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .radar__sweep { animation: none; }
+  .radar__blip,
+  .radar__blip::after,
+  .radar__callout,
+  .line-reveal > span,
+  .boot-in {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .js [data-reveal] { opacity: 1 !important; transform: none !important; }
+  .scan::after { display: none; }
+}

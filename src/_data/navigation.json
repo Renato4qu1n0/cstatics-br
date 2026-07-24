@@ -1,24 +1,23 @@
 {
   "categories": [
-    {
-      "name": "Default",
-      "slug": "default",
-      "description": "Estratégias de início de round padrão"
-    },
-    {
-      "name": "Anti Eco",
-      "slug": "anti-eco",
-      "description": "Defesas contra rounds de economia"
-    },
-    {
-      "name": "Bomba",
-      "slug": "bomba",
-      "description": "Plantas e defesas de bomba"
-    }
+    { "name": "Default", "slug": "default", "description": "Estratégias de início de round padrão" },
+    { "name": "Anti Eco", "slug": "anti-eco", "description": "Defesas contra rounds de economia" },
+    { "name": "Execução", "slug": "execucao", "description": "Tomadas de bombsite com utilitária coordenada" },
+    { "name": "Retake", "slug": "retake", "description": "Retomadas de bombsite após o plant" }
   ],
-  "maps": ["Mirage", "Nuke", "Inferno", "Vertigo", "Ancient", "Dust2"],
+  "utilities": [
+    { "name": "Smoke", "slug": "smoke", "icon": "fa-cloud", "color": "#9ca3af" },
+    { "name": "Flash", "slug": "flash", "icon": "fa-bolt", "color": "#facc15" },
+    { "name": "Molotov", "slug": "molotov", "icon": "fa-fire", "color": "#f97316" },
+    { "name": "HE", "slug": "he", "icon": "fa-bomb", "color": "#ef4444" }
+  ],
+  "difficulties": [
+    { "name": "Fácil", "slug": "facil", "color": "#27ae60" },
+    { "name": "Média", "slug": "media", "color": "#f39c12" },
+    { "name": "Difícil", "slug": "dificil", "color": "#e74c3c" }
+  ],
   "sides": [
-    { "name": "T Side", "slug": "t-side", "color": "red" },
-    { "name": "CT Side", "slug": "ct-side", "color": "blue" }
+    { "name": "T", "slug": "t", "color": "red" },
+    { "name": "CT", "slug": "ct", "color": "blue" }
   ]
 }

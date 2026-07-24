@@ -1,103 +1,147 @@
 ---
 layout: layouts/base.njk
 permalink: /contato/
-title: Contato - CSTatics Brasil
+title: "Contato - CSTatics Brasil"
+description: "Fale com a equipe do CSTatics Brasil: correções em lineups, sugestões de táticas e propostas de parceria."
 ---
 
 <section class="contact-section">
   <div class="container">
-    <h1 class="text-center">Entre em Contato</h1>
-    <p class="text-center text-muted" style="max-width: 600px; margin: 0 auto 2rem;">
-      Tem sugestões de táticas? Encontrou algum erro? Quer fazer uma parceria? 
-      Nos mande uma mensagem!
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Canal aberto</span>
+        <h1 class="section-head__title">Fale com a equipe</h1>
+      </div>
+      <div class="section-head__rule"></div>
+    </div>
+
+    <p class="contact-lead">
+      Correção em um lineup, sugestão de tática ou proposta de parceria — escreva
+      e a equipe responde.
     </p>
 
     <div class="contact-content">
-      {% include "components/contact-form.njk" %}
+      <div class="contact-panel hud">
+        <i class="hud-brackets" aria-hidden="true"></i>
+        <h2 class="contact-panel__title">Enviar mensagem</h2>
+        {% include "components/contact-form.njk" %}
+      </div>
 
-      <div class="contact-info">
-  <h3>Outras Formas de Contato</h3>
-  
-  <div class="contact-item">
-    <h4>
-      <i class="fab fa-instagram"></i> Instagram
-    </h4>
-    <p>
-      <a href="https://instagram.com/cstaticsbr" target="_blank">@cstaticsbr</a>
-    </p>
-  </div>
+      <aside class="contact-info hud">
+        <i class="hud-brackets" aria-hidden="true"></i>
+        <h2 class="contact-panel__title">Canais diretos</h2>
 
-  <div class="contact-item">
-    <h4>
-      <i class="fab fa-youtube"></i> YouTube
-    </h4>
-    <p>
-      <a href="https://youtube.com/@cstaticsbr" target="_blank">CSTatics Brasil</a>
-    </p>
-  </div>
+        <ul class="contact-channels">
+          <li>
+            <span class="contact-channels__label datum"><i class="fa-brands fa-instagram" aria-hidden="true"></i> Instagram</span>
+            <a href="{{ site.social.instagram }}" target="_blank" rel="noopener">@cstaticsbr</a>
+          </li>
+          <li>
+            <span class="contact-channels__label datum"><i class="fa-brands fa-youtube" aria-hidden="true"></i> YouTube</span>
+            <a href="{{ site.social.youtube }}" target="_blank" rel="noopener">@cstaticsbr</a>
+          </li>
+          <li>
+            <span class="contact-channels__label datum"><i class="fa-brands fa-tiktok" aria-hidden="true"></i> TikTok</span>
+            <a href="{{ site.social.tiktok }}" target="_blank" rel="noopener">@cstaticsbr</a>
+          </li>
+          <li>
+            <span class="contact-channels__label datum"><i class="fa-solid fa-envelope" aria-hidden="true"></i> E-mail</span>
+            <a href="mailto:{{ site.email }}">{{ site.email }}</a>
+          </li>
+        </ul>
 
-  <div class="contact-item">
-    <h4>
-      <i class="fab fa-tiktok"></i> TikTok
-    </h4>
-    <p>
-      <a href="https://tiktok.com/@cstaticsbr" target="_blank">@cstaticsbr</a>
-    </p>
-  </div>
-
-  <div class="contact-item">
-    <h4>
-      <i class="fas fa-envelope"></i> Email Direto
-    </h4>
-    <p>
-      <a href="mailto:cstaticsbr@protonmail.com">cstaticsbr@protonmail.com</a>
-    </p>
-  </div>
-</div>
+        <p class="contact-note">
+          Reportou um erro em um lineup? Cite o mapa e o nome da jogada — a
+          correção entra na fila de validação.
+        </p>
+      </aside>
     </div>
   </div>
 </section>
 
 <style>
-.contact-section {
-  padding: 4rem 2rem;
-}
+  .contact-section { padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(3.5rem, 8vw, 6rem); }
 
-.contact-content {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 3rem;
-  margin-top: 2rem;
-  max-width: 1000px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.contact-info {
-  background: #16213e;
-  padding: 2rem;
-  border-radius: 10px;
-  height: fit-content;
-}
-
-.contact-item {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #333;
-}
-
-.contact-item h4 {
-  color: #FFFFFF;
-  margin-bottom: 0.5rem;
-}
-
-.contact-item:last-child {
-  border-bottom: none;
-}
-
-@media (max-width: 768px) {
-  .contact-content {
-    grid-template-columns: 1fr;
+  .contact-lead {
+    color: var(--color-text-light);
+    font-size: var(--font-size-lg);
+    max-width: 58ch;
+    line-height: 1.7;
+    margin-bottom: var(--spacing-2xl);
   }
-}
+
+  .contact-content {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+    max-width: none;
+    margin: 0;
+  }
+
+  .contact-panel,
+  .contact-info {
+    padding: var(--spacing-xl);
+    background: transparent;
+    border: 0;
+    border-radius: 0;
+    height: auto;
+    backdrop-filter: none;
+  }
+
+  .contact-panel__title {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .contact-channels { list-style: none; padding: 0; margin: 0; }
+
+  .contact-channels li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding: var(--spacing-md) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  }
+
+  .contact-channels li:last-child { border-bottom: none; }
+
+  .contact-channels__label {
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .contact-channels__label i { color: var(--color-primary); }
+
+  .contact-channels a {
+    color: var(--color-text);
+    font-size: var(--font-size-sm);
+    transition: color var(--transition-fast);
+  }
+
+  .contact-channels a:hover { color: var(--color-primary); }
+
+  .contact-note {
+    margin: var(--spacing-lg) 0 0;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    line-height: 1.7;
+  }
+
+  @media (max-width: 860px) {
+    .contact-content { grid-template-columns: 1fr; }
+  }
 </style>

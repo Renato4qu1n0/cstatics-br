@@ -1,0 +1,190 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: maps.maps
+  size: 1
+  alias: map
+permalink: "/mapas/{{ map.slug }}/"
+eleventyComputed:
+  title: "{{ map.name }} CS2 - Lineups e táticas | CSTatics Brasil"
+  description: "{{ map.description }}"
+---
+
+{%- set mapLineups = lineups.lineups | byMap(map.slug) -%}
+{%- set mapTactics = tactics.tactics | byMap(map.slug) -%}
+
+<section class="maphub-hero">
+  <div class="container maphub-hero__inner">
+    <div class="maphub-hero__logo hud">
+      <i class="hud-brackets" aria-hidden="true"></i>
+      <img src="{{ map.logo }}" alt="Mapa {{ map.name }} do CS2" loading="eager">
+    </div>
+
+    <div class="maphub-hero__text">
+      <nav class="breadcrumbs" aria-label="Navegação estrutural">
+        <a class="breadcrumbs__link" href="/">Início</a>
+        <span class="breadcrumbs__separator">/</span>
+        <a class="breadcrumbs__link" href="/tactics/">Mapas</a>
+        <span class="breadcrumbs__separator">/</span>
+        <span class="breadcrumbs__current">{{ map.name }}</span>
+      </nav>
+
+      <h1 class="maphub-hero__title display">{{ map.name }}</h1>
+      <p class="maphub-hero__summary">{{ map.summary }}</p>
+
+      <dl class="maphub-hero__readout">
+        <div><dt>Lineups</dt><dd class="datum">{{ mapLineups | length }}</dd></div>
+        <div><dt>Táticas</dt><dd class="datum">{{ mapTactics | length }}</dd></div>
+        <div><dt>Status</dt><dd class="datum {% if map.active %}is-on{% endif %}">{% if map.active %}Pool ativo{% else %}Legado{% endif %}</dd></div>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="maphub-section">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <div>
+        <span class="eyebrow">Utilitária</span>
+        <h2 class="section-head__title">Lineups de {{ map.name }}</h2>
+      </div>
+      <div class="section-head__rule"></div>
+      <a href="/lineups/" class="maphub-all datum">Ver todos →</a>
+    </div>
+
+    {% if mapLineups | length %}
+      <div class="lineups-grid">
+        {% for lineup in mapLineups %}
+          {% include "components/lineup-card.njk" %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-state hud">
+        <i class="hud-brackets" aria-hidden="true"></i>
+        <i class="fa-solid fa-cloud empty-state__icon"></i>
+        <h3 class="empty-state__title">Sem lineups catalogados</h3>
+        <p class="empty-state__description">As lineups de {{ map.name }} entram no catálogo assim que forem gravadas e validadas.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<section class="maphub-section maphub-section--alt">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <div>
+        <span class="eyebrow">Estratégia</span>
+        <h2 class="section-head__title">Táticas de {{ map.name }}</h2>
+      </div>
+      <div class="section-head__rule"></div>
+      <a href="/tactics/" class="maphub-all datum">Ver todas →</a>
+    </div>
+
+    {% if mapTactics | length %}
+      <div class="tactics-grid">
+        {% for tactic in mapTactics %}
+          {% include "components/tactic-card.njk" %}
+        {% endfor %}
+      </div>
+    {% else %}
+      <div class="empty-state hud">
+        <i class="hud-brackets" aria-hidden="true"></i>
+        <i class="fa-solid fa-chess-board empty-state__icon"></i>
+        <h3 class="empty-state__title">Sem táticas catalogadas</h3>
+        <p class="empty-state__description">Execuções e defesas de {{ map.name }} entram no catálogo em breve.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+<style>
+  .maphub-hero {
+    padding: clamp(2rem, 5vw, 3.5rem) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .maphub-hero__inner {
+    display: flex;
+    align-items: center;
+    gap: clamp(1.5rem, 4vw, 3rem);
+    flex-wrap: wrap;
+  }
+
+  .maphub-hero__logo {
+    --hud-bg: rgba(8, 9, 12, 0.7);
+    width: 150px;
+    height: 150px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+  }
+
+  .maphub-hero__logo img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    /* mesma insígnia monocromática dos cards de mapa */
+    filter: grayscale(1) invert(1) contrast(1.2) brightness(1.08);
+    mix-blend-mode: screen;
+  }
+
+  .maphub-hero__title {
+    font-size: clamp(2.4rem, 7vw, 4.2rem);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .maphub-hero__summary {
+    color: var(--color-text-light);
+    font-size: var(--font-size-lg);
+    max-width: 58ch;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .maphub-hero__readout {
+    display: flex;
+    gap: clamp(1.5rem, 4vw, 2.75rem);
+    margin: 0;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .maphub-hero__readout dt {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 0.3rem;
+  }
+
+  .maphub-hero__readout dd {
+    margin: 0;
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: var(--color-text);
+  }
+
+  .maphub-hero__readout dd.is-on { color: var(--color-success); font-size: var(--font-size-base); }
+
+  .maphub-section { padding: clamp(3rem, 7vw, 5rem) 0; }
+  .maphub-section--alt { border-top: 1px solid var(--color-border); background: rgba(8, 9, 12, 0.5); }
+
+  .maphub-all {
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 0.8rem;
+  }
+
+  .empty-state { padding: var(--spacing-3xl) var(--spacing-xl); }
+  .empty-state__title { font-family: var(--font-display); text-transform: uppercase; font-size: var(--font-size-xl); }
+
+  @media (max-width: 639px) {
+    .maphub-hero__inner { flex-direction: column; text-align: center; align-items: center; }
+    .maphub-hero .breadcrumbs { justify-content: center; }
+    .maphub-hero__readout { justify-content: center; }
+  }
+</style>

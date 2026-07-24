@@ -1,42 +1,81 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="{{ site.locale }}">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% if title %}{{ title }}{% else %}CSTatics Brasil - Táticas de CS2{% endif %}</title>
-  <meta name="description" content="{{ description or 'Táticas profissionais e estratégias competitivas de Counter-Strike 2.' }}">
-  
+
+  {% set metaTitle = title or (site.name + ' - ' + site.tagline) %}
+  {% set metaDescription = description or site.description %}
+  {% set metaImage = ogImage or site.defaultImage %}
+  {% set canonicalUrl = site.url + page.url %}
+
+  <title>{{ metaTitle }}</title>
+  <meta name="description" content="{{ metaDescription }}">
+  <link rel="canonical" href="{{ canonicalUrl }}">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#08090c">
+  <script>document.documentElement.classList.add('js');</script>
+
   <!-- Open Graph -->
-  <meta property="og:title" content="{{ title or 'CSTatics Brasil' }}">
-  <meta property="og:description" content="{{ description or 'Táticas profissionais de CS2' }}">
-  <meta property="og:image" content="/images/favicon.svg">
-  <meta property="og:url" content="https://cstaticsbr.com.br{{ page.url }}">
-  
+  <meta property="og:type" content="{{ ogType or 'website' }}">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="{{ metaTitle }}">
+  <meta property="og:description" content="{{ metaDescription }}">
+  <meta property="og:image" content="{{ site.url }}{{ metaImage }}">
+  <meta property="og:url" content="{{ canonicalUrl }}">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ metaTitle }}">
+  <meta name="twitter:description" content="{{ metaDescription }}">
+  <meta name="twitter:image" content="{{ site.url }}{{ metaImage }}">
+
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
   <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
   <link rel="manifest" href="/images/site.webmanifest">
-  
-  <!-- CSS -->
+
+  <!-- Fonts: Chakra Petch (display tático) · JetBrains Mono (dados) · Inter (corpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- CSS (tactical.css por último: define a identidade) -->
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="stylesheet" href="/assets/css/components.css">
   <link rel="stylesheet" href="/assets/css/responsive.css">
-  
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/tactical.css">
+
+  <!-- Organização (JSON-LD global) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{ site.name }}",
+    "url": "{{ site.url }}",
+    "description": "{{ site.description }}",
+    "sameAs": [
+      "{{ site.social.instagram }}",
+      "{{ site.social.youtube }}",
+      "{{ site.social.tiktok }}"
+    ]
+  }
+  </script>
 </head>
 <body>
   {% include "components/navbar.njk" %}
-  
+
   <main>
     {{ content | safe }}
   </main>
-  
+
   {% include "components/footer.njk" %}
-  
+
   <!-- Scripts -->
-  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/main.js" defer></script>
+  <script src="/assets/js/motion.js" defer></script>
 </body>
 </html>

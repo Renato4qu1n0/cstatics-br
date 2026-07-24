@@ -16,48 +16,64 @@
 }
 
 :root {
-  /* Cores Primárias */
-  --color-primary: #4F46E5;
-  --color-primary-dark: #3B82F6;
-  --color-primary-light: #818CF8;
+  /* ---- SISTEMA TÁTICO — Paleta ----
+     Base fria quase-preta · assinatura âmbar de perigo (T) · azul tático (CT) */
 
-  /* Cores de Fundo */
-  --color-dark: #1a1a2e;
-  --color-darker: #0f0f1e;
-  --color-bg-secondary: #16213e;
-  --color-bg-tertiary: #0f3460;
+  /* Assinatura (âmbar) — mapeada para --color-primary p/ compat. */
+  --color-primary: #ffb020;
+  --color-primary-dark: #e8971a;
+  --color-primary-light: #ffc24d;
 
-  /* Cores de Texto */
-  --color-text: #fff;
-  --color-text-light: #bbb;
-  --color-text-muted: #888;
-  --color-text-dark: #333;
+  /* Duplo lado (semântica do jogo) */
+  --ct: #3d8bff;
+  --ct-dark: #2f6fd6;
+  --t: #ffb020;
+  --ember: #ff6a2c;
 
-  /* Cores de Fronteiras */
-  --color-border: #333;
-  --color-border-light: #444;
+  /* Fundos (void → carbono → painel → elevado) */
+  --void: #08090c;
+  --color-darker: #08090c;
+  --color-dark: #0f1319;
+  --color-bg-secondary: #141922;
+  --color-bg-tertiary: #1b222d;
+  --panel: #12171f;
 
-  /* Cores de Status */
-  --color-success: #27ae60;
-  --color-warning: #f39c12;
-  --color-danger: #e74c3c;
-  --color-info: #3498db;
+  /* Texto */
+  --color-text: #eceff4;
+  --color-text-light: #aab3c0;
+  --color-text-muted: #6e7787;
+  --color-text-dark: #0f1319;
 
-  /* Cores de Tags */
-  --color-tag-t-side: #e74c3c;
-  --color-tag-ct-side: #3498db;
-  --color-tag-map: #27ae60;
+  /* Contornos */
+  --color-border: #232b36;
+  --color-border-light: #33404f;
+  --hair: rgba(255, 255, 255, 0.06);
 
-  /* Tipografia */
-  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  /* Status */
+  --color-success: #35d07f;
+  --color-warning: #ffb020;
+  --color-danger: #ff5449;
+  --color-info: #3d8bff;
+
+  /* Tags (T = âmbar · CT = azul) */
+  --color-tag-t-side: #ffb020;
+  --color-tag-ct-side: #3d8bff;
+  --color-tag-map: #35d07f;
+
+  /* Tipografia — 3 vozes */
+  --font-display: 'Chakra Petch', 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
   --font-size-base: 1rem;
   --font-size-sm: 0.875rem;
+  --font-size-xs: 0.75rem;
   --font-size-lg: 1.125rem;
   --font-size-xl: 1.25rem;
   --font-size-2xl: 1.5rem;
   --font-size-3xl: 2rem;
-  --font-size-4xl: 2.5rem;
-  --font-size-5xl: 3.5rem;
+  --font-size-4xl: 2.75rem;
+  --font-size-5xl: 4rem;
 
   /* Espaçamento */
   --spacing-xs: 0.25rem;
@@ -70,20 +86,25 @@
   --spacing-4xl: 5rem;
 
   /* Transições */
-  --transition-fast: 0.15s ease-in-out;
-  --transition-normal: 0.3s ease-in-out;
-  --transition-slow: 0.5s ease-in-out;
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.55s cubic-bezier(0.16, 1, 0.3, 1);
 
-  /* Sombras */
-  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 5px 15px rgba(0, 0, 0, 0.3);
-  --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.5);
-  --shadow-primary: 0 10px 20px rgba(231, 76, 60, 0.3);
+  /* Sombras + glows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.6);
+  --shadow-primary: 0 10px 20px rgba(255, 176, 32, 0.25);
+  --glow-amber: 0 0 0 1px rgba(255, 176, 32, 0.5), 0 0 28px rgba(255, 176, 32, 0.22);
+  --glow-ct: 0 0 0 1px rgba(61, 139, 255, 0.5), 0 0 28px rgba(61, 139, 255, 0.22);
 
-  /* Border Radius */
-  --radius-sm: 5px;
-  --radius-md: 10px;
-  --radius-lg: 15px;
+  /* Raios — táticos (afiados) */
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 5px;
+
+  /* Chanfro HUD (corte de canto dos painéis) */
+  --notch: 14px;
 }
 
 /* ============================================
@@ -96,11 +117,12 @@ html {
 
 body {
   font-family: var(--font-family);
-  background: var(--color-dark);
+  background: var(--void);
   color: var(--color-text);
-  line-height: 1.6;
-  letter-spacing: 0.5px;
+  line-height: 1.65;
   font-size: var(--font-size-base);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 /* ============================================
@@ -113,9 +135,12 @@ h3,
 h4,
 h5,
 h6 {
+  font-family: var(--font-display);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
   margin-bottom: var(--spacing-md);
+  color: var(--color-text);
 }
 
 h1 {

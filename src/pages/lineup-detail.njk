@@ -1,0 +1,266 @@
+---
+layout: layouts/base.njk
+pagination:
+  data: lineups.lineups
+  size: 1
+  alias: lineup
+permalink: "/lineups/{{ lineup.slug }}/"
+ogType: article
+eleventyComputed:
+  title: "{{ lineup.title }} - Lineup de {{ lineup.map | capitalize }} no CS2 | CSTatics Brasil"
+  description: "{{ lineup.shortDescription }}"
+---
+
+{%- set utilMap = { smoke: "Smoke", flash: "Flash", molotov: "Molotov", he: "Granada HE" } -%}
+{%- set diffMap = { facil: "Fácil", media: "Média", dificil: "Difícil" } -%}
+{%- set moveMap = { parado: "Parado", jumpthrow: "Jump-throw (com pulo)", "run-throw": "Correndo", walk: "Andando" } -%}
+{%- set utilLabel = utilMap[lineup.utility] or lineup.utility -%}
+{%- set diffLabel = diffMap[lineup.difficulty] or lineup.difficulty -%}
+{%- set moveLabel = moveMap[lineup.movement] or lineup.movement -%}
+{%- set pageUrl = site.url + "/lineups/" + lineup.slug + "/" -%}
+
+<article class="lineup-detail">
+  <div class="container">
+    <nav class="breadcrumbs" aria-label="Navegação estrutural">
+      <a class="breadcrumbs__link" href="/">Início</a>
+      <span class="breadcrumbs__separator">/</span>
+      <a class="breadcrumbs__link" href="/lineups/">Lineups</a>
+      <span class="breadcrumbs__separator">/</span>
+      <a class="breadcrumbs__link" href="/mapas/{{ lineup.map }}/">{{ lineup.map | capitalize }}</a>
+      <span class="breadcrumbs__separator">/</span>
+      <span class="breadcrumbs__current">{{ lineup.title }}</span>
+    </nav>
+
+    <header class="ld-header">
+      <div class="ld-header__tags">
+        <span class="tag tag--map">{{ lineup.map | capitalize }}</span>
+        <span class="tag tag--{{ lineup.side }}">{{ lineup.side | upper }}</span>
+        <span class="tag tag--category">{{ utilLabel }}</span>
+        <span class="lineup-card__diff lineup-card__diff--{{ lineup.difficulty }}">{{ diffLabel }}</span>
+        {% if lineup.verified %}
+          <span class="ld-verified"><i class="fa-solid fa-circle-check"></i> Verificado pela equipe</span>
+        {% endif %}
+      </div>
+      <h1 class="ld-header__title">{{ lineup.title }}</h1>
+      <p class="ld-header__lead">{{ lineup.shortDescription }}</p>
+    </header>
+
+    <div class="ld-grid">
+      <div class="ld-main">
+        {% if not lineup.verified %}
+          <div class="alert alert--warning">
+            <span class="alert__icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+            <div class="alert__content">
+              <h4>Lineup em validação</h4>
+              <p>Estamos gravando o vídeo e conferindo o alinhamento desta lineup. Use como referência e confirme no treino antes de levar para a partida.</p>
+            </div>
+          </div>
+        {% endif %}
+
+        <section class="ld-section">
+          <h2>O que essa lineup faz</h2>
+          <p>{{ lineup.description }}</p>
+          {% if lineup.target %}<p class="ld-target"><i class="fa-solid fa-crosshairs"></i> <strong>Objetivo:</strong> {{ lineup.target }}</p>{% endif %}
+        </section>
+
+        <section class="ld-section">
+          <h2>Vídeo / demonstração</h2>
+          {% if lineup.videoUrl %}
+            <div class="video-container">
+              <iframe src="{{ lineup.videoUrl }}" title="{{ lineup.title }}" allowfullscreen loading="lazy"></iframe>
+            </div>
+          {% elif lineup.gif %}
+            <img class="ld-gif" src="{{ lineup.gif }}" alt="Demonstração da {{ lineup.title }}" loading="lazy">
+          {% else %}
+            <div class="ld-media-placeholder">
+              <i class="fa-solid fa-film"></i>
+              <p>Vídeo em gravação pela equipe CSTatics.</p>
+              <small>Siga o <a href="{{ site.social.youtube }}" target="_blank" rel="noopener">YouTube</a> para ser avisado quando sair.</small>
+            </div>
+          {% endif %}
+        </section>
+
+        <section class="ld-section">
+          <h2>Passo a passo</h2>
+          <ol class="ld-steps">
+            {% for step in lineup.steps %}
+              <li><span class="ld-steps__num">{{ loop.index }}</span><span class="ld-steps__text">{{ step }}</span></li>
+            {% endfor %}
+          </ol>
+        </section>
+
+        {% if lineup.tips and lineup.tips | length %}
+          <section class="ld-section">
+            <h2>Dicas</h2>
+            <ul class="ld-tips">
+              {% for tip in lineup.tips %}
+                <li><i class="fa-solid fa-lightbulb"></i> {{ tip }}</li>
+              {% endfor %}
+            </ul>
+          </section>
+        {% endif %}
+      </div>
+
+      <aside class="ld-sidebar">
+        <div class="ld-card hud">
+          <h3>Ficha rápida</h3>
+          <ul class="ld-facts">
+            <li><span>Mapa</span><strong>{{ lineup.map | capitalize }}</strong></li>
+            <li><span>Lado</span><strong>{{ lineup.side | upper }}</strong></li>
+            <li><span>Utilitária</span><strong>{{ utilLabel }}</strong></li>
+            <li><span>Bombsite</span><strong>{{ lineup.site | upper if lineup.site else "—" }}</strong></li>
+            <li><span>Dificuldade</span><strong>{{ diffLabel }}</strong></li>
+            <li><span>Posição</span><strong>{{ lineup.position }}</strong></li>
+            <li><span>Arremesso</span><strong>{{ moveLabel }}</strong></li>
+          </ul>
+        </div>
+
+        {% set related = lineups.lineups | byMap(lineup.map) %}
+        {% if related | length > 1 %}
+          <div class="ld-card hud">
+            <h3>Lineups de {{ lineup.map | capitalize }}</h3>
+            <ul class="ld-related">
+              {% for r in related %}
+                {% if r.slug != lineup.slug %}
+                  <li><a href="/lineups/{{ r.slug }}/">{{ r.title }}</a></li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
+
+        <div class="ld-card hud">
+          <h3>Compartilhar</h3>
+          <div class="ld-share">
+            <a class="share-btn" href="https://wa.me/?text={{ (lineup.title + ' — ' + pageUrl) | urlencode }}" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+            <a class="share-btn" href="https://twitter.com/intent/tweet?url={{ pageUrl | urlencode }}&text={{ lineup.title | urlencode }}" target="_blank" rel="noopener"><i class="fa-brands fa-x-twitter"></i> X / Twitter</a>
+            <button class="share-btn" type="button" data-copy-link="{{ pageUrl }}"><i class="fa-solid fa-link"></i> Copiar link</button>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </div>
+</article>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": {{ lineup.title | json | safe }},
+  "description": {{ lineup.shortDescription | json | safe }},
+  "totalTime": "PT2M",
+  "supply": [{ "@type": "HowToSupply", "name": {{ utilLabel | json | safe }} }],
+  "step": [
+    {% for step in lineup.steps %}
+    {
+      "@type": "HowToStep",
+      "position": {{ loop.index }},
+      "name": {{ step | json | safe }},
+      "text": {{ step | json | safe }},
+      "url": {{ (pageUrl + "#passo-" + loop.index) | json | safe }}
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Início", "item": {{ site.url | json | safe }} },
+    { "@type": "ListItem", "position": 2, "name": "Lineups", "item": {{ (site.url + "/lineups/") | json | safe }} },
+    { "@type": "ListItem", "position": 3, "name": {{ (lineup.map | capitalize) | json | safe }}, "item": {{ (site.url + "/mapas/" + lineup.map + "/") | json | safe }} },
+    { "@type": "ListItem", "position": 4, "name": {{ lineup.title | json | safe }}, "item": {{ pageUrl | json | safe }} }
+  ]
+}
+</script>
+
+<style>
+  .lineup-detail { padding: var(--spacing-xl) 0 var(--spacing-4xl); }
+
+  .ld-header { margin-bottom: var(--spacing-2xl); }
+  .ld-header__tags { display: flex; gap: var(--spacing-sm); flex-wrap: wrap; align-items: center; margin-bottom: var(--spacing-md); }
+  .ld-header__title { font-size: clamp(1.75rem, 4vw, 2.75rem); margin-bottom: var(--spacing-md); }
+  .ld-header__lead { color: var(--color-text-light); font-size: var(--font-size-lg); max-width: 720px; margin-bottom: 0; }
+
+  .ld-verified { color: #2ecc71; font-weight: 700; font-size: var(--font-size-sm); display: inline-flex; align-items: center; gap: 6px; }
+
+  .ld-grid { display: grid; grid-template-columns: 2fr 1fr; gap: var(--spacing-2xl); }
+
+  /* padding:0 anula a regra global `section { padding: 5rem 0 }` */
+  .ld-section { padding: 0; margin-bottom: var(--spacing-2xl); }
+
+  .ld-section h2 {
+    font-size: var(--font-size-xl);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .ld-section p { color: var(--color-text-light); }
+  .ld-target { background: rgba(79, 70, 229, 0.08); border-left: 3px solid var(--color-primary); padding: var(--spacing-md); border-radius: var(--radius-sm); }
+  .ld-target i { color: var(--color-primary); }
+
+  .ld-media-placeholder {
+    aspect-ratio: 16 / 9; background: var(--color-bg-secondary); border: 1px dashed var(--color-border-light);
+    border-radius: var(--radius-md); display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: var(--spacing-sm); text-align: center; color: var(--color-text-muted);
+  }
+  .ld-media-placeholder i { font-size: 2.5rem; color: var(--color-primary); opacity: 0.7; }
+  .ld-media-placeholder p { margin: 0; color: var(--color-text-light); font-weight: 600; }
+  .ld-gif { width: 100%; border-radius: var(--radius-md); display: block; }
+
+  .ld-steps { list-style: none; padding: 0; border-left: 1px solid var(--color-border); }
+  .ld-steps li {
+    display: flex; gap: var(--spacing-md); align-items: flex-start;
+    padding: 0 0 var(--spacing-lg) var(--spacing-lg); position: relative;
+  }
+  .ld-steps li:last-child { padding-bottom: 0; }
+  .ld-steps__num {
+    flex-shrink: 0; width: 26px; height: 26px; margin-left: -2.05rem; background: var(--void);
+    border: 1px solid var(--color-primary); color: var(--color-primary);
+    font-family: var(--font-mono); font-size: 0.7rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 5px 100%, 0 calc(100% - 5px));
+  }
+  .ld-steps__text { color: var(--color-text-light); padding-top: 1px; line-height: 1.75; }
+
+  .ld-tips { list-style: none; padding: 0; }
+  .ld-tips li { color: var(--color-text-light); margin-bottom: var(--spacing-sm); display: flex; gap: var(--spacing-sm); }
+  .ld-tips i { color: var(--color-warning); margin-top: 4px; }
+
+  .ld-sidebar { display: flex; flex-direction: column; gap: var(--spacing-lg); }
+  .ld-card { padding: var(--spacing-lg); height: fit-content; }
+  .ld-card h3 {
+    font-family: var(--font-mono);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .ld-facts { list-style: none; padding: 0; }
+  .ld-facts li { display: flex; justify-content: space-between; gap: var(--spacing-md); padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,.04); }
+  .ld-facts li:last-child { border-bottom: none; }
+  .ld-facts span { font-family: var(--font-mono); color: var(--color-text-muted); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .ld-facts strong { font-family: var(--font-mono); color: var(--color-text); text-align: right; font-size: var(--font-size-sm); }
+
+  .ld-related { list-style: none; padding: 0; }
+  .ld-related li { padding: var(--spacing-sm) 0; border-bottom: 1px solid var(--color-border); }
+  .ld-related li:last-child { border-bottom: none; }
+  .ld-related a { color: var(--color-primary); font-size: var(--font-size-sm); }
+
+  .ld-share { display: flex; flex-direction: column; gap: var(--spacing-sm); }
+  .ld-share .share-btn { display: flex; align-items: center; gap: var(--spacing-sm); justify-content: center; cursor: pointer; }
+
+  @media (max-width: 1023px) {
+    .ld-grid { grid-template-columns: 1fr; gap: var(--spacing-xl); }
+  }
+</style>

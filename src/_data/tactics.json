@@ -7,32 +7,28 @@
       "category": "default",
       "side": "t-side",
       "map": "Mirage",
-      "shortDescription": "Estratégia de default agressivo para ganhar controle de mapa no T side",
+      "mapSlug": "mirage",
+      "shortDescription": "Estratégia de default agressivo para ganhar controle de mapa no lado T do Mirage.",
       "image": "assets/images/tactics/mirage-t-default.svg",
       "successRate": 87,
       "difficulty": 6,
+      "difficultyLabel": "Intermediário",
       "players": [1, 2, 3, 4, 5],
-      "description": "Uma abordagem ofensiva para o T side do Mirage que prioriza...",
+      "description": "Uma abordagem ofensiva para o lado T do Mirage que prioriza a tomada rápida de controle de meio e a pressão simultânea nos dois bombsites, forçando a defesa a reagir e abrindo espaço para uma execução no timing.",
       "steps": [
-        {
-          "time": "0s",
-          "description": "Todos os Ts fazem drop para o A",
-          "players": [1, 2]
-        },
-        {
-          "time": "15s",
-          "description": "Verificação de Ramp, aguardando informação",
-          "players": [3, 4]
-        }
+        { "time": "0s", "description": "Dois jogadores tomam o controle de meio com a smoke de janela.", "players": [1, 2] },
+        { "time": "15s", "description": "Um jogador pressiona a rampa T buscando informação e trade.", "players": [3] },
+        { "time": "25s", "description": "Dupla segura o apartamento (palco) para ameaçar o A curto.", "players": [4, 5] },
+        { "time": "40s", "description": "Com a informação, o time converge para o bombsite mais aberto e executa com utilitária completa.", "players": [1, 2, 3, 4, 5] }
       ],
-      "videoUrl": "https://youtube.com/watch?v=...",
-      "tags": ["default", "agressivo", "anti-eco"],
-      "difficulty": "Intermediário",
-      "meta": {
-        "created": "2024-01-15",
-        "updated": "2024-07-21",
-        "author": "Pro Player XYZ"
-      }
+      "counters": [
+        { "title": "CT agressivo no meio", "description": "Se o CT joga o meio agressivo, use flash de apoio e trade rápido para não perder o controle cedo." },
+        { "title": "Stack no A", "description": "Se a defesa empilha no A, vire a execução para o B aproveitando a rotação lenta." }
+      ],
+      "videoUrl": "",
+      "tags": ["default", "agressivo", "controle de meio"],
+      "verified": false,
+      "meta": { "created": "2024-01-15", "updated": "2026-07-23", "author": "CSTatics" }
     },
     {
       "id": 2,
@@ -41,12 +37,27 @@
       "category": "anti-eco",
       "side": "ct-side",
       "map": "Nuke",
-      "shortDescription": "Defesa eficiente contra round de eco inimigo",
+      "mapSlug": "nuke",
+      "shortDescription": "Defesa eficiente de CT contra rounds de eco no Nuke, com posicionamento para evitar trades e clutches.",
       "image": "assets/images/tactics/nuke-anti-eco.svg",
       "successRate": 92,
       "difficulty": 4,
-      "description": "...",
-      "tags": ["anti-eco", "defesa", "posicionamentos"]
+      "difficultyLabel": "Fácil",
+      "players": [1, 2, 3, 4, 5],
+      "description": "Posicionamento defensivo pensado para neutralizar o round de eco inimigo no Nuke. O foco é jogar juntos, evitar ângulos isolados e negar as trocas fáceis que o time de pistola/eco procura.",
+      "steps": [
+        { "time": "0s", "description": "Ninguém joga ângulos avançados isolados — o time recua para posições de crossfire.", "players": [1, 2, 3, 4, 5] },
+        { "time": "10s", "description": "Dupla segura a rampa em crossfire, negando o rush pela outside.", "players": [1, 2] },
+        { "time": "20s", "description": "Jogadores de dentro cobrem os acessos verticais e apoiam a rotação.", "players": [3, 4, 5] }
+      ],
+      "counters": [
+        { "title": "Rush agrupado", "description": "Contra rush de eco, mantenha distância e jogue o pós-plant com utilitária, sem duelar de perto." },
+        { "title": "Split forçado", "description": "Se o eco tenta dividir, comunique a informação e role em número para retomar." }
+      ],
+      "videoUrl": "",
+      "tags": ["anti-eco", "defesa", "posicionamento"],
+      "verified": false,
+      "meta": { "created": "2024-02-10", "updated": "2026-07-23", "author": "CSTatics" }
     }
   ]
 }

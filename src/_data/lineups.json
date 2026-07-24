@@ -1,0 +1,214 @@
+{
+  "lineups": [
+    {
+      "slug": "smoke-ct-mirage-rampa-t",
+      "title": "Smoke de CT no Mirage (jogada da Rampa T)",
+      "map": "mirage",
+      "utility": "smoke",
+      "side": "t",
+      "site": "a",
+      "position": "Rampa T (em cima do Tetris)",
+      "target": "Cobre a saída de CT e impede o ninja no A",
+      "difficulty": "facil",
+      "movement": "jumpthrow",
+      "shortDescription": "A smoke essencial para executar o bombsite A: isola o CT e evita rotação e defuse por trás.",
+      "description": "Essa é a smoke mais importante de qualquer execução de A no Mirage. Ela fecha a passagem de CT, impedindo que o defensor role de volta ao site ou faça o ninja defuse. É a base de qualquer take de A no lado T.",
+      "steps": [
+        "Suba na rampa T e posicione-se em cima da caixa (Tetris), encostado no canto.",
+        "Mire no ponto de referência no topo da parede do fundo (alinhamento clássico de CT smoke).",
+        "Use um bind de jumpthrow para lançar com pulo — o timing do pulo é o que garante a distância.",
+        "Confirme a fumaça caindo em cima da passagem de CT antes de entrar no site."
+      ],
+      "tips": [
+        "Sempre jogue essa smoke junto com a de Jungle e Stairs para um take completo de A.",
+        "Configure um bind de jumpthrow no console para consistência."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": ["execução A", "padrão", "essencial"],
+      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+    },
+    {
+      "slug": "smoke-jungle-mirage-rampa-t",
+      "title": "Smoke de Jungle no Mirage (da Rampa T)",
+      "map": "mirage",
+      "utility": "smoke",
+      "side": "t",
+      "site": "a",
+      "position": "Rampa T",
+      "target": "Fecha a visão de Jungle para o site A",
+      "difficulty": "facil",
+      "movement": "jumpthrow",
+      "shortDescription": "Bloqueia o ângulo de Jungle na execução de A, protegendo a entrada do bomb.",
+      "description": "A smoke de Jungle complementa a de CT numa execução de A. Ela impede que o CT posicionado em Jungle segure o plant, dando espaço seguro para o time entrar e plantar a bomba.",
+      "steps": [
+        "Posicione-se na rampa T no ponto de referência combinado.",
+        "Alinhe a mira com o marcador de Jungle.",
+        "Lance com jumpthrow e verifique a fumaça cobrindo o ângulo.",
+        "Entre no site logo após a fumaça assentar, junto com as flashes de apoio."
+      ],
+      "tips": [
+        "Combine com a smoke de CT e a de Stairs para isolar totalmente o A.",
+        "Peça uma flash de apoio de quem entra primeiro."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": ["execução A", "padrão"],
+      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+    },
+    {
+      "slug": "smoke-window-mirage-meio",
+      "title": "Smoke de Window no Mirage (controle de meio)",
+      "map": "mirage",
+      "utility": "smoke",
+      "side": "t",
+      "site": "mid",
+      "position": "Top Mid / saída do T",
+      "target": "Fecha a janela (Window) e libera o controle de meio",
+      "difficulty": "facil",
+      "movement": "parado",
+      "shortDescription": "A smoke que abre o meio do Mirage: fecha a janela e dá controle seguro de connector.",
+      "description": "Controlar o meio do Mirage começa fechando a janela. Com a Window smokada, o T avança com segurança por baixo, ganhando espaço para connector, catwalk e pressão nos dois bombsites.",
+      "steps": [
+        "Vá até o ponto de arremesso na saída do meio (top mid).",
+        "Alinhe a mira com a referência da janela.",
+        "Jogue a smoke parado (sem pulo) no timing de início de round.",
+        "Avance o meio assim que a fumaça fechar a janela."
+      ],
+      "tips": [
+        "Jogar essa smoke cedo é o que garante o controle de meio no timing.",
+        "Cuidado com o AWP de janela antes da fumaça fechar — jogue com segurança."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": ["controle de meio", "padrão", "essencial"],
+      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+    },
+    {
+      "slug": "molotov-sandbags-mirage-a",
+      "title": "Molotov de Sandbags no Mirage (A curto)",
+      "map": "mirage",
+      "utility": "molotov",
+      "side": "t",
+      "site": "a",
+      "position": "A curto (Palco)",
+      "target": "Queima a posição de Sandbags / short",
+      "difficulty": "media",
+      "movement": "parado",
+      "shortDescription": "Expulsa o CT escondido atrás dos sandbags no A curto sem precisar trocar tiro.",
+      "description": "O CT costuma segurar o A curto atrás dos sandbags. Essa molotov limpa a posição de graça, abrindo o curto para o time avançar pelo palco com segurança.",
+      "steps": [
+        "Posicione-se no ponto de referência do A curto (palco).",
+        "Alinhe a mira com o marcador acima dos sandbags.",
+        "Lance a incendiária parado, no arco correto.",
+        "Avance assim que o fogo cobrir a posição."
+      ],
+      "tips": [
+        "Ótima em rounds de anti-eco e para forçar o CT a sair de posição.",
+        "Combine com pressão de rampa para dividir a atenção da defesa."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": ["A curto", "anti-eco"],
+      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+    },
+    {
+      "slug": "smoke-ct-inferno-b-banana",
+      "title": "Smoke de CT no Inferno (execução de B)",
+      "map": "inferno",
+      "utility": "smoke",
+      "side": "t",
+      "site": "b",
+      "position": "Banana (top)",
+      "target": "Isola o CT na execução do bombsite B",
+      "difficulty": "media",
+      "movement": "jumpthrow",
+      "shortDescription": "A smoke-chave do take de B no Inferno: corta a rotação e o apoio de CT.",
+      "description": "Na execução de B pelo Inferno, essa smoke fecha a passagem de CT, impedindo rotação rápida e o crossfire com quem segura o site. É a fumaça que viabiliza o plant seguro no B.",
+      "steps": [
+        "Suba a banana até o ponto de arremesso combinado (top de banana).",
+        "Alinhe a mira com a referência de CT.",
+        "Lance com jumpthrow.",
+        "Entre no site com a smoke fechando a visão de CT, apoiado por flashes."
+      ],
+      "tips": [
+        "Combine com molotov de fundo e flashes para um take de B completo.",
+        "Controle a banana antes com molotov/flash para não tomar pressão pelas costas."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": ["execução B", "padrão", "essencial"],
+      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+    },
+    {
+      "slug": "molotov-banana-inferno-controle",
+      "title": "Molotov de Banana no Inferno (controle T)",
+      "map": "inferno",
+      "utility": "molotov",
+      "side": "t",
+      "site": "b",
+      "position": "Início da Banana",
+      "target": "Atrasa o avanço de CT e ganha controle de banana",
+      "difficulty": "facil",
+      "movement": "parado",
+      "shortDescription": "A incendiária que segura o CT e garante o controle de banana no início do round.",
+      "description": "Controlar a banana é metade do Inferno no lado T. Essa molotov queima a parte de cima da banana, atrasando o CT agressivo e dando tempo para o time tomar o controle da região com segurança.",
+      "steps": [
+        "Fique no ponto de referência no início da banana.",
+        "Alinhe o arco com a curva superior da banana.",
+        "Lance a incendiária parado no timing de início de round.",
+        "Avance a banana conforme o fogo atrasa a agressão do CT."
+      ],
+      "tips": [
+        "É a utilitária de abertura mais comum do Inferno T — use sempre no default.",
+        "Guarde uma flash para o pós-fogo, quando o CT tenta retomar o espaço."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": ["controle de banana", "padrão", "essencial"],
+      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+    },
+    {
+      "slug": "smoke-xbox-dust2-meio",
+      "title": "Smoke de Xbox no Dust2 (controle de meio)",
+      "map": "dust2",
+      "utility": "smoke",
+      "side": "t",
+      "site": "mid",
+      "position": "Saída do T",
+      "target": "Fecha a visão de Xbox e a passagem de meio",
+      "difficulty": "facil",
+      "movement": "parado",
+      "shortDescription": "A smoke que abre o meio do Dust2, fechando o Xbox para o avanço seguro.",
+      "description": "O controle de meio no Dust2 depende de fechar o Xbox. Com essa smoke, o T avança o meio sem tomar tiro do CT posicionado ali, abrindo caminho para o corredor de baixo (lower) e a pressão nos sites.",
+      "steps": [
+        "Posicione-se no ponto de arremesso na saída do T.",
+        "Alinhe a mira com a referência do Xbox.",
+        "Lance a smoke parado no início do round.",
+        "Avance o meio junto com o controle de corredor."
+      ],
+      "tips": [
+        "Combine com a smoke de CT cross para atravessar o meio com segurança.",
+        "Fundamental contra AWPers que seguram o meio."
+      ],
+      "videoUrl": "",
+      "gif": "",
+      "image": "",
+      "verified": false,
+      "tags": ["controle de meio", "padrão", "essencial"],
+      "meta": { "created": "2026-07-23", "updated": "2026-07-23", "author": "CSTatics" }
+    }
+  ]
+}

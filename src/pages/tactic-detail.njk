@@ -5,6 +5,10 @@ pagination:
   size: 1
   alias: tactic
 permalink: /tactics/{{ tactic.slug }}/
+ogType: article
+eleventyComputed:
+  title: "{{ tactic.title }} - Tática de {{ tactic.map }} no CS2 | CSTatics Brasil"
+  description: "{{ tactic.shortDescription }}"
 ---
 
 <article class="tactic-detail">

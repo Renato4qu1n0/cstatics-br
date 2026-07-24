@@ -25,6 +25,26 @@ module.exports = function(eleventyConfig) {
     return array.slice(0, limit);
   });
 
+  // Serializa valores como JSON (usado para gerar JSON-LD com escaping correto)
+  eleventyConfig.addFilter("json", (value) => {
+    return JSON.stringify(value);
+  });
+
+  // Filtra uma lista por chave/valor — ex.: maps.maps | filterBy("active", true)
+  eleventyConfig.addFilter("filterBy", (items, key, value) => {
+    if (!Array.isArray(items)) return [];
+    return items.filter((item) => item[key] === value);
+  });
+
+  // Filtra uma lista de lineups/táticas por mapa (slug)
+  eleventyConfig.addFilter("byMap", (items, mapSlug) => {
+    if (!Array.isArray(items)) return [];
+    return items.filter((item) => {
+      const slug = item.mapSlug || item.map;
+      return slug && slug.toLowerCase() === String(mapSlug).toLowerCase();
+    });
+  });
+
   // Shortcode para imagens otimizadas
   eleventyConfig.addNunjucksAsyncShortcode("image", async function(src, alt) {
     let normalizedSrc = src.replace(/^\/+/, "");
