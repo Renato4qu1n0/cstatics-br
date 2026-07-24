@@ -1,0 +1,15 @@
+{# Miniatura estática do diagrama para os cards. Espera `lineup`. #}
+{%- set tgeo = mapgeo[lineup.map] -%}
+{%- set torigin = tgeo.callouts[lineup.from] -%}
+{%- set timpact = tgeo.callouts[lineup.to] -%}
+{%- if tgeo and torigin and timpact -%}
+<svg class="thumb" viewBox="{{ tgeo.viewBox }}" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <g class="thumb__areas">
+    {% for a in tgeo.areas %}<polygon points="{{ a.points }}" />{% endfor %}
+  </g>
+  <path class="thumb__arc" d="{{ torigin | arcPath(timpact) }}" />
+  <circle class="thumb__origin" cx="{{ torigin.x }}" cy="{{ torigin.y }}" r="4" />
+  <circle class="thumb__impact-ring" cx="{{ timpact.x }}" cy="{{ timpact.y }}" r="9" />
+  <circle class="thumb__impact" cx="{{ timpact.x }}" cy="{{ timpact.y }}" r="5" />
+</svg>
+{%- endif -%}

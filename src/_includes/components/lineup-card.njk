@@ -22,8 +22,8 @@
   <div class="scan" aria-hidden="true"></div>
   <a class="lineup-card__link" href="/lineups/{{ lineup.slug }}/">
     <div class="lineup-card__media lineup-card__media--{{ util }}">
-      <i class="fa-solid {{ utilIcon }}" aria-hidden="true"></i>
-      <span class="lineup-card__utility">{{ utilLabel }}</span>
+      {% include "components/lineup-thumb.njk" %}
+      <span class="lineup-card__utility"><i class="fa-solid {{ utilIcon }}" aria-hidden="true"></i> {{ utilLabel }}</span>
       {% if lineup.verified %}
         <span class="lineup-card__badge lineup-card__badge--ok"><i class="fa-solid fa-circle-check"></i> Verificado</span>
       {% else %}
