@@ -63,6 +63,17 @@ eleventyComputed:
           {%- set dgTitle = (exec.map | capitalize) ~ " · execução em sequência" -%}
           {%- set dgThrows = throwsResolved -%}
           {% include "components/tactic-diagram.njk" %}
+          {%- set boardCode = throwsResolved | execBoardCode(mapgeo[exec.map], exec.map) -%}
+          {% if boardCode %}
+            <a class="board-cta" href="/prancheta/#b={{ boardCode }}">
+              <span class="board-cta__icon"><i class="fa-solid fa-play" aria-hidden="true"></i></span>
+              <span class="board-cta__text">
+                <strong>Abrir na prancheta</strong>
+                <em>Sequência montada por etapas — é só clicar em Reproduzir e editar.</em>
+              </span>
+              <i class="fa-solid fa-arrow-right board-cta__go" aria-hidden="true"></i>
+            </a>
+          {% endif %}
         </section>
 
         <section class="ld-section">

@@ -66,6 +66,17 @@ eleventyComputed:
         <section class="ld-section">
           <h2>Esquema da jogada</h2>
           {% include "components/lineup-diagram.njk" %}
+          {%- set boardCode = lineup | lineupBoardCode(mapgeo[lineup.map]) -%}
+          {% if boardCode %}
+            <a class="board-cta" href="/prancheta/#b={{ boardCode }}">
+              <span class="board-cta__icon"><i class="fa-solid fa-pen-ruler" aria-hidden="true"></i></span>
+              <span class="board-cta__text">
+                <strong>Abrir na prancheta</strong>
+                <em>Edite as posições e compartilhe com o time por link.</em>
+              </span>
+              <i class="fa-solid fa-arrow-right board-cta__go" aria-hidden="true"></i>
+            </a>
+          {% endif %}
         </section>
 
         <section class="ld-section">

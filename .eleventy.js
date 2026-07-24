@@ -30,6 +30,44 @@ module.exports = function(eleventyConfig) {
     return JSON.stringify(value);
   });
 
+  // Codifica um estado da prancheta no formato do link (#b=...)
+  const boardEncode = (obj) =>
+    Buffer.from(JSON.stringify(obj), "utf8")
+      .toString("base64")
+      .replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+
+  // Link da prancheta para um único lineup: jogador na saída, utilitária no
+  // alvo e uma seta ligando os dois.
+  eleventyConfig.addFilter("lineupBoardCode", (lineup, geo) => {
+    if (!lineup || !geo || !geo.callouts) return "";
+    const o = geo.callouts[lineup.from];
+    const i = geo.callouts[lineup.to];
+    if (!o || !i) return "";
+    const els = [
+      { id: "e1", type: "player", side: lineup.side || "t", x: o.x, y: o.y, label: "1" },
+      { id: "e2", type: "util", kind: lineup.utility || "smoke", x: i.x, y: i.y },
+      { id: "e3", type: "arrow", x1: o.x, y1: o.y, x2: i.x, y2: i.y }
+    ];
+    return boardEncode({ m: lineup.map, c: 0, s: [els] });
+  });
+
+  // Link da prancheta para uma execução: uma etapa por arremesso (cumulativo),
+  // pronta para Reproduzir — cada utilitária surge na sua vez.
+  eleventyConfig.addFilter("execBoardCode", (throwsResolved, geo, map) => {
+    if (!Array.isArray(throwsResolved) || !geo || !geo.callouts) return "";
+    const steps = [];
+    const acc = [];
+    throwsResolved.forEach((t, idx) => {
+      const o = geo.callouts[t.from];
+      const i = geo.callouts[t.to];
+      if (!o || !i) return;
+      acc.push({ id: "u" + idx, type: "util", kind: t.utility || "smoke", x: i.x, y: i.y });
+      acc.push({ id: "a" + idx, type: "arrow", x1: o.x, y1: o.y, x2: i.x, y2: i.y });
+      steps.push(acc.map((e) => Object.assign({}, e)));
+    });
+    return boardEncode({ m: map, c: 0, s: steps.length ? steps : [[]] });
+  });
+
   // Resolve os arremessos de uma execucao a partir dos lineups referenciados
   eleventyConfig.addFilter("resolveThrows", (throws, lineups) => {
     if (!Array.isArray(throws) || !Array.isArray(lineups)) return [];
