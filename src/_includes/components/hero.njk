@@ -125,10 +125,11 @@
     letter-spacing: -0.02em;
   }
 
-  /* O título é o elemento LCP: renderiza imediatamente. A animação de entrada
-     (line-reveal) atrasaria o Largest Contentful Paint, então fica só nos
-     elementos de apoio (boot-in). */
+  /* Texto do hero acima da dobra = elemento LCP. Animações de opacidade
+     (line-reveal / boot-in) atrasam o Largest Contentful Paint, então o texto
+     renderiza imediatamente. O boot-in decorativo permanece no radar (desktop). */
   .hero__title .line-reveal > span { animation: none; transform: none; }
+  .hero__content .boot-in { animation: none; opacity: 1; transform: none; }
 
   .hero__accent {
     color: var(--color-primary);
