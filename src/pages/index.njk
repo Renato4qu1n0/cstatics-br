@@ -1,40 +1,249 @@
 ---
 layout: layouts/base.njk
 permalink: /
-title: CSTatics Brasil - Táticas de Counter-Strike 2
-description: Conheça as melhores táticas profissionais de CS2. Análises detalhadas e estratégias competitivas.
+title: "CSTatics Brasil - Táticas e Lineups de CS2"
+description: "Biblioteca tática de Counter-Strike 2: lineups de utilitária, execuções e defesas catalogadas por mapa, lado e bombsite."
 ---
 
 {% include "components/hero.njk" %}
 
-<section class="about-us">
+<section class="modules">
   <div class="container">
-    <h2 class="about-us__title">Conheça o nosso trabalho</h2>
-    
-    <div class="about-us__content">
-      <div class="about-us__header">
-        <h3 class="about-us__subtitle">Sobre o CSTATICS BRASIL</h3>
+    <div class="section-head" data-reveal>
+      <div>
+        <span class="eyebrow">Módulos</span>
+        <h2 class="section-head__title">Quatro frentes de preparação</h2>
       </div>
-
-      <p class="about-us__text">
-        Somos uma comunidade dedicada ao aprimoramento tático em Counter-Strike 2. 
-        Nossa missão é democratizar o conhecimento estratégico , tornando-o acessível a jogadores de todos os níveis.
-      </p>
-
-      <p class="about-us__text">
-        Cada tática é analisada em profundidade: desde o posicionamento inicial, 
-        execução, timings críticos, até ajustes de contra-ataque. Criamos conteúdo 
-        baseado em experiência real para que você jogue com inteligência.
-      </p>
-
-      <p class="about-us__text about-us__text--highlight">
-        Seja você um iniciante buscando aprender os fundamentos ou um competidor 
-        aspirante, aqui você encontra o conhecimento que separa os melhores dos demais.
-      </p>
+      <div class="section-head__rule"></div>
     </div>
 
-    <div class="about-us__cta">
-      <a href="/tactics/" class="btn btn-primary">Ver Todas as Táticas</a>
+    <div class="modules__grid">
+      <a href="/lineups/" class="module hud" data-reveal>
+        <i class="hud-brackets" aria-hidden="true"></i>
+        <div class="scan" aria-hidden="true"></div>
+        <div class="module__head">
+          <i class="fa-solid fa-cloud module__icon" aria-hidden="true"></i>
+          <span class="module__status module__status--on">Ativo</span>
+        </div>
+        <h3 class="module__title">Lineups de utilitária</h3>
+        <p class="module__text">
+          Smokes, flashes, molotovs e HE com posição de arremesso, tipo de lançamento
+          e passo a passo. Filtre por mapa, lado, bombsite e dificuldade.
+        </p>
+        <span class="module__cta datum">Abrir biblioteca →</span>
+      </a>
+
+      <a href="/execucoes/" class="module hud" data-reveal>
+        <i class="hud-brackets" aria-hidden="true"></i>
+        <div class="scan" aria-hidden="true"></div>
+        <div class="module__head">
+          <i class="fa-solid fa-layer-group module__icon" aria-hidden="true"></i>
+          <span class="module__status module__status--on">Ativo</span>
+        </div>
+        <h3 class="module__title">Execuções</h3>
+        <p class="module__text">
+          O pacote completo de utilitária na ordem certa, com timing, função de cada
+          jogador e o esquema da jogada animado no mapa.
+        </p>
+        <span class="module__cta datum">Abrir execuções →</span>
+      </a>
+
+      <a href="/tactics/" class="module hud" data-reveal>
+        <i class="hud-brackets" aria-hidden="true"></i>
+        <div class="scan" aria-hidden="true"></div>
+        <div class="module__head">
+          <i class="fa-solid fa-chess-board module__icon" aria-hidden="true"></i>
+          <span class="module__status module__status--on">Ativo</span>
+        </div>
+        <h3 class="module__title">Táticas por mapa</h3>
+        <p class="module__text">
+          Defaults, anti-eco e retakes com linha do tempo por segundo, função de
+          cada jogador e o counter correspondente.
+        </p>
+        <span class="module__cta datum">Abrir táticas →</span>
+      </a>
+
+      <a href="/prancheta/" class="module hud" data-reveal>
+        <i class="hud-brackets" aria-hidden="true"></i>
+        <div class="scan" aria-hidden="true"></div>
+        <div class="module__head">
+          <i class="fa-solid fa-pen-ruler module__icon" aria-hidden="true"></i>
+          <span class="module__status module__status--on">Ativo</span>
+        </div>
+        <h3 class="module__title">Prancheta tática</h3>
+        <p class="module__text">
+          Posicione jogadores, marque utilitárias, desenhe rotações e compartilhe
+          a estratégia com o time por link. Roda no navegador.
+        </p>
+        <span class="module__cta datum">Abrir prancheta →</span>
+      </a>
     </div>
   </div>
 </section>
+
+<section class="featured">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <div>
+        <span class="eyebrow">Em destaque</span>
+        <h2 class="section-head__title">Comece pelo essencial</h2>
+      </div>
+      <div class="section-head__rule"></div>
+      <a href="/lineups/" class="featured__all datum">Ver todos →</a>
+    </div>
+
+    <div class="lineups-grid">
+      {% for lineup in lineups.lineups | limit(3) %}
+        {% include "components/lineup-card.njk" %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="manifesto">
+  <div class="container">
+    <div class="manifesto__grid">
+      <div data-reveal>
+        <span class="eyebrow">Sobre</span>
+        <h2 class="manifesto__title">Conhecimento tático, catalogado.</h2>
+      </div>
+
+      <div class="manifesto__body" data-reveal>
+        <p>
+          Informação tática de Counter-Strike vive espalhada em vídeos longos, clipes
+          soltos e prints de Discord. Aqui ela vira catálogo: cada lineup e cada
+          execução com posição, timing, função e contra-jogo — pesquisável e citável.
+        </p>
+        <p>
+          Todo conteúdo passa por validação em treino antes de receber o selo de
+          verificado. Enquanto isso não acontece, a página avisa. Precisão importa
+          mais do que volume.
+        </p>
+        <a href="/lineups/" class="btn btn--secondary">Explorar lineups</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .modules { padding: clamp(3.5rem, 8vw, 6rem) 0; }
+
+  .modules__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+  }
+
+  .module {
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-xl);
+    text-decoration: none;
+    color: inherit;
+    min-height: 260px;
+    transition: transform var(--transition-normal);
+  }
+
+  a.module:hover { transform: translateY(-6px); }
+
+  .module__head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .module__icon {
+    font-size: 1.6rem;
+    color: var(--color-primary);
+  }
+
+  .module--dev .module__icon { color: var(--color-text-muted); }
+
+  .module__status {
+    font-family: var(--font-mono);
+    font-size: 0.66rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    border: 1px solid var(--color-border);
+    padding: 3px 8px;
+  }
+
+  .module__status--on {
+    color: var(--color-success);
+    border-color: rgba(53, 208, 127, 0.35);
+    background: rgba(53, 208, 127, 0.08);
+  }
+
+  .module__title {
+    font-size: var(--font-size-xl);
+    text-transform: uppercase;
+    letter-spacing: 0.01em;
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .module__text {
+    color: var(--color-text-light);
+    font-size: var(--font-size-sm);
+    line-height: 1.7;
+    flex: 1;
+  }
+
+  .module__cta {
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-top: var(--spacing-lg);
+  }
+
+  .module__cta--off { color: var(--color-text-muted); }
+
+  .featured {
+    padding: clamp(3.5rem, 8vw, 6rem) 0;
+    border-top: 1px solid var(--color-border);
+    background: rgba(8, 9, 12, 0.5);
+  }
+
+  .featured__all {
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 0.8rem;
+  }
+
+  .manifesto {
+    padding: clamp(3.5rem, 8vw, 6rem) 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .manifesto__grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
+  }
+
+  .manifesto__title {
+    font-size: clamp(1.8rem, 3.6vw, 2.8rem);
+    text-transform: uppercase;
+    margin-top: var(--spacing-md);
+    max-width: 12ch;
+  }
+
+  .manifesto__body p {
+    color: var(--color-text-light);
+    line-height: 1.8;
+    margin-bottom: var(--spacing-lg);
+    max-width: 58ch;
+  }
+
+  .manifesto__body .btn { margin-top: var(--spacing-sm); }
+
+  @media (max-width: 860px) {
+    .manifesto__grid { grid-template-columns: 1fr; }
+    .manifesto__title { max-width: none; }
+  }
+</style>

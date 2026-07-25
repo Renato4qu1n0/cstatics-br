@@ -1,18 +1,14 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const filters = document.querySelectorAll('[data-filter]');
-  filters.forEach((filter) => {
-    filter.addEventListener('click', () => {
-      const target = filter.getAttribute('data-filter');
-      if (target) {
-        const cards = document.querySelectorAll('.tactic-card');
-        cards.forEach((card) => {
-          if (target === 'all' || card.dataset.map === target || card.dataset.side === target) {
-            card.style.display = 'block';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      }
-    });
-  });
+// Acessibilidade: ícones do Font Awesome são decorativos — esconde do leitor de tela
+document.querySelectorAll('i[class*="fa-"]:not([aria-hidden])').forEach((i) => i.setAttribute('aria-hidden', 'true'));
+
+// Copiar link (botões com [data-copy-link]) — usado nas páginas de detalhe
+document.addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-copy-link]');
+  if (!btn) return;
+  const url = btn.getAttribute('data-copy-link') || window.location.href;
+  navigator.clipboard.writeText(url).then(() => {
+    const original = btn.innerHTML;
+    btn.innerHTML = '<i class="fa-solid fa-check"></i> Link copiado!';
+    setTimeout(() => { btn.innerHTML = original; }, 2000);
+  }).catch(() => {});
 });

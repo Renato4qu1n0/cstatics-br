@@ -1,0 +1,305 @@
+---
+layout: layouts/base.njk
+permalink: /prancheta/
+title: "Prancheta tática de CS2 - Monte e compartilhe estratégias | CSTatics Brasil"
+description: "Prancheta tática de Counter-Strike 2: posicione jogadores, marque smokes, flashes e molotovs, desenhe rotações e compartilhe a estratégia com o time por link."
+---
+
+<section class="board">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Ferramenta</span>
+        <h1 class="section-head__title">Prancheta tática</h1>
+      </div>
+      <div class="section-head__rule"></div>
+    </div>
+    <p class="board__lead">
+      Posicione jogadores, marque utilitárias, desenhe rotações e compartilhe o
+      plano com o time por link. Seu trabalho fica salvo neste navegador.
+    </p>
+
+    <div class="bd-toolbar hud">
+      <i class="hud-brackets" aria-hidden="true"></i>
+
+      <div class="bd-group">
+        <span class="bd-group__label datum">Mapa</span>
+        <select id="boardMap" class="bd-select" aria-label="Mapa"></select>
+      </div>
+
+      <div class="bd-group bd-tools" role="toolbar" aria-label="Ferramentas">
+        <button class="bd-tool active" data-tool="select" title="Mover / selecionar (V)" aria-label="Mover"><i class="fa-solid fa-arrow-pointer"></i></button>
+        <span class="bd-sep"></span>
+        <button class="bd-tool bd-tool--t" data-tool="player-t" title="Jogador T" aria-label="Jogador T"><i class="fa-solid fa-user"></i><b>T</b></button>
+        <button class="bd-tool bd-tool--ct" data-tool="player-ct" title="Jogador CT" aria-label="Jogador CT"><i class="fa-solid fa-user"></i><b>CT</b></button>
+        <span class="bd-sep"></span>
+        <button class="bd-tool bd-tool--smoke" data-tool="smoke" title="Smoke" aria-label="Smoke"><i class="fa-solid fa-cloud"></i></button>
+        <button class="bd-tool bd-tool--flash" data-tool="flash" title="Flash" aria-label="Flash"><i class="fa-solid fa-bolt"></i></button>
+        <button class="bd-tool bd-tool--molotov" data-tool="molotov" title="Molotov" aria-label="Molotov"><i class="fa-solid fa-fire"></i></button>
+        <button class="bd-tool bd-tool--he" data-tool="he" title="Granada HE" aria-label="HE"><i class="fa-solid fa-bomb"></i></button>
+        <span class="bd-sep"></span>
+        <button class="bd-tool" data-tool="arrow" title="Seta / rotação" aria-label="Seta"><i class="fa-solid fa-arrow-right-long"></i></button>
+        <button class="bd-tool" data-tool="text" title="Texto" aria-label="Texto"><i class="fa-solid fa-font"></i></button>
+      </div>
+
+      <div class="bd-group bd-actions">
+        <button id="bdUndo" class="bd-act" title="Desfazer (Ctrl+Z)" aria-label="Desfazer"><i class="fa-solid fa-rotate-left"></i></button>
+        <button id="bdRedo" class="bd-act" title="Refazer (Ctrl+Shift+Z)" aria-label="Refazer"><i class="fa-solid fa-rotate-right"></i></button>
+        <button id="bdClear" class="bd-act" title="Limpar tudo" aria-label="Limpar"><i class="fa-solid fa-trash-can"></i></button>
+        <button id="bdShare" class="bd-share"><i class="fa-solid fa-share-nodes"></i> Compartilhar</button>
+      </div>
+    </div>
+
+    <div class="bd-steps hud">
+      <i class="hud-brackets" aria-hidden="true"></i>
+      <span class="bd-steps__label datum">Etapas</span>
+      <div class="bd-steps__list" id="bdStepList"></div>
+      <button class="bd-step-add" id="bdStepAdd" type="button" title="Nova etapa (duplica a atual)"><i class="fa-solid fa-plus"></i> Etapa</button>
+      <button class="bd-step-del" id="bdStepDel" type="button" title="Remover etapa atual" aria-label="Remover etapa"><i class="fa-solid fa-xmark"></i></button>
+      <button class="bd-play" id="bdPlay" type="button" title="Reproduzir a sequência"><i class="fa-solid fa-play"></i> <span>Reproduzir</span></button>
+    </div>
+
+    <div class="bd-stage hud">
+      <i class="hud-brackets" aria-hidden="true"></i>
+      <div class="bd-progress" id="bdProgress" aria-hidden="true"><span></span></div>
+      <svg id="boardSvg" viewBox="0 0 400 300" role="application" aria-label="Prancheta tática">
+        <defs>
+          <marker id="bdArrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
+            <path d="M0 0 L10 5 L0 10 z" fill="#ffb020"></path>
+          </marker>
+          <linearGradient id="bdFloor" x1="0" y1="0" x2="0.35" y2="1">
+            <stop offset="0" stop-color="#18293c"></stop>
+            <stop offset="1" stop-color="#0b1522"></stop>
+          </linearGradient>
+        </defs>
+        <g id="bdSurface"></g>
+        <g id="bdLayer"></g>
+      </svg>
+      <span class="bd-counter datum" id="bdCounter" aria-live="polite"></span>
+    </div>
+
+    <div class="bd-toast" id="bdToast" role="status" aria-live="polite"></div>
+
+    <p class="bd-note datum">
+      Escolha uma ferramenta e clique no mapa para posicionar · arraste um item para mover ·
+      clique num item e depois no <strong>×</strong> (ou tecle Delete) para remover ·
+      duplo-clique num texto para editar.
+      <br>
+      <strong>Animar:</strong> crie <strong>Etapas</strong> (cada uma copia a anterior), mova os itens
+      para a nova posição em cada etapa e clique em <strong>Reproduzir</strong> — a jogada roda no tempo.
+      Esquema tático estilizado, não é planta medida do jogo.
+    </p>
+  </div>
+
+  <div class="bd-modal" id="bdModal" hidden>
+    <div class="bd-modal__box hud">
+      <i class="hud-brackets" aria-hidden="true"></i>
+      <p class="bd-modal__msg" id="bdModalMsg"></p>
+      <input class="bd-modal__input" id="bdModalInput" type="text" autocomplete="off" maxlength="80" placeholder="Digite aqui…">
+      <div class="bd-modal__actions">
+        <button class="btn btn--secondary" id="bdModalCancel" type="button">Cancelar</button>
+        <button class="btn btn-primary" id="bdModalOk" type="button">OK</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="application/json" id="mapgeo-data">{{ mapgeo | json | safe }}</script>
+<script type="application/json" id="maps-data">{{ maps.maps | json | safe }}</script>
+<script src="/assets/js/board.js" defer></script>
+
+<style>
+  .board { padding: clamp(2rem, 5vw, 3.5rem) 0 clamp(3.5rem, 8vw, 6rem); }
+  .board__lead { color: var(--color-text-light); font-size: var(--font-size-lg); max-width: 64ch; line-height: 1.7; margin: 0 0 var(--spacing-xl); }
+
+  /* ---- toolbar ---- */
+  .bd-toolbar {
+    display: flex; flex-wrap: wrap; align-items: center; gap: var(--spacing-md);
+    padding: var(--spacing-md); margin-bottom: var(--spacing-md);
+  }
+  .bd-group { display: flex; align-items: center; gap: 6px; }
+  .bd-group__label { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-text-muted); }
+  .bd-actions { margin-left: auto; }
+
+  .bd-select {
+    font-family: var(--font-mono); font-size: var(--font-size-xs); text-transform: uppercase; letter-spacing: 0.08em;
+    background: rgba(8,9,12,.6); color: var(--color-text); border: 1px solid var(--color-border); border-radius: 0;
+    padding: 8px 10px; cursor: pointer;
+  }
+  .bd-select:focus { outline: none; border-color: var(--color-primary); }
+
+  .bd-tools { flex-wrap: wrap; }
+  .bd-sep { width: 1px; height: 22px; background: var(--color-border); margin: 0 2px; }
+
+  .bd-tool, .bd-act {
+    display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+    min-width: 38px; height: 38px; padding: 0 9px;
+    background: rgba(8,9,12,.5); color: var(--color-text-light);
+    border: 1px solid var(--color-border); border-radius: 0; cursor: pointer;
+    font-family: var(--font-mono); font-size: 0.66rem; font-weight: 700;
+    transition: all var(--transition-fast);
+    clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 5px 100%, 0 calc(100% - 5px));
+  }
+  .bd-tool i, .bd-act i { font-size: 0.95rem; }
+  .bd-tool b { font-size: 0.6rem; letter-spacing: 0.05em; }
+  .bd-tool:hover, .bd-act:hover { border-color: var(--color-border-light); color: var(--color-text); }
+  .bd-tool.active { background: var(--color-primary); border-color: var(--color-primary); color: #0b0d11; }
+  .bd-tool--t.active { background: var(--t); border-color: var(--t); }
+  .bd-tool--ct.active { background: var(--ct); border-color: var(--ct); }
+  .bd-tool--t { color: var(--t); }
+  .bd-tool--ct { color: var(--ct); }
+  .bd-tool--smoke.active { background:#cbd5e1; border-color:#cbd5e1; }
+  .bd-tool--flash.active { background:#ffe08a; border-color:#ffe08a; }
+  .bd-tool--molotov.active { background:#ff6a2c; border-color:#ff6a2c; }
+  .bd-tool--he.active { background:#ff5449; border-color:#ff5449; }
+  .bd-act:disabled { opacity: .35; cursor: not-allowed; }
+
+  .bd-share {
+    display: inline-flex; align-items: center; gap: 7px; height: 38px; padding: 0 16px;
+    background: var(--color-primary); color: #0b0d11; border: 0; cursor: pointer;
+    font-family: var(--font-display); font-weight: 600; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+    transition: box-shadow var(--transition-fast);
+  }
+  .bd-share:hover { box-shadow: 0 6px 22px rgba(255,176,32,.3); }
+
+  /* ---- barra de etapas ---- */
+  .bd-steps { display: flex; align-items: center; gap: var(--spacing-sm); flex-wrap: wrap; padding: 8px var(--spacing-md); margin-bottom: var(--spacing-md); }
+  .bd-steps__label { font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-text-muted); }
+  .bd-steps__list { display: flex; gap: 5px; flex-wrap: wrap; }
+  .bd-step {
+    width: 30px; height: 30px; display: inline-flex; align-items: center; justify-content: center;
+    background: rgba(8,9,12,.5); color: var(--color-text-light); border: 1px solid var(--color-border);
+    font-family: var(--font-mono); font-size: 0.72rem; font-weight: 700; cursor: pointer;
+    clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 5px 100%, 0 calc(100% - 5px));
+    transition: all var(--transition-fast);
+  }
+  .bd-step:hover { border-color: var(--color-border-light); color: var(--color-text); }
+  .bd-step.active { background: var(--color-primary); border-color: var(--color-primary); color: #0b0d11; }
+
+  .bd-step-add, .bd-step-del {
+    height: 30px; display: inline-flex; align-items: center; gap: 5px; padding: 0 10px;
+    background: rgba(8,9,12,.5); color: var(--color-text-light); border: 1px solid var(--color-border); cursor: pointer;
+    font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: .08em; text-transform: uppercase;
+    clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 5px 100%, 0 calc(100% - 5px));
+    transition: all var(--transition-fast);
+  }
+  .bd-step-add:hover, .bd-step-del:hover { border-color: var(--color-primary); color: var(--color-primary); }
+  .bd-step-add:disabled, .bd-step-del:disabled { opacity: .35; cursor: not-allowed; }
+
+  .bd-play {
+    margin-left: auto; height: 34px; display: inline-flex; align-items: center; gap: 8px; padding: 0 20px;
+    background: linear-gradient(135deg, var(--color-success), #23a866); color: #06140c; border: 0; cursor: pointer;
+    font-family: var(--font-display); font-weight: 600; font-size: 0.74rem; letter-spacing: .12em; text-transform: uppercase;
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+    transition: box-shadow var(--transition-fast);
+  }
+  .bd-play:hover { box-shadow: 0 6px 20px rgba(53,208,127,.3); }
+  .bd-play.is-playing { background: linear-gradient(135deg, #ff5449, #c0392b); color: #fff; }
+
+  .bd-progress { position: absolute; top: 8px; left: 8px; right: 8px; height: 2px; background: rgba(255,255,255,.06); z-index: 3; pointer-events: none; }
+  .bd-progress span { display: block; height: 100%; width: 0; background: var(--color-success); box-shadow: 0 0 8px var(--color-success); }
+
+  /* ---- stage ---- */
+  .bd-stage { position: relative; padding: 8px; }
+  #boardSvg {
+    display: block; width: 100%; height: auto; aspect-ratio: 4 / 3;
+    background: radial-gradient(ellipse 70% 60% at 50% 45%, rgba(61,139,255,.05), transparent 70%), #0a0d12;
+    touch-action: none; cursor: default; user-select: none;
+  }
+  .bd-counter {
+    position: absolute; right: 16px; bottom: 16px; z-index: 2;
+    font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-muted);
+    background: rgba(8,9,12,.7); border: 1px solid var(--color-border); padding: 4px 9px; pointer-events: none;
+  }
+
+  /* superfície do mapa — piso, paredes, zonas, cover e selos */
+  .bd-floor, .bd-area { fill: url(#bdFloor); stroke: rgba(130,180,235,.5); stroke-width: 1.3; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+  .bd-zone { stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .bd-zone--a { fill: rgba(255,176,32,.11); stroke: rgba(255,176,32,.45); }
+  .bd-zone--b { fill: rgba(61,139,255,.14); stroke: rgba(61,139,255,.5); }
+  .bd-obj { fill: rgba(150,185,230,.16); stroke: rgba(160,195,240,.4); stroke-width: .8; vector-effect: non-scaling-stroke; }
+  .bd-link { stroke: rgba(122,176,255,.2); stroke-width: 1; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
+  .bd-badge { stroke-width: 1.6; vector-effect: non-scaling-stroke; }
+  .bd-badge--a { fill: rgba(24,17,4,.9); stroke: #ffb020; }
+  .bd-badge--b { fill: rgba(6,14,26,.9); stroke: #3d8bff; }
+  .bd-badge-txt { font-family: var(--font-display); font-size: 12px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+  .bd-badge-txt--a { fill: #ffb020; }
+  .bd-badge-txt--b { fill: #6facff; }
+  .bd-site { fill: rgba(190,214,255,.4); font-family: var(--font-display); font-size: 15px; font-weight: 700; text-anchor: middle; }
+  .bd-dot { fill: rgba(140,185,240,.4); }
+  .bd-callout { fill: rgba(200,220,255,.62); font-family: var(--font-mono); font-size: 6px; letter-spacing: .04em; text-transform: uppercase; text-anchor: middle; paint-order: stroke; stroke: #0a0d12; stroke-width: 2.4px; }
+
+  /* elementos editáveis */
+  .bd-el { cursor: grab; }
+  .bd-el.is-selected { cursor: grabbing; }
+
+  /* jogador: disco + anel + número + sigla do lado */
+  .bd-player__disc { stroke: rgba(0,0,0,.45); stroke-width: 1; }
+  .bd-player--t .bd-player__disc { fill: var(--t); }
+  .bd-player--ct .bd-player__disc { fill: var(--ct); }
+  .bd-player__ring { fill: none; stroke: rgba(255,255,255,.35); stroke-width: 1; }
+  .bd-player__label { fill: #0b0d11; font-family: var(--font-mono); font-size: 8.5px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+  .bd-player__side { font-family: var(--font-mono); font-size: 5.5px; font-weight: 700; letter-spacing: .06em; text-anchor: middle; paint-order: stroke; stroke: #0a0d12; stroke-width: 2.4px; }
+  .bd-player--t .bd-player__side { fill: var(--t); }
+  .bd-player--ct .bd-player__side { fill: var(--ct); }
+
+  /* utilitária: área de efeito + token + ícone real (FA) + nome */
+  .bd-util__aoe { fill: var(--fx); opacity: .15; }
+  .bd-util__token { fill: var(--fx); stroke: rgba(0,0,0,.4); stroke-width: 1; }
+  .bd-util__glyph { font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: 9px; fill: #0b0d11; text-anchor: middle; dominant-baseline: central; }
+  .bd-util__name { font-family: var(--font-mono); font-size: 6px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; fill: var(--fx); text-anchor: middle; paint-order: stroke; stroke: #0a0d12; stroke-width: 2.6px; }
+
+  .bd-arrow__line { stroke: #ffb020; stroke-width: 2.4; stroke-linecap: round; vector-effect: non-scaling-stroke; filter: drop-shadow(0 0 4px rgba(255,176,32,.4)); }
+  .bd-arrow__hit { stroke: transparent; stroke-width: 10; }
+  .bd-text__t { fill: var(--color-text); font-family: var(--font-mono); font-size: 9px; font-weight: 500; paint-order: stroke; stroke: #0a0d12; stroke-width: 3px; }
+
+  /* botão de excluir (aparece no item selecionado) */
+  .bd-del { cursor: pointer; }
+  .bd-del__bg { fill: #ff5449; stroke: #0a0d12; stroke-width: 1; }
+  .bd-del__x { stroke: #fff; stroke-width: 1.4; stroke-linecap: round; }
+  .bd-del:hover .bd-del__bg { fill: #ff7066; }
+
+  /* seleção */
+  .bd-el.is-selected .bd-player__disc,
+  .bd-el.is-selected .bd-util__token { stroke: #fff; stroke-width: 2; }
+  .bd-el.is-selected .bd-arrow__line { stroke: #fff; filter: none; }
+  .bd-el.is-selected .bd-text__t { fill: var(--color-primary); }
+
+  /* toast */
+  .bd-toast {
+    position: fixed; left: 50%; bottom: 28px; transform: translate(-50%, 20px);
+    background: var(--color-primary); color: #0b0d11; font-family: var(--font-mono); font-size: var(--font-size-sm);
+    padding: 10px 18px; z-index: 999; opacity: 0; pointer-events: none; transition: all var(--transition-normal);
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  }
+  .bd-toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  .bd-note { color: var(--color-text-muted); font-size: var(--font-size-xs); line-height: 1.7; margin: var(--spacing-md) 0 0; }
+
+  /* ---- modal estilizado ---- */
+  .bd-modal {
+    position: fixed; inset: 0; z-index: 1000; display: flex; align-items: center; justify-content: center;
+    background: rgba(4,5,8,.72); backdrop-filter: blur(3px); padding: var(--spacing-lg);
+  }
+  .bd-modal[hidden] { display: none; }
+  .bd-modal__box { position: relative; width: min(92vw, 420px); padding: var(--spacing-xl); }
+  .bd-modal__msg {
+    font-family: var(--font-display); text-transform: uppercase; letter-spacing: .02em;
+    font-size: var(--font-size-lg); margin: 0 0 var(--spacing-lg); color: var(--color-text);
+  }
+  .bd-modal__input {
+    width: 100%; font-family: var(--font-mono); font-size: var(--font-size-base);
+    background: rgba(8,9,12,.7); color: var(--color-text); border: 1px solid var(--color-border);
+    border-radius: 0; padding: 12px 14px; margin-bottom: var(--spacing-lg);
+  }
+  .bd-modal__input:focus { outline: none; border-color: var(--color-primary); box-shadow: 0 0 0 1px var(--color-primary), 0 0 22px rgba(255,176,32,.14); }
+  .bd-modal__input[hidden] { display: none; }
+  .bd-modal__actions { display: flex; gap: var(--spacing-md); justify-content: flex-end; }
+  .bd-modal__actions .btn { padding: .7rem 1.5rem; }
+
+  @media (max-width: 640px) {
+    .bd-actions { margin-left: 0; width: 100%; }
+    .bd-share { margin-left: auto; }
+  }
+</style>

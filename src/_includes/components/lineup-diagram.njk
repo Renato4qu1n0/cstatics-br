@@ -1,0 +1,6 @@
+{# Wrapper: monta um único arremesso e delega ao diagrama genérico. #}
+{%- set dgMap = lineup.map -%}
+{%- set dgSeq = false -%}
+{%- set dgTitle = (lineup.map | capitalize) ~ " · esquema tático" -%}
+{%- set dgThrows = [ { from: lineup.from, to: lineup.to, utility: lineup.utility } ] -%}
+{% include "components/tactic-diagram.njk" %}

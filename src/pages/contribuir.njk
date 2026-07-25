@@ -1,0 +1,163 @@
+---
+layout: layouts/base.njk
+permalink: /contribuir/
+title: "Contribua com o catálogo - CSTatics Brasil"
+description: "Ajude a construir o maior catálogo tático de CS2 em português: reporte erros, sugira lineups e execuções, ou grave vídeos de validação."
+---
+
+<section class="contrib-hero">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Comunidade</span>
+        <h1 class="section-head__title">Contribua com o catálogo</h1>
+      </div>
+      <div class="section-head__rule"></div>
+    </div>
+    <p class="contrib-hero__lead">
+      O catálogo cresce com quem joga. Cada erro reportado e cada jogada sugerida
+      entra na fila de validação e vira conteúdo público — com seu crédito, se quiser.
+    </p>
+  </div>
+</section>
+
+<section class="contrib-section">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <div>
+        <span class="eyebrow">Como funciona</span>
+        <h2 class="section-head__title">O selo de validação</h2>
+      </div>
+      <div class="section-head__rule"></div>
+    </div>
+
+    <div class="contrib-pipeline">
+      <div class="contrib-step hud" data-reveal>
+        <i class="hud-brackets" aria-hidden="true"></i>
+        <span class="contrib-step__n datum">01</span>
+        <h3>Rascunho</h3>
+        <p>A jogada entra no catálogo com o propósito tático, o passo a passo e o esquema no mapa. Recebe o selo <span class="chip-inline chip-inline--wip">Em validação</span>.</p>
+      </div>
+      <div class="contrib-step hud" data-reveal>
+        <i class="hud-brackets" aria-hidden="true"></i>
+        <span class="contrib-step__n datum">02</span>
+        <h3>Teste em treino</h3>
+        <p>A equipe confere o alinhamento dentro do jogo e grava o vídeo da execução. Sem isso, nada vira verificado.</p>
+      </div>
+      <div class="contrib-step hud" data-reveal>
+        <i class="hud-brackets" aria-hidden="true"></i>
+        <span class="contrib-step__n datum">03</span>
+        <h3>Verificado</h3>
+        <p>Com vídeo e alinhamento conferidos, a jogada recebe o selo <span class="chip-inline chip-inline--ok">Verificado</span> e pode ir para a partida.</p>
+      </div>
+    </div>
+
+    <p class="contrib-note datum">Precisão vale mais que volume. Enquanto não passa no treino, a página avisa que a jogada está em validação.</p>
+  </div>
+</section>
+
+<section class="contrib-section contrib-section--alt">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <div>
+        <span class="eyebrow">Três formas de ajudar</span>
+        <h2 class="section-head__title">Onde você entra</h2>
+      </div>
+      <div class="section-head__rule"></div>
+    </div>
+
+    <div class="contrib-ways">
+      <div class="contrib-way hud" data-reveal>
+        <i class="hud-brackets" aria-hidden="true"></i>
+        <i class="fa-solid fa-bug contrib-way__icon" aria-hidden="true"></i>
+        <h3>Reportar um erro</h3>
+        <p>Alinhamento mudou depois de um update? Um passo está errado? Avise. Inclua:</p>
+        <ul class="contrib-way__list datum">
+          <li>Mapa e nome da jogada</li>
+          <li>O que está errado</li>
+          <li>Print ou vídeo, se tiver</li>
+        </ul>
+      </div>
+
+      <div class="contrib-way hud" data-reveal>
+        <i class="hud-brackets" aria-hidden="true"></i>
+        <i class="fa-solid fa-lightbulb contrib-way__icon" aria-hidden="true"></i>
+        <h3>Sugerir uma jogada</h3>
+        <p>Conhece um lineup ou execução que falta no catálogo? Mande. Inclua:</p>
+        <ul class="contrib-way__list datum">
+          <li>Mapa, lado e bombsite</li>
+          <li>Posição de saída e alvo</li>
+          <li>Quando usar na partida</li>
+        </ul>
+      </div>
+
+      <div class="contrib-way hud" data-reveal>
+        <i class="hud-brackets" aria-hidden="true"></i>
+        <i class="fa-solid fa-video contrib-way__icon" aria-hidden="true"></i>
+        <h3>Gravar vídeo</h3>
+        <p>É criador de conteúdo? Grave a execução de uma jogada em validação e ela vira verificada. Combine:</p>
+        <ul class="contrib-way__list datum">
+          <li>Quais jogadas você cobre</li>
+          <li>Crédito e link do seu canal</li>
+          <li>Formato do vídeo</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="contrib-cta hud" data-reveal>
+      <i class="hud-brackets" aria-hidden="true"></i>
+      <div>
+        <h3 class="contrib-cta__title">Pronto para contribuir?</h3>
+        <p>Escreva pelo formulário ou fale direto nas redes. A equipe responde.</p>
+      </div>
+      <div class="contrib-cta__actions">
+        <a href="/contato/" class="btn btn-primary">Abrir formulário</a>
+        <a href="{{ site.social.instagram }}" target="_blank" rel="noopener" class="btn btn--secondary">Chamar no Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contrib-hero { padding: clamp(2.5rem, 6vw, 4rem) 0 var(--spacing-xl); }
+  .contrib-hero .section-head { margin-bottom: var(--spacing-lg); }
+  .contrib-hero .section-head__title { font-size: clamp(2rem, 5.5vw, 3.4rem); }
+  .contrib-hero__lead { color: var(--color-text-light); font-size: var(--font-size-lg); max-width: 64ch; line-height: 1.7; margin: 0; }
+
+  .contrib-section { padding: clamp(2.5rem, 6vw, 4rem) 0; }
+  .contrib-section--alt { border-top: 1px solid var(--color-border); background: rgba(8, 9, 12, 0.5); }
+
+  .contrib-pipeline { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--spacing-lg); }
+  .contrib-step { padding: var(--spacing-xl); }
+  .contrib-step__n { display: block; color: var(--color-primary); font-size: var(--font-size-xl); font-weight: 700; margin-bottom: var(--spacing-sm); }
+  .contrib-step h3 { font-size: var(--font-size-lg); text-transform: uppercase; margin-bottom: var(--spacing-sm); }
+  .contrib-step p { color: var(--color-text-light); font-size: var(--font-size-sm); line-height: 1.7; margin: 0; }
+
+  .chip-inline {
+    display: inline-block; font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.12em;
+    text-transform: uppercase; padding: 1px 6px; white-space: nowrap;
+  }
+  .chip-inline--wip { background: rgba(0, 0, 0, 0.45); color: #e5e7eb; border: 1px solid var(--color-border-light); }
+  .chip-inline--ok { background: rgba(53, 208, 127, 0.15); color: #2ecc71; border: 1px solid rgba(53, 208, 127, 0.4); }
+
+  .contrib-note { margin-top: var(--spacing-xl); color: var(--color-text-muted); font-size: var(--font-size-xs); letter-spacing: 0.06em; text-transform: uppercase; }
+
+  .contrib-ways { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--spacing-lg); margin-bottom: var(--spacing-xl); }
+  .contrib-way { padding: var(--spacing-xl); }
+  .contrib-way__icon { font-size: 1.6rem; color: var(--color-primary); margin-bottom: var(--spacing-md); }
+  .contrib-way h3 { font-size: var(--font-size-lg); text-transform: uppercase; margin-bottom: var(--spacing-sm); }
+  .contrib-way p { color: var(--color-text-light); font-size: var(--font-size-sm); line-height: 1.7; margin-bottom: var(--spacing-md); }
+  .contrib-way__list { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.4rem; }
+  .contrib-way__list li { color: var(--color-text-light); font-size: var(--font-size-xs); letter-spacing: 0.04em; padding-left: var(--spacing-md); position: relative; }
+  .contrib-way__list li::before { content: '>'; position: absolute; left: 0; color: var(--color-primary); }
+
+  .contrib-cta { display: flex; align-items: center; justify-content: space-between; gap: var(--spacing-xl); padding: var(--spacing-xl); flex-wrap: wrap; }
+  .contrib-cta__title { font-size: var(--font-size-xl); text-transform: uppercase; margin-bottom: var(--spacing-xs); }
+  .contrib-cta p { color: var(--color-text-light); margin: 0; }
+  .contrib-cta__actions { display: flex; gap: var(--spacing-md); flex-wrap: wrap; }
+
+  @media (max-width: 640px) {
+    .contrib-cta { flex-direction: column; align-items: flex-start; }
+    .contrib-cta__actions .btn { width: 100%; }
+  }
+</style>

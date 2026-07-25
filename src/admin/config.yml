@@ -1,0 +1,176 @@
+# Configuração do Decap CMS (painel de conteúdo git-based).
+#
+# COMO USAR LOCALMENTE (sem precisar de deploy nem login):
+#   1) npm run dev            (deixe rodando em outra aba)
+#   2) npx decap-server       (o proxy que grava nos arquivos locais)
+#   3) abra http://localhost:8080/admin/
+#   Edite, clique em "Publish" e os JSON em src/_data/ são atualizados no disco.
+#
+# EM PRODUÇÃO: troque/ative o backend abaixo conforme a hospedagem
+#   - Netlify: use "git-gateway" + Netlify Identity (já deixado como padrão).
+#   - Vercel/GitHub: use backend "github" com um OAuth (ver Decap docs).
+
+backend:
+  name: git-gateway
+  branch: main
+
+# Permite editar os arquivos reais localmente via `npx decap-server` sem login.
+local_backend: true
+
+media_folder: "src/images/uploads"
+public_folder: "/images/uploads"
+
+locale: "pt"
+
+collections:
+  # ---------------------------------------------------------------- LINEUPS
+  - name: "lineups"
+    label: "Lineups"
+    label_singular: "Lineup"
+    delete: false
+    files:
+      - name: "lineups"
+        label: "Todas as lineups"
+        file: "src/_data/lineups.json"
+        description: "Jogadas de utilitária. from/to precisam existir no mapgeo."
+        fields:
+          - label: "Lineups"
+            name: "lineups"
+            widget: "list"
+            summary: "{{fields.title}} ({{fields.map}})"
+            fields:
+              - { label: "Slug (URL, único, sem acento)", name: "slug", widget: "string", pattern: ['^[a-z0-9-]+$', 'só minúsculas, números e hífen'] }
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Mapa", name: "map", widget: "select", options: ["mirage", "inferno", "dust2", "nuke", "ancient", "anubis", "train"] }
+              - { label: "Utilitária", name: "utility", widget: "select", options: ["smoke", "flash", "molotov", "he", "grenade"] }
+              - { label: "Lado", name: "side", widget: "select", options: ["t", "ct"] }
+              - { label: "Bomb", name: "site", widget: "select", options: ["a", "b", "mid"] }
+              - { label: "Posição (de onde joga)", name: "position", widget: "string" }
+              - { label: "Alvo (o que cobre)", name: "target", widget: "string" }
+              - { label: "Dificuldade", name: "difficulty", widget: "select", options: ["facil", "media", "dificil"] }
+              - { label: "Movimento", name: "movement", widget: "string", required: false, hint: "jumpthrow, throw, run-throw, walk..." }
+              - { label: "Resumo (1 frase)", name: "shortDescription", widget: "text" }
+              - { label: "Descrição", name: "description", widget: "text" }
+              - { label: "Passo a passo", name: "steps", widget: "list", field: { label: "Passo", name: "step", widget: "text" } }
+              - { label: "Dicas", name: "tips", widget: "list", required: false, field: { label: "Dica", name: "tip", widget: "text" } }
+              - { label: "Callout de ORIGEM (from)", name: "from", widget: "string", hint: "precisa existir no mapgeo do mapa" }
+              - { label: "Callout de DESTINO (to)", name: "to", widget: "string", hint: "precisa existir no mapgeo do mapa" }
+              - { label: "URL do vídeo", name: "videoUrl", widget: "string", required: false }
+              - { label: "GIF", name: "gif", widget: "string", required: false }
+              - { label: "Imagem", name: "image", widget: "string", required: false }
+              - { label: "Verificado (testado no jogo)", name: "verified", widget: "boolean", default: false }
+              - { label: "Tags", name: "tags", widget: "list", required: false, field: { label: "Tag", name: "tag", widget: "string" } }
+              - label: "Meta"
+                name: "meta"
+                widget: "object"
+                fields:
+                  - { label: "Criado em", name: "created", widget: "string" }
+                  - { label: "Atualizado em", name: "updated", widget: "string" }
+                  - { label: "Autor", name: "author", widget: "string", default: "CSTatics" }
+
+  # ------------------------------------------------------------- EXECUÇÕES
+  - name: "executions"
+    label: "Execuções"
+    label_singular: "Execução"
+    delete: false
+    files:
+      - name: "executions"
+        label: "Todas as execuções"
+        file: "src/_data/executions.json"
+        description: "Pacotes de lineups. Cada throw referencia o slug de uma lineup do MESMO mapa."
+        fields:
+          - label: "Execuções"
+            name: "executions"
+            widget: "list"
+            summary: "{{fields.title}} ({{fields.map}})"
+            fields:
+              - { label: "Slug", name: "slug", widget: "string", pattern: ['^[a-z0-9-]+$', 'só minúsculas, números e hífen'] }
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Mapa", name: "map", widget: "select", options: ["mirage", "inferno", "dust2", "nuke", "ancient", "anubis", "train"] }
+              - { label: "Lado", name: "side", widget: "select", options: ["t", "ct"] }
+              - { label: "Bomb", name: "site", widget: "select", options: ["a", "b", "mid"] }
+              - { label: "Dificuldade", name: "difficulty", widget: "select", options: ["facil", "media", "dificil"] }
+              - { label: "Resumo", name: "shortDescription", widget: "text" }
+              - { label: "Descrição", name: "description", widget: "text" }
+              - label: "Arremessos (na ordem)"
+                name: "throws"
+                widget: "list"
+                summary: "{{fields.lineup}}"
+                fields:
+                  - { label: "Slug da lineup", name: "lineup", widget: "string" }
+                  - { label: "Rótulo", name: "label", widget: "string" }
+              - label: "Timeline"
+                name: "steps"
+                widget: "list"
+                required: false
+                summary: "{{fields.time}} — {{fields.description}}"
+                fields:
+                  - { label: "Tempo", name: "time", widget: "string" }
+                  - { label: "Descrição", name: "description", widget: "text" }
+              - { label: "Dicas", name: "tips", widget: "list", required: false, field: { label: "Dica", name: "tip", widget: "text" } }
+              - { label: "Verificado", name: "verified", widget: "boolean", default: false }
+              - { label: "Tags", name: "tags", widget: "list", required: false, field: { label: "Tag", name: "tag", widget: "string" } }
+              - label: "Meta"
+                name: "meta"
+                widget: "object"
+                fields:
+                  - { label: "Criado em", name: "created", widget: "string" }
+                  - { label: "Atualizado em", name: "updated", widget: "string" }
+                  - { label: "Autor", name: "author", widget: "string", default: "CSTatics" }
+
+  # ---------------------------------------------------------------- TÁTICAS
+  - name: "tactics"
+    label: "Táticas"
+    label_singular: "Tática"
+    delete: false
+    files:
+      - name: "tactics"
+        label: "Todas as táticas"
+        file: "src/_data/tactics.json"
+        description: "Estratégias de time."
+        fields:
+          - label: "Táticas"
+            name: "tactics"
+            widget: "list"
+            summary: "{{fields.title}} ({{fields.mapSlug}})"
+            fields:
+              - { label: "ID", name: "id", widget: "number", value_type: "int" }
+              - { label: "Slug", name: "slug", widget: "string", pattern: ['^[a-z0-9-]+$', 'só minúsculas, números e hífen'] }
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Categoria", name: "category", widget: "string", hint: "default, rush, force, eco..." }
+              - { label: "Lado", name: "side", widget: "select", options: ["t-side", "ct-side"] }
+              - { label: "Mapa (nome)", name: "map", widget: "string", hint: "Mirage, Inferno..." }
+              - { label: "Mapa (slug)", name: "mapSlug", widget: "select", options: ["mirage", "inferno", "dust2", "nuke", "ancient", "anubis", "train"] }
+              - { label: "Resumo", name: "shortDescription", widget: "text" }
+              - { label: "Imagem", name: "image", widget: "string", required: false }
+              - { label: "Taxa de sucesso (%)", name: "successRate", widget: "number", required: false, value_type: "int" }
+              - { label: "Dificuldade (1-10)", name: "difficulty", widget: "number", value_type: "int" }
+              - { label: "Rótulo de dificuldade", name: "difficultyLabel", widget: "string" }
+              - { label: "Jogadores", name: "players", widget: "list", field: { label: "Nº", name: "n", widget: "number", value_type: "int" } }
+              - { label: "Descrição", name: "description", widget: "text" }
+              - label: "Passos"
+                name: "steps"
+                widget: "list"
+                summary: "{{fields.time}} — {{fields.description}}"
+                fields:
+                  - { label: "Tempo", name: "time", widget: "string" }
+                  - { label: "Descrição", name: "description", widget: "text" }
+                  - { label: "Jogadores", name: "players", widget: "list", required: false, field: { label: "Nº", name: "n", widget: "number", value_type: "int" } }
+              - label: "Counters"
+                name: "counters"
+                widget: "list"
+                required: false
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: "Título", name: "title", widget: "string" }
+                  - { label: "Descrição", name: "description", widget: "text" }
+              - { label: "URL do vídeo", name: "videoUrl", widget: "string", required: false }
+              - { label: "Tags", name: "tags", widget: "list", required: false, field: { label: "Tag", name: "tag", widget: "string" } }
+              - { label: "Verificado", name: "verified", widget: "boolean", default: false }
+              - label: "Meta"
+                name: "meta"
+                widget: "object"
+                fields:
+                  - { label: "Criado em", name: "created", widget: "string" }
+                  - { label: "Atualizado em", name: "updated", widget: "string" }
+                  - { label: "Autor", name: "author", widget: "string", default: "CSTatics" }

@@ -1,189 +1,141 @@
 ---
 layout: layouts/base.njk
 permalink: /tactics/
-title: Táticas - CSTatics Brasil
-description: Explore todas as táticas profissionais de Counter-Strike 2 disponíveis no CSTatics Brasil.
+title: "Táticas de CS2 por mapa - Mirage, Inferno, Nuke e mais | CSTatics Brasil"
+description: "Selecione um mapa e acesse lineups, execuções e defesas de Counter-Strike 2: Mirage, Inferno, Dust2, Nuke, Ancient e Anubis."
 ---
 
 <section class="maps-section">
   <div class="container">
-    <div class="maps-header">
-      <h1 class="maps-section__title">Escolha um mapa</h1>
-      <p class="maps-section__subtitle">Selecione o mapa para continuar para a página dedicada às táticas.</p>
+    <div class="section-head" data-reveal>
+      <div>
+        <span class="eyebrow">Arsenal por mapa</span>
+        <h1 class="section-head__title">Selecione o mapa</h1>
+      </div>
+      <div class="section-head__rule"></div>
+      <span class="maps-count datum">{{ maps.maps | filterBy("active", true) | length }} no pool ativo</span>
     </div>
 
     <div class="maps-grid">
-      <a href="/tactics/mirage/" class="map-card">
-        <div class="map-card__image">
-          <img src="/img/maps/mirage-logo.png" alt="Mapa Mirage" loading="lazy">
-        </div>
-        <div class="map-card__body">
-          <span class="map-card__name">Mirage</span>
-          <span class="map-card__button">Ver táticas</span>
-        </div>
-      </a>
+      {% for map in maps.maps %}
+        <a href="/mapas/{{ map.slug }}/" class="map-card hud {% if not map.active %}map-card--legacy{% endif %} {% if map.vector %}map-card--vector{% endif %}" data-reveal>
+          <i class="hud-brackets" aria-hidden="true"></i>
+          <div class="scan" aria-hidden="true"></div>
 
-      <a href="/tactics/inferno/" class="map-card">
-        <div class="map-card__image">
-          <img src="/img/maps/inferno-logo.jpg" alt="Mapa Inferno" loading="lazy">
-        </div>
-        <div class="map-card__body">
-          <span class="map-card__name">Inferno</span>
-          <span class="map-card__button">Ver táticas</span>
-        </div>
-      </a>
+          <div class="map-card__image">
+            <img src="{{ map.logo }}" alt="Mapa {{ map.name }} do CS2" loading="lazy">
+          </div>
 
-      <a href="/tactics/dust2/" class="map-card">
-        <div class="map-card__image">
-          <img src="/img/maps/dust2-logo.jpg" alt="Mapa Dust2" loading="lazy">
-        </div>
-        <div class="map-card__body">
-          <span class="map-card__name">Dust2</span>
-          <span class="map-card__button">Ver táticas</span>
-        </div>
-      </a>
+          <div class="map-card__body">
+            <span class="map-card__name">{{ map.name }}</span>
+            <span class="map-card__meta datum">
+              {% if map.active %}Pool ativo{% else %}Legado{% endif %}
+            </span>
+          </div>
 
-      <a href="/tactics/nuke/" class="map-card">
-        <div class="map-card__image">
-          <img src="/img/maps/nuke-logo.jpg" alt="Mapa Nuke" loading="lazy">
-        </div>
-        <div class="map-card__body">
-          <span class="map-card__name">Nuke</span>
-          <span class="map-card__button">Ver táticas</span>
-        </div>
-      </a>
-
-      <a href="/tactics/ancient/" class="map-card">
-        <div class="map-card__image">
-          <img src="/img/maps/ancient-logo.jpg" alt="Mapa Ancient" loading="lazy">
-        </div>
-        <div class="map-card__body">
-          <span class="map-card__name">Ancient</span>
-          <span class="map-card__button">Ver táticas</span>
-        </div>
-      </a>
-
-      <a href="/tactics/anubis/" class="map-card">
-        <div class="map-card__image">
-          <img src="/img/maps/anubis-logo.jpg" alt="Mapa Anubis" loading="lazy">
-        </div>
-        <div class="map-card__body">
-          <span class="map-card__name">Anubis</span>
-          <span class="map-card__button">Ver táticas</span>
-        </div>
-      </a>
-
-      <a href="/tactics/cache/" class="map-card">
-        <div class="map-card__image">
-          <img src="/img/maps/cache-logo.png" alt="Mapa Cache" loading="lazy">
-        </div>
-        <div class="map-card__body">
-          <span class="map-card__name">Cache</span>
-          <span class="map-card__button">Ver táticas</span>
-        </div>
-      </a>
+          <span class="map-card__go datum">Abrir →</span>
+        </a>
+      {% endfor %}
     </div>
   </div>
 </section>
 
 <style>
-  .maps-section {
-    padding: 4rem 0;
-  }
+  .maps-section { padding: clamp(2.5rem, 6vw, 4.5rem) 0 clamp(3.5rem, 8vw, 6rem); }
 
-  .maps-header {
-    text-align: center;
-    margin-bottom: 2.5rem;
-  }
-
-  .maps-section__title {
-    margin: 0 0 0.75rem;
-    font-size: clamp(2rem, 4vw, 3rem);
-    color: #ffffff;
-  }
-
-  .maps-section__subtitle {
-    margin: 0;
-    color: #ffffff;
-    font-size: 1rem;
+  .maps-count {
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 0.8rem;
   }
 
   .maps-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.25rem;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: var(--spacing-lg);
   }
 
   .map-card {
     display: flex;
     flex-direction: column;
-    gap: 0;
-    background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-    border: 1px solid rgba(15, 23, 42, 0.08);
-    border-radius: 18px;
-    overflow: hidden;
     text-decoration: none;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+    color: inherit;
+    padding: var(--spacing-lg);
+    transition: transform var(--transition-normal);
   }
 
-  .map-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 18px 36px rgba(15, 23, 42, 0.14);
-  }
+  .map-card:hover { transform: translateY(-6px); }
 
   .map-card__image {
-    background: #0f172a;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 1rem;
+    background:
+      radial-gradient(circle at 50% 45%, rgba(61, 139, 255, 0.08), transparent 65%);
+    margin-bottom: var(--spacing-md);
   }
 
+  /* Insígnia monocromática: inverte o logo (fundo branco → preto) e o
+     blend "screen" faz o preto desaparecer sobre o painel escuro. */
   .map-card__image img {
-    width: auto;
-    height: 100%;
-    max-width: 100%;
+    width: 76%;
+    height: auto;
     object-fit: contain;
-    border-radius: 10px;
+    filter: grayscale(1) invert(1) contrast(1.18) brightness(1.05);
+    mix-blend-mode: screen;
+    opacity: 0.82;
+    transition: transform var(--transition-slow), opacity var(--transition-normal), filter var(--transition-normal);
   }
 
-  a[href="/tactics/cache/"] .map-card__image img {
-    object-fit: contain;
-    width: auto;
-    max-width: 90%;
-    max-height: 90%;
-    transform: scale(1.12);
-    transform-origin: center;
+  .map-card:hover .map-card__image img {
+    transform: scale(1.06);
+    opacity: 1;
+    filter: grayscale(1) invert(1) contrast(1.25) brightness(1.15);
   }
 
   .map-card__body {
-    padding: 1rem 1rem 1.1rem;
     display: flex;
-    flex-direction: column;
-    gap: 0.8rem;
-    align-items: flex-start;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border);
   }
 
-.map-card__name {
-  font-size: 1.05rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: #0f172a;
-  letter-spacing: 0.04em;
-  text-align: center;
-}
-
-  .map-card__button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.7rem 1rem;
-    border-radius: 999px;
-    background: #0f172a;
-    color: #fff;
+  .map-card__name {
+    font-family: var(--font-display);
+    font-size: var(--font-size-lg);
     font-weight: 700;
-    width: 100%;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--color-text);
   }
+
+  .map-card__meta {
+    font-size: 0.62rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--color-success);
+  }
+
+  .map-card--legacy .map-card__meta { color: var(--color-text-muted); }
+  .map-card--legacy .map-card__image img { opacity: 0.45; }
+
+  /* logos vetoriais (ex.: Train) já vêm na paleta certa — sem inverter */
+  .map-card--vector .map-card__image img { filter: none; mix-blend-mode: normal; opacity: 0.9; width: 66%; }
+  .map-card--vector:hover .map-card__image img { opacity: 1; filter: none; }
+
+  .map-card__go {
+    margin-top: var(--spacing-md);
+    font-size: var(--font-size-xs);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    transition: color var(--transition-normal);
+  }
+
+  .map-card:hover .map-card__go { color: var(--color-primary); }
 </style>

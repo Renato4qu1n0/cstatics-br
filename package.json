@@ -5,9 +5,11 @@
   "main": "index.js",
   "scripts": {
   "dev": "eleventy --serve --port 8080",
-  "build": "eleventy",
+  "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+  "build": "npm run clean && eleventy",
   "start": "eleventy --serve --port 8080",
-  "test": "echo \"No tests configured\""
+  "test": "node test/validate.js",
+  "prebuild": "node test/validate.js"
   },
   "repository": {
     "type": "git",

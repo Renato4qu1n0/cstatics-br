@@ -1,0 +1,107 @@
+---
+layout: layouts/base.njk
+permalink: /lineups/
+title: "Lineups de CS2 - Smokes, Flashes e Molotovs por mapa | CSTatics Brasil"
+description: "Biblioteca de lineups de Counter-Strike 2 em português: smokes, flashes, molotovs e HE para Mirage, Inferno, Dust2, Nuke, Ancient e Anubis. Aprenda as jogadas certas."
+---
+
+<section class="lineups-hero">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Biblioteca de utilitária</span>
+        <h1 class="section-head__title">Lineups</h1>
+      </div>
+      <div class="section-head__rule"></div>
+    </div>
+    <p class="lineups-hero__subtitle">
+      Smokes, flashes, molotovs e HE com posição de arremesso, tipo de lançamento e
+      passo a passo. Filtre por mapa, lado, bombsite e dificuldade.
+    </p>
+  </div>
+</section>
+
+<section class="lineups-section">
+  <div class="container">
+    <input type="search" id="lineupsSearch" class="search-input" placeholder="Buscar lineup por nome, posição ou tag (ex: smoke CT, banana...)" aria-label="Buscar lineups">
+
+    <div class="filter-bar">
+      <div class="filter-row">
+        <span class="filter-row__label">Mapa</span>
+        <button class="chip active" data-filter="map:all">Todos</button>
+        {% for map in maps.maps %}
+          {% if map.active %}
+            <button class="chip" data-filter="map:{{ map.slug }}">{{ map.name }}</button>
+          {% endif %}
+        {% endfor %}
+      </div>
+
+      <div class="filter-row">
+        <span class="filter-row__label">Utilitária</span>
+        <button class="chip active" data-filter="utility:all">Todas</button>
+        {% for u in navigation.utilities %}
+          <button class="chip" data-filter="utility:{{ u.slug }}">{{ u.name }}</button>
+        {% endfor %}
+      </div>
+
+      <div class="filter-row">
+        <span class="filter-row__label">Lado</span>
+        <button class="chip active" data-filter="side:all">Ambos</button>
+        <button class="chip" data-filter="side:t">T</button>
+        <button class="chip" data-filter="side:ct">CT</button>
+      </div>
+
+      <div class="filter-row">
+        <span class="filter-row__label">Dificuldade</span>
+        <button class="chip active" data-filter="difficulty:all">Todas</button>
+        {% for d in navigation.difficulties %}
+          <button class="chip" data-filter="difficulty:{{ d.slug }}">{{ d.name }}</button>
+        {% endfor %}
+      </div>
+    </div>
+
+    <p class="results-count"><span id="resultsCount">{{ lineups.lineups | length }}</span> lineups encontrados</p>
+
+    <div class="lineups-grid" id="lineupsGrid">
+      {% for lineup in lineups.lineups %}
+        {% include "components/lineup-card.njk" %}
+      {% endfor %}
+    </div>
+
+    <div class="empty-state hidden" id="emptyState">
+      <i class="fa-solid fa-magnifying-glass empty-state__icon"></i>
+      <h2 class="empty-state__title">Nenhum lineup encontrado</h2>
+      <p class="empty-state__description">Tente ajustar os filtros ou o termo de busca.</p>
+    </div>
+  </div>
+</section>
+
+<script src="/assets/js/lineups.js" defer></script>
+
+<style>
+  .lineups-hero {
+    padding: clamp(2.5rem, 6vw, 4rem) 0 var(--spacing-xl);
+  }
+
+  .lineups-hero .section-head { margin-bottom: var(--spacing-lg); }
+
+  .lineups-hero .section-head__title {
+    font-size: clamp(2.2rem, 6vw, 3.8rem);
+  }
+
+  .lineups-hero__subtitle {
+    color: var(--color-text-light);
+    font-size: var(--font-size-lg);
+    max-width: 62ch;
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  .lineups-section {
+    padding: var(--spacing-2xl) 0 var(--spacing-4xl);
+  }
+
+  .lineups-section .search-input {
+    max-width: 100%;
+  }
+</style>

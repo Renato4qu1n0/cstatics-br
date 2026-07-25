@@ -9,25 +9,38 @@
       <h4>Navegação</h4>
       <ul>
         <li><a href="/">Início</a></li>
+        <li><a href="/lineups/">Lineups</a></li>
+        <li><a href="/execucoes/">Execuções</a></li>
         <li><a href="/tactics/">Táticas</a></li>
+        <li><a href="/prancheta/">Prancheta</a></li>
+        <li><a href="/contribuir/">Contribuir</a></li>
         <li><a href="/contato/">Contato</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__section">
+      <h4>Legal</h4>
+      <ul>
+        <li><a href="/privacidade/">Privacidade</a></li>
+        <li><a href="/termos/">Termos de uso</a></li>
+        <li><a href="/feed.xml">RSS <i class="fas fa-rss" aria-hidden="true"></i></a></li>
       </ul>
     </div>
 
     <div class="footer__section">
       <h4>Contato</h4>
       <p>
-        <a href="mailto:cstaticsbr@protonmail.com">cstaticsbr@protonmail.com</a>
+        <a href="mailto:{{ site.email }}">{{ site.email }}</a>
       </p>
-      
+
       <div class="footer__social">
-        <a href="https://instagram.com/cstaticsbr" target="_blank" title="Instagram" aria-label="Siga no Instagram">
+        <a href="https://instagram.com/cstaticsbr" target="_blank" rel="noopener" title="Instagram" aria-label="Siga no Instagram">
           <i class="fab fa-instagram"></i>
         </a>
-        <a href="https://youtube.com/@cstaticsbr" target="_blank" title="YouTube" aria-label="Inscreva-se no YouTube">
+        <a href="https://youtube.com/@cstaticsbr" target="_blank" rel="noopener" title="YouTube" aria-label="Inscreva-se no YouTube">
           <i class="fab fa-youtube"></i>
         </a>
-        <a href="https://tiktok.com/@cstaticsbr" target="_blank" title="TikTok" aria-label="Siga no TikTok">
+        <a href="https://tiktok.com/@cstaticsbr" target="_blank" rel="noopener" title="TikTok" aria-label="Siga no TikTok">
           <i class="fab fa-tiktok"></i>
         </a>
       </div>
@@ -36,5 +49,6 @@
 
   <div class="footer__bottom">
     <p>&copy; 2026 CSTATICS BRASIL. Todos os direitos reservados.</p>
+    <p class="footer__disclaimer">Projeto independente, sem vínculo com a Valve Corporation. Counter-Strike e marcas relacionadas pertencem aos seus respectivos donos.</p>
   </div>
 </footer>

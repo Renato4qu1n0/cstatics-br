@@ -7,31 +7,77 @@
       "category": "default",
       "side": "t-side",
       "map": "Mirage",
-      "shortDescription": "Estratégia de default agressivo para ganhar controle de mapa no T side",
+      "mapSlug": "mirage",
+      "shortDescription": "Estratégia de default agressivo para ganhar controle de mapa no lado T do Mirage.",
       "image": "assets/images/tactics/mirage-t-default.svg",
       "successRate": 87,
       "difficulty": 6,
-      "players": [1, 2, 3, 4, 5],
-      "description": "Uma abordagem ofensiva para o T side do Mirage que prioriza...",
+      "difficultyLabel": "Intermediário",
+      "players": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "description": "Uma abordagem ofensiva para o lado T do Mirage que prioriza a tomada rápida de controle de meio e a pressão simultânea nos dois bombsites, forçando a defesa a reagir e abrindo espaço para uma execução no timing.",
       "steps": [
         {
           "time": "0s",
-          "description": "Todos os Ts fazem drop para o A",
-          "players": [1, 2]
+          "description": "Dois jogadores tomam o controle de meio com a smoke de janela.",
+          "players": [
+            1,
+            2
+          ]
         },
         {
           "time": "15s",
-          "description": "Verificação de Ramp, aguardando informação",
-          "players": [3, 4]
+          "description": "Um jogador pressiona a rampa T buscando informação e trade.",
+          "players": [
+            3
+          ]
+        },
+        {
+          "time": "25s",
+          "description": "Dupla segura o apartamento (palco) para ameaçar o A curto.",
+          "players": [
+            4,
+            5
+          ]
+        },
+        {
+          "time": "40s",
+          "description": "Com a informação, o time converge para o bombsite mais aberto e executa com utilitária completa.",
+          "players": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
         }
       ],
-      "videoUrl": "https://youtube.com/watch?v=...",
-      "tags": ["default", "agressivo", "anti-eco"],
-      "difficulty": "Intermediário",
+      "counters": [
+        {
+          "title": "CT agressivo no meio",
+          "description": "Se o CT joga o meio agressivo, use flash de apoio e trade rápido para não perder o controle cedo."
+        },
+        {
+          "title": "Stack no A",
+          "description": "Se a defesa empilha no A, vire a execução para o B aproveitando a rotação lenta."
+        }
+      ],
+      "videoUrl": "",
+      "tags": [
+        "default",
+        "agressivo",
+        "controle de meio"
+      ],
+      "verified": false,
       "meta": {
         "created": "2024-01-15",
-        "updated": "2024-07-21",
-        "author": "Pro Player XYZ"
+        "updated": "2026-07-23",
+        "author": "CSTatics"
       }
     },
     {
@@ -41,12 +87,557 @@
       "category": "anti-eco",
       "side": "ct-side",
       "map": "Nuke",
-      "shortDescription": "Defesa eficiente contra round de eco inimigo",
+      "mapSlug": "nuke",
+      "shortDescription": "Defesa eficiente de CT contra rounds de eco no Nuke, com posicionamento para evitar trades e clutches.",
       "image": "assets/images/tactics/nuke-anti-eco.svg",
       "successRate": 92,
       "difficulty": 4,
-      "description": "...",
-      "tags": ["anti-eco", "defesa", "posicionamentos"]
+      "difficultyLabel": "Fácil",
+      "players": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "description": "Posicionamento defensivo pensado para neutralizar o round de eco inimigo no Nuke. O foco é jogar juntos, evitar ângulos isolados e negar as trocas fáceis que o time de pistola/eco procura.",
+      "steps": [
+        {
+          "time": "0s",
+          "description": "Ninguém joga ângulos avançados isolados — o time recua para posições de crossfire.",
+          "players": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "time": "10s",
+          "description": "Dupla segura a rampa em crossfire, negando o rush pela outside.",
+          "players": [
+            1,
+            2
+          ]
+        },
+        {
+          "time": "20s",
+          "description": "Jogadores de dentro cobrem os acessos verticais e apoiam a rotação.",
+          "players": [
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "counters": [
+        {
+          "title": "Rush agrupado",
+          "description": "Contra rush de eco, mantenha distância e jogue o pós-plant com utilitária, sem duelar de perto."
+        },
+        {
+          "title": "Split forçado",
+          "description": "Se o eco tenta dividir, comunique a informação e role em número para retomar."
+        }
+      ],
+      "videoUrl": "",
+      "tags": [
+        "anti-eco",
+        "defesa",
+        "posicionamento"
+      ],
+      "verified": false,
+      "meta": {
+        "created": "2024-02-10",
+        "updated": "2026-07-23",
+        "author": "CSTatics"
+      }
+    },
+    {
+      "id": 3,
+      "slug": "default-ct-mirage",
+      "title": "Default de CT no Mirage",
+      "category": "default",
+      "side": "ct-side",
+      "map": "Mirage",
+      "mapSlug": "mirage",
+      "shortDescription": "Posicionamento padrão de CT no Mirage, com controle de meio e trocas garantidas.",
+      "image": "",
+      "successRate": 78,
+      "difficulty": 5,
+      "difficultyLabel": "Intermediário",
+      "players": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "description": "A defesa padrão do Mirage gira em torno de contestar o meio e trocar toda entrada. Ninguém joga ângulo avançado isolado: cada posição tem um par que garante a troca, e a informação de meio dita as rotações.",
+      "steps": [
+        {
+          "time": "0s",
+          "description": "Um jogador contesta a janela; outro segura connector para a troca.",
+          "players": [
+            1,
+            2
+          ]
+        },
+        {
+          "time": "0s",
+          "description": "Dupla no A cobre rampa e o palco em crossfire.",
+          "players": [
+            3,
+            4
+          ]
+        },
+        {
+          "time": "0s",
+          "description": "Jogador de B segura apartamentos com utilitária pronta para atrasar.",
+          "players": [
+            5
+          ]
+        },
+        {
+          "time": "20s",
+          "description": "Conforme a informação chega, o time roda em número para o site pressionado.",
+          "players": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "counters": [
+        {
+          "title": "Split forçado",
+          "description": "Contra split de A, atrase os dois acessos com utilitária e jogue o retake em número."
+        },
+        {
+          "title": "Fake de meio",
+          "description": "Se o T fake meio e vira B, a informação de connector evita a rotação errada."
+        }
+      ],
+      "videoUrl": "",
+      "tags": [
+        "default",
+        "defesa",
+        "controle de meio"
+      ],
+      "verified": false,
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      }
+    },
+    {
+      "id": 4,
+      "slug": "retake-b-inferno",
+      "title": "Retake de B no Inferno",
+      "category": "retake",
+      "side": "ct-side",
+      "map": "Inferno",
+      "mapSlug": "inferno",
+      "shortDescription": "Como retomar o B do Inferno com utilitária e trocas coordenadas.",
+      "image": "",
+      "successRate": 64,
+      "difficulty": 7,
+      "difficultyLabel": "Difícil",
+      "players": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "description": "Retomar o B do Inferno é sobre chegar junto e com utilitária. A rotação vem por CT e por banana ao mesmo tempo; molotov limpa os covers do plant e as flashes cegam quem segura o pós-plant, forçando a troca em número.",
+      "steps": [
+        {
+          "time": "0s",
+          "description": "Rotação sai imediatamente ao ouvir o plant — nunca um por vez.",
+          "players": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "time": "8s",
+          "description": "Molotov nos covers do B para tirar quem segura o pós-plant.",
+          "players": [
+            1
+          ]
+        },
+        {
+          "time": "10s",
+          "description": "Flashes de apoio e entrada coordenada pelos dois acessos.",
+          "players": [
+            2,
+            3
+          ]
+        },
+        {
+          "time": "15s",
+          "description": "Troca garantida e defuse com o time cobrindo os ângulos de retorno.",
+          "players": [
+            1,
+            2,
+            3
+          ]
+        }
+      ],
+      "counters": [
+        {
+          "title": "Pós-plant espalhado",
+          "description": "Se o T espalha no pós-plant, agrupe a utilitária num acesso só e force por ali."
+        },
+        {
+          "title": "Molotov no defuse",
+          "description": "Cuidado com a molotov do T no defuse — tenha um jogador cobrindo o tempo."
+        }
+      ],
+      "videoUrl": "",
+      "tags": [
+        "retake",
+        "defesa",
+        "bombsite B"
+      ],
+      "verified": false,
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      }
+    },
+    {
+      "id": 5,
+      "slug": "split-a-dust2",
+      "title": "Split de A no Dust2",
+      "category": "execucao",
+      "side": "t-side",
+      "map": "Dust2",
+      "mapSlug": "dust2",
+      "shortDescription": "Pressão simultânea por long e curto que quebra a defesa do A do Dust2.",
+      "image": "",
+      "successRate": 72,
+      "difficulty": 6,
+      "difficultyLabel": "Intermediário",
+      "players": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "description": "O A do Dust2 cai quando long e curto pressionam no mesmo timing. As smokes neutralizam o AWP do long, a molotov limpa o canto, e a descida do curto acontece no instante do avanço — a defesa não cobre os dois com dois jogadores.",
+      "steps": [
+        {
+          "time": "0s",
+          "description": "Time se divide: três no long, dois no curto.",
+          "players": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "time": "15s",
+          "description": "Smokes das portas e molotov no canto saem juntas.",
+          "players": [
+            1,
+            2
+          ]
+        },
+        {
+          "time": "22s",
+          "description": "Long avança e toma o pit.",
+          "players": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "time": "25s",
+          "description": "Flash do curto no mesmo timing; a dupla desce e fecha o split.",
+          "players": [
+            4,
+            5
+          ]
+        }
+      ],
+      "counters": [
+        {
+          "title": "Stack no long",
+          "description": "Se a defesa empilha no long, o curto entra com vantagem — leia o número."
+        },
+        {
+          "title": "Rotação de meio",
+          "description": "Controle o meio para negar a rotação rápida do CT ao A."
+        }
+      ],
+      "videoUrl": "",
+      "tags": [
+        "execução",
+        "split",
+        "bombsite A"
+      ],
+      "verified": false,
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      }
+    },
+    {
+      "id": 6,
+      "slug": "default-ct-nuke",
+      "title": "Default de CT no Nuke",
+      "category": "default",
+      "side": "ct-side",
+      "map": "Nuke",
+      "mapSlug": "nuke",
+      "shortDescription": "Setup defensivo de CT no Nuke, com atraso de rampa e controle vertical.",
+      "image": "",
+      "successRate": 80,
+      "difficulty": 5,
+      "difficultyLabel": "Intermediário",
+      "players": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "description": "A defesa do Nuke é sobre controle vertical e atraso. O CT segura rampa e outside com utilitária, joga os ângulos altos e usa a mobilidade vertical do mapa para rotacionar mais rápido que o ataque.",
+      "steps": [
+        {
+          "time": "0s",
+          "description": "Jogador segura rampa com molotov pronta para atrasar o avanço.",
+          "players": [
+            1
+          ]
+        },
+        {
+          "time": "0s",
+          "description": "Dupla controla o outside e os ângulos de heaven/hut.",
+          "players": [
+            2,
+            3
+          ]
+        },
+        {
+          "time": "0s",
+          "description": "Jogadores de dentro cobrem os acessos verticais e o A.",
+          "players": [
+            4,
+            5
+          ]
+        },
+        {
+          "time": "18s",
+          "description": "Com a informação, o time roda pela vertical para o site pressionado.",
+          "players": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "counters": [
+        {
+          "title": "Rush de outside",
+          "description": "Contra rush de outside, atrase com utilitária e recue para o retake em número."
+        },
+        {
+          "title": "Take vertical",
+          "description": "Se o T desce por rampa, negue o espaço com fogo e jogue o pós-plant."
+        }
+      ],
+      "videoUrl": "",
+      "tags": [
+        "default",
+        "defesa"
+      ],
+      "verified": false,
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      }
+    },
+    {
+      "id": 7,
+      "slug": "controle-mid-ancient",
+      "title": "Controle de meio no Ancient",
+      "category": "default",
+      "side": "t-side",
+      "map": "Ancient",
+      "mapSlug": "ancient",
+      "shortDescription": "Como dominar o meio do Ancient e abrir os dois bombsites.",
+      "image": "",
+      "successRate": 74,
+      "difficulty": 4,
+      "difficultyLabel": "Fácil",
+      "players": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "description": "O meio é o coração do Ancient: dele saem os caminhos para o A pela cave e para o B pelo lane. Tomar o meio cedo com utilitária deixa o time livre para escolher o alvo, e a defesa passa o round reagindo.",
+      "steps": [
+        {
+          "time": "0s",
+          "description": "Smoke de window sai cedo para negar o ângulo de meio.",
+          "players": [
+            1
+          ]
+        },
+        {
+          "time": "8s",
+          "description": "Dupla avança o meio e ocupa a posição central.",
+          "players": [
+            1,
+            2
+          ]
+        },
+        {
+          "time": "20s",
+          "description": "Com o meio garantido, o time lê a defesa e escolhe A ou B.",
+          "players": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "time": "30s",
+          "description": "Execução no site mais aberto com o pacote de utilitária.",
+          "players": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "counters": [
+        {
+          "title": "Agressão de meio",
+          "description": "Se o CT joga o meio agressivo, use flash e trade para não perder o espaço."
+        },
+        {
+          "title": "Rotação lenta",
+          "description": "Aproveite a rotação lenta do Ancient para virar o alvo no último segundo."
+        }
+      ],
+      "videoUrl": "",
+      "tags": [
+        "default",
+        "controle de meio"
+      ],
+      "verified": false,
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      }
+    },
+    {
+      "id": 8,
+      "slug": "execucao-a-anubis-tatica",
+      "title": "Execução de A no Anubis (5 jogadores)",
+      "category": "execucao",
+      "side": "t-side",
+      "map": "Anubis",
+      "mapSlug": "anubis",
+      "shortDescription": "A tomada coordenada do A do Anubis, do controle de meio ao pós-plant.",
+      "image": "",
+      "successRate": 70,
+      "difficulty": 6,
+      "difficultyLabel": "Intermediário",
+      "players": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "description": "O A do Anubis exige controle de meio antes da execução. Com o meio tomado, o time fecha heaven e palace, entra pelo conector e ocupa os covers do site para segurar o pós-plant contra o retake.",
+      "steps": [
+        {
+          "time": "0s",
+          "description": "Time toma o meio e a água, agrupando no conector do A.",
+          "players": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "time": "15s",
+          "description": "Smokes de heaven e palace saem em contagem.",
+          "players": [
+            1,
+            2
+          ]
+        },
+        {
+          "time": "20s",
+          "description": "Entrada pelo conector com flash de apoio.",
+          "players": [
+            3,
+            4
+          ]
+        },
+        {
+          "time": "30s",
+          "description": "Plant e ocupação dos covers; um jogador segura a rotação.",
+          "players": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "counters": [
+        {
+          "title": "Retake por heaven",
+          "description": "Guarde utilitária para o retake que vem por heaven."
+        },
+        {
+          "title": "Stack no A",
+          "description": "Se a defesa empilha no A, vire para o B aproveitando a rotação."
+        }
+      ],
+      "videoUrl": "",
+      "tags": [
+        "execução",
+        "bombsite A"
+      ],
+      "verified": false,
+      "meta": {
+        "created": "2026-07-24",
+        "updated": "2026-07-24",
+        "author": "CSTatics"
+      }
     }
   ]
 }

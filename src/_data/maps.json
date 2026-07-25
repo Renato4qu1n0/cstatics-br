@@ -1,0 +1,77 @@
+{
+  "maps": [
+    {
+      "name": "Mirage",
+      "slug": "mirage",
+      "logo": "/img/maps/mirage-logo.png",
+      "active": true,
+      "sites": ["A", "B"],
+      "description": "Guia completo de Mirage no CS2: as melhores smokes, flashes e molotovs para os bombsites A e B, controle de meio e táticas de ataque e defesa.",
+      "summary": "O mapa mais jogado do CS2. Domine o controle de meio e as execuções de A e B."
+    },
+    {
+      "name": "Inferno",
+      "slug": "inferno",
+      "logo": "/img/maps/inferno-logo.jpg",
+      "active": true,
+      "sites": ["A", "B"],
+      "description": "Guia completo de Inferno no CS2: lineups de smoke e molotov para banana, controle de meio, execuções de A e B e posicionamentos de CT.",
+      "summary": "Mapa de utilitárias pesadas. Quem controla banana e usa molotov bem, ganha."
+    },
+    {
+      "name": "Dust2",
+      "slug": "dust2",
+      "logo": "/img/maps/dust2-logo.jpg",
+      "active": true,
+      "sites": ["A", "B"],
+      "description": "Guia completo de Dust2 no CS2: smokes de meio e long, flashes de curto, molotovs e táticas clássicas de T e CT.",
+      "summary": "O clássico eterno do CS. Controle de long, meio e curto define o round."
+    },
+    {
+      "name": "Nuke",
+      "slug": "nuke",
+      "logo": "/img/maps/nuke-logo.jpg",
+      "active": true,
+      "sites": ["A", "B"],
+      "description": "Guia completo de Nuke no CS2: lineups para outside, rampa, controle vertical e defesas de CT contra rush e eco.",
+      "summary": "O mapa mais vertical do CS2. Domínio de outside e controle de rampa são tudo."
+    },
+    {
+      "name": "Ancient",
+      "slug": "ancient",
+      "logo": "/img/maps/ancient-logo.jpg",
+      "active": true,
+      "sites": ["A", "B"],
+      "description": "Guia completo de Ancient no CS2: smokes e molotovs para os bombsites A e B, controle de meio e execuções de T.",
+      "summary": "Mapa de execuções coordenadas. Utilitária no tempo certo abre os sites."
+    },
+    {
+      "name": "Anubis",
+      "slug": "anubis",
+      "logo": "/img/maps/anubis-logo.jpg",
+      "active": true,
+      "sites": ["A", "B"],
+      "description": "Guia completo de Anubis no CS2: lineups de smoke e flash, controle de água e canais, e táticas para os bombsites A e B.",
+      "summary": "Mapa novo do pool competitivo. Controle de meio e água decide as partidas."
+    },
+    {
+      "name": "Train",
+      "slug": "train",
+      "logo": "/img/maps/train-badge.svg",
+      "vector": true,
+      "active": true,
+      "sites": ["A", "B"],
+      "description": "Guia de Train no CS2: lineups de smoke e molotov, controle dos trens, ângulos verticais e táticas para os bombsites A e B.",
+      "summary": "De volta ao pool competitivo. Controle dos vagões e dos ângulos altos decide o round."
+    },
+    {
+      "name": "Cache",
+      "slug": "cache",
+      "logo": "/img/maps/cache-logo.png",
+      "active": false,
+      "sites": ["A", "B"],
+      "description": "Guia de Cache no CS2: smokes, flashes e táticas clássicas. Mapa fora do pool competitivo atual, mantido para consulta.",
+      "summary": "Clássico da comunidade, hoje fora do pool competitivo oficial."
+    }
+  ]
+}

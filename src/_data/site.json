@@ -1,0 +1,19 @@
+{
+  "name": "CSTatics Brasil",
+  "shortName": "CSTatics",
+  "url": "https://cstaticsbr.com.br",
+  "locale": "pt-BR",
+  "tagline": "Táticas e lineups de CS2 em português",
+  "description": "O hub brasileiro de Counter-Strike 2: biblioteca de lineups (smokes, flashes, molotovs), táticas por mapa e estratégias de time. Aprenda as jogadas, monte seu playbook e evolua.",
+  "email": "cstaticsbr@protonmail.com",
+  "defaultImage": "/images/og-cover.png",
+  "social": {
+    "instagram": "https://instagram.com/cstaticsbr",
+    "youtube": "https://youtube.com/@cstaticsbr",
+    "tiktok": "https://tiktok.com/@cstaticsbr"
+  },
+  "analytics": {
+    "plausibleDomain": "",
+    "ga4Id": ""
+  }
+}
