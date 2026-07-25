@@ -2,8 +2,8 @@
    CSTATICS BRASIL - MAIN CSS
    ============================================ */
 
-/* Import Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+/* Fontes carregadas de forma assíncrona no <head> (base.njk) — nada de @import
+   bloqueante aqui (evita request encadeado no caminho crítico). */
 
 /* ============================================
    1. RESET E VARIÁVEIS GLOBAIS
