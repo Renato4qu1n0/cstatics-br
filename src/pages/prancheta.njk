@@ -67,6 +67,10 @@ description: "Prancheta tática de Counter-Strike 2: posicione jogadores, marque
           <marker id="bdArrow" viewBox="0 0 10 10" refX="8.5" refY="5" markerWidth="6.5" markerHeight="6.5" orient="auto-start-reverse">
             <path d="M0 0 L10 5 L0 10 z" fill="#ffb020"></path>
           </marker>
+          <linearGradient id="bdFloor" x1="0" y1="0" x2="0.35" y2="1">
+            <stop offset="0" stop-color="#18293c"></stop>
+            <stop offset="1" stop-color="#0b1522"></stop>
+          </linearGradient>
         </defs>
         <g id="bdSurface"></g>
         <g id="bdLayer"></g>
@@ -209,11 +213,21 @@ description: "Prancheta tática de Counter-Strike 2: posicione jogadores, marque
     background: rgba(8,9,12,.7); border: 1px solid var(--color-border); padding: 4px 9px; pointer-events: none;
   }
 
-  /* superfície do mapa */
-  .bd-area { fill: rgba(61,139,255,.05); stroke: rgba(122,176,255,.3); stroke-width: 1; vector-effect: non-scaling-stroke; }
+  /* superfície do mapa — piso, paredes, zonas, cover e selos */
+  .bd-floor, .bd-area { fill: url(#bdFloor); stroke: rgba(130,180,235,.5); stroke-width: 1.3; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+  .bd-zone { stroke-width: 1; vector-effect: non-scaling-stroke; }
+  .bd-zone--a { fill: rgba(255,176,32,.11); stroke: rgba(255,176,32,.45); }
+  .bd-zone--b { fill: rgba(61,139,255,.14); stroke: rgba(61,139,255,.5); }
+  .bd-obj { fill: rgba(150,185,230,.16); stroke: rgba(160,195,240,.4); stroke-width: .8; vector-effect: non-scaling-stroke; }
   .bd-link { stroke: rgba(122,176,255,.2); stroke-width: 1; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
+  .bd-badge { stroke-width: 1.6; vector-effect: non-scaling-stroke; }
+  .bd-badge--a { fill: rgba(24,17,4,.9); stroke: #ffb020; }
+  .bd-badge--b { fill: rgba(6,14,26,.9); stroke: #3d8bff; }
+  .bd-badge-txt { font-family: var(--font-display); font-size: 12px; font-weight: 700; text-anchor: middle; dominant-baseline: central; }
+  .bd-badge-txt--a { fill: #ffb020; }
+  .bd-badge-txt--b { fill: #6facff; }
   .bd-site { fill: rgba(190,214,255,.4); font-family: var(--font-display); font-size: 15px; font-weight: 700; text-anchor: middle; }
-  .bd-dot { fill: rgba(122,176,255,.3); }
+  .bd-dot { fill: rgba(140,185,240,.4); }
   .bd-callout { fill: rgba(200,220,255,.62); font-family: var(--font-mono); font-size: 6px; letter-spacing: .04em; text-transform: uppercase; text-anchor: middle; paint-order: stroke; stroke: #0a0d12; stroke-width: 2.4px; }
 
   /* elementos editáveis */

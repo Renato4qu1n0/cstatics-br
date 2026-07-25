@@ -116,9 +116,16 @@
       // radar real (imagem) substitui o esquema; os callouts se sobrepõem
       surface.appendChild(el('image', { href: g.radar, x: 0, y: 0, width: 400, height: 300, preserveAspectRatio: 'xMidYMid slice', class: 'bd-radar' }));
     } else {
-      (g.areas || []).forEach((a) => surface.appendChild(el('polygon', { points: a.points, class: 'bd-area' })));
+      (g.areas || []).forEach((a) => surface.appendChild(el('polygon', { points: a.points, class: 'bd-floor' })));
+      (g.sites || []).forEach((s) => surface.appendChild(el('polygon', { points: s.points, class: 'bd-zone bd-zone--' + String(s.label).toLowerCase() })));
+      (g.objects || []).forEach((o) => surface.appendChild(el('rect', { x: o.x, y: o.y, width: o.w, height: o.h, rx: 1.1, class: 'bd-obj' })));
       (g.links || []).forEach((l) => surface.appendChild(el('line', { x1: l[0], y1: l[1], x2: l[2], y2: l[3], class: 'bd-link' })));
-      (g.labels || []).forEach((s) => surface.appendChild(textEl(s.text, { x: s.x, y: s.y, class: 'bd-site' })));
+      (g.sites || []).forEach((s) => {
+        const side = String(s.label).toLowerCase();
+        surface.appendChild(el('circle', { cx: s.bx, cy: s.by, r: 9.5, class: 'bd-badge bd-badge--' + side }));
+        surface.appendChild(textEl(s.label, { x: s.bx, y: s.by, class: 'bd-badge-txt bd-badge-txt--' + side }));
+      });
+      if (!g.sites) (g.labels || []).forEach((s) => surface.appendChild(textEl(s.text, { x: s.x, y: s.y, class: 'bd-site' })));
     }
     Object.keys(g.callouts || {}).forEach((k) => {
       const c = g.callouts[k];

@@ -22,20 +22,36 @@
   <svg class="diagram__svg" viewBox="{{ geo.viewBox }}" role="img"
        aria-label="Esquema do mapa {{ dgMap | capitalize }} com {{ dgThrows | length }} arremesso(s) de utilitária.">
 
+    <defs>
+      <linearGradient id="dgFloor" x1="0" y1="0" x2="0.35" y2="1">
+        <stop offset="0" stop-color="#18293c" />
+        <stop offset="1" stop-color="#0b1522" />
+      </linearGradient>
+    </defs>
+
     {% if geo.radar %}
       <image href="{{ geo.radar }}" x="0" y="0" width="400" height="300" preserveAspectRatio="xMidYMid slice" class="diagram__radar" />
     {% else %}
-      <g class="diagram__areas">
+      <g class="diagram__floor">
         {% for a in geo.areas %}<polygon points="{{ a.points }}" />{% endfor %}
       </g>
-
+      <g class="diagram__zones">
+        {% for s in geo.sites %}<polygon points="{{ s.points }}" class="zone zone--{{ s.label | lower }}" />{% endfor %}
+      </g>
+      <g class="diagram__objects">
+        {% for o in geo.objects %}<rect x="{{ o.x }}" y="{{ o.y }}" width="{{ o.w }}" height="{{ o.h }}" rx="1.1" />{% endfor %}
+      </g>
       <g class="diagram__links">
         {% for l in geo.links %}<line x1="{{ l[0] }}" y1="{{ l[1] }}" x2="{{ l[2] }}" y2="{{ l[3] }}" />{% endfor %}
       </g>
-
+      <g class="diagram__badges">
+        {% for s in geo.sites %}<circle class="badge badge--{{ s.label | lower }}" cx="{{ s.bx }}" cy="{{ s.by }}" r="9.5" /><text class="badge-txt badge-txt--{{ s.label | lower }}" x="{{ s.bx }}" y="{{ s.by }}">{{ s.label }}</text>{% endfor %}
+      </g>
+      {% if not geo.sites %}
       <g class="diagram__sites">
         {% for s in geo.labels %}<text x="{{ s.x }}" y="{{ s.y }}">{{ s.text }}</text>{% endfor %}
       </g>
+      {% endif %}
     {% endif %}
 
     <g class="diagram__dots">
