@@ -53,17 +53,15 @@
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
   <link rel="manifest" href="/images/site.webmanifest">
 
-  <!-- Fonts: Chakra Petch (display tático) · JetBrains Mono (dados) · Inter (corpo) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Fontes auto-hospedadas (Chakra Petch · JetBrains Mono · Inter) — sem terceiros -->
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/chakra-petch-700.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/inter-400.woff2" crossorigin>
+  <link rel="stylesheet" href="/assets/css/fonts.css">
+
+  {# Font Awesome assíncrono (ícones decorativos, fora do caminho crítico) #}
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  {# Fontes e ícones carregados de forma assíncrona (fora do caminho crítico de render) #}
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700;800&display=swap">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  </noscript>
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
   <!-- RSS -->
   <link rel="alternate" type="application/rss+xml" title="{{ site.name }} — novidades" href="/feed.xml">
