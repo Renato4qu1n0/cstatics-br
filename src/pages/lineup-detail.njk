@@ -85,7 +85,7 @@ eleventyComputed:
           <h2>Vídeo / demonstração</h2>
           {% if lineup.videoUrl %}
             <div class="video-container">
-              <iframe src="{{ lineup.videoUrl }}" title="{{ lineup.title }}" allowfullscreen loading="lazy"></iframe>
+              <iframe src="{{ lineup.videoUrl | embedUrl }}" title="{{ lineup.title }}" allowfullscreen loading="lazy"></iframe>
             </div>
           {% elif lineup.gif %}
             <img class="ld-gif" src="{{ lineup.gif }}" alt="Demonstração da {{ lineup.title }}" loading="lazy">

@@ -11,5 +11,9 @@
     "instagram": "https://instagram.com/cstaticsbr",
     "youtube": "https://youtube.com/@cstaticsbr",
     "tiktok": "https://tiktok.com/@cstaticsbr"
+  },
+  "analytics": {
+    "plausibleDomain": "",
+    "ga4Id": ""
   }
 }

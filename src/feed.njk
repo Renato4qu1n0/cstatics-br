@@ -1,0 +1,23 @@
+---
+permalink: /feed.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ site.name }} — Táticas e lineups de CS2</title>
+    <link>{{ site.url }}/</link>
+    <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml" />
+    <description>{{ site.description }}</description>
+    <language>pt-BR</language>
+    {%- for item in feedItems %}
+    <item>
+      <title>[{{ item.kind }}] {{ item.title }}</title>
+      <link>{{ site.url }}{{ item.url }}</link>
+      <guid isPermaLink="true">{{ site.url }}{{ item.url }}</guid>
+      <pubDate>{{ item.date | rssDate }}</pubDate>
+      <description>{{ item.description }}</description>
+    </item>
+    {%- endfor %}
+  </channel>
+</rss>

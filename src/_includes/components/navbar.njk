@@ -5,7 +5,7 @@
       <span class="navbar__brand">CSTatics Brasil</span>
     </div>
 
-    <button class="navbar__toggle" id="navbarToggle" aria-label="Toggle menu">
+    <button class="navbar__toggle" id="navbarToggle" aria-label="Abrir menu" aria-controls="navbarMenu" aria-expanded="false">
       <span></span>
       <span></span>
       <span></span>
@@ -19,8 +19,8 @@
       <li><a href="/prancheta/" class="navbar__link">Prancheta</a></li>
       <li><a href="/contato/" class="navbar__link">Contato</a></li>
       <li>
-        <a href="https://instagram.com/cstaticsbr" target="_blank" class="navbar__social">
-          <i class="icon-instagram"></i>
+        <a href="https://instagram.com/cstaticsbr" target="_blank" rel="noopener" class="navbar__social" aria-label="Instagram">
+          <i class="fab fa-instagram" aria-hidden="true"></i>
         </a>
       </li>
     </ul>
@@ -28,7 +28,30 @@
 </nav>
 
 <script>
-document.getElementById('navbarToggle').addEventListener('click', () => {
-  document.getElementById('navbarMenu').classList.toggle('active');
-});
+(function () {
+  var toggle = document.getElementById('navbarToggle');
+  var menu = document.getElementById('navbarMenu');
+  if (!toggle || !menu) return;
+
+  function setOpen(open) {
+    menu.classList.toggle('active', open);
+    toggle.classList.toggle('active', open);
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    toggle.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+  }
+
+  toggle.addEventListener('click', function () {
+    setOpen(!menu.classList.contains('active'));
+  });
+
+  // Fecha ao clicar num link do menu (navegação em página única/âncora)
+  menu.querySelectorAll('.navbar__link').forEach(function (link) {
+    link.addEventListener('click', function () { setOpen(false); });
+  });
+
+  // Fecha com Esc
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') setOpen(false);
+  });
+})();
 </script>

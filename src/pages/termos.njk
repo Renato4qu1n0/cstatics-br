@@ -1,0 +1,55 @@
+---
+layout: layouts/base.njk
+permalink: /termos/
+title: "Termos de Uso - CSTatics Brasil"
+description: "Termos de uso do CSTatics Brasil: conteúdo educativo sobre CS2, sem vínculo com a Valve, fornecido como referência."
+---
+
+<section class="legal">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Legal</span>
+        <h1 class="section-head__title">Termos de Uso</h1>
+      </div>
+      <div class="section-head__rule"></div>
+    </div>
+
+    <div class="legal__body">
+      <p class="legal__intro">Ao usar o CSTatics Brasil, você concorda com estes termos. Eles existem para deixar claro o que oferecemos e os limites de responsabilidade.</p>
+
+      <h2>1. Natureza do conteúdo</h2>
+      <p>O CSTatics Brasil é um material <strong>educativo e informativo</strong> sobre táticas, lineups e estratégias de Counter-Strike 2. O conteúdo é oferecido como referência para estudo e treino.</p>
+
+      <h2>2. Precisão e uso por sua conta</h2>
+      <p>Nos esforçamos pela qualidade, mas o conteúdo pode conter imprecisões e o jogo muda a cada atualização. Jogadas marcadas como "em validação" ainda não foram totalmente conferidas. Teste no treino antes de levar para a partida. O uso do conteúdo é por sua conta e risco.</p>
+
+      <h2>3. Sem vínculo com a Valve</h2>
+      <p>O CSTatics Brasil <strong>não é afiliado, endossado nem patrocinado pela Valve Corporation</strong>. "Counter-Strike", nomes de mapas, callouts e marcas relacionadas pertencem aos seus respectivos donos e são usados aqui apenas para fins descritivos e educativos. Os esquemas de mapa deste site são representações originais nossas, não os radares oficiais do jogo.</p>
+
+      <h2>4. Propriedade do conteúdo</h2>
+      <p>Os textos, o design, os diagramas e o código do CSTatics Brasil são de nossa autoria. Você pode consultar e compartilhar links livremente, mas não reproduzir o conteúdo em massa sem autorização.</p>
+
+      <h2>5. Prancheta e conteúdo compartilhado</h2>
+      <p>A prancheta roda no seu navegador. O que você cria e compartilha por link é de sua responsabilidade.</p>
+
+      <h2>6. Disponibilidade</h2>
+      <p>O serviço é fornecido "como está", sem garantia de disponibilidade contínua. Podemos alterar ou descontinuar partes do site a qualquer momento.</p>
+
+      <h2>7. Contato</h2>
+      <p>Dúvidas sobre estes termos: <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+
+      <p class="legal__updated datum">Última atualização: julho de 2026.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .legal { padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(3.5rem, 8vw, 6rem); }
+  .legal__body { max-width: 68ch; }
+  .legal__intro { font-size: var(--font-size-lg); color: var(--color-text-light); line-height: 1.7; margin-bottom: var(--spacing-2xl); }
+  .legal__body h2 { font-size: var(--font-size-xl); text-transform: uppercase; letter-spacing: 0.02em; margin: var(--spacing-2xl) 0 var(--spacing-md); padding-bottom: var(--spacing-sm); border-bottom: 1px solid var(--color-border); }
+  .legal__body p, .legal__body li { color: var(--color-text-light); line-height: 1.8; }
+  .legal__body a { color: var(--color-primary); }
+  .legal__updated { margin-top: var(--spacing-2xl); color: var(--color-text-muted); font-size: var(--font-size-xs); letter-spacing: 0.06em; text-transform: uppercase; }
+</style>

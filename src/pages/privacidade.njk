@@ -1,0 +1,59 @@
+---
+layout: layouts/base.njk
+permalink: /privacidade/
+title: "Política de Privacidade - CSTatics Brasil"
+description: "Como o CSTatics Brasil trata seus dados: coleta mínima, sem venda de dados, e seus direitos sob a LGPD."
+---
+
+<section class="legal">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Legal</span>
+        <h1 class="section-head__title">Política de Privacidade</h1>
+      </div>
+      <div class="section-head__rule"></div>
+    </div>
+
+    <div class="legal__body">
+      <p class="legal__intro">O CSTatics Brasil respeita a sua privacidade e coleta o mínimo possível de dados. Esta política explica o que é coletado, por quê, e quais são os seus direitos sob a Lei Geral de Proteção de Dados (LGPD, Lei nº 13.709/2018).</p>
+
+      <h2>Quais dados tratamos</h2>
+      <ul>
+        <li><strong>Formulário de contato:</strong> ao enviar uma mensagem, os campos (nome, e-mail e texto) são abertos no <em>seu próprio</em> aplicativo de e-mail. O site não armazena esses dados em servidor — eles seguem direto para o nosso e-mail quando você envia.</li>
+        <li><strong>Prancheta tática:</strong> o que você monta na prancheta é salvo apenas no <em>seu navegador</em> (localStorage). Nada é enviado para nós. Ao compartilhar por link, o conteúdo vai codificado na própria URL — só quem tem o link acessa.</li>
+        <li><strong>Métricas de uso:</strong> podemos usar uma ferramenta de analytics respeitosa (sem cookies e sem identificar você pessoalmente) para entender páginas mais acessadas e melhorar o site.</li>
+      </ul>
+
+      <h2>O que NÃO fazemos</h2>
+      <ul>
+        <li>Não vendemos nem compartilhamos seus dados com terceiros para fins de marketing.</li>
+        <li>Não criamos perfil publicitário seu.</li>
+        <li>Não pedimos dados sensíveis.</li>
+      </ul>
+
+      <h2>Serviços de terceiros</h2>
+      <p>Para funcionar, o site carrega recursos de terceiros que podem registrar seu endereço IP por padrão técnico: fontes (Google Fonts), ícones (Font Awesome) e, nas páginas com vídeo, players incorporados (ex.: YouTube). Esses serviços têm políticas próprias de privacidade.</p>
+
+      <h2>Seus direitos (LGPD)</h2>
+      <p>Você pode, a qualquer momento, solicitar acesso, correção, portabilidade, anonimização ou exclusão dos seus dados, além de revogar consentimentos. Como praticamente não armazenamos dados pessoais, na maioria dos casos não há o que excluir — mas se você nos enviou uma mensagem, é só pedir que apagamos.</p>
+
+      <h2>Contato do responsável</h2>
+      <p>Dúvidas ou solicitações sobre privacidade: <a href="mailto:{{ site.email }}">{{ site.email }}</a>.</p>
+
+      <p class="legal__updated datum">Última atualização: julho de 2026.</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .legal { padding: clamp(2.5rem, 6vw, 4rem) 0 clamp(3.5rem, 8vw, 6rem); }
+  .legal__body { max-width: 68ch; }
+  .legal__intro { font-size: var(--font-size-lg); color: var(--color-text-light); line-height: 1.7; margin-bottom: var(--spacing-2xl); }
+  .legal__body h2 { font-size: var(--font-size-xl); text-transform: uppercase; letter-spacing: 0.02em; margin: var(--spacing-2xl) 0 var(--spacing-md); padding-bottom: var(--spacing-sm); border-bottom: 1px solid var(--color-border); }
+  .legal__body p, .legal__body li { color: var(--color-text-light); line-height: 1.8; }
+  .legal__body ul { padding-left: var(--spacing-lg); margin-bottom: var(--spacing-lg); }
+  .legal__body li { margin-bottom: var(--spacing-sm); }
+  .legal__body a { color: var(--color-primary); }
+  .legal__updated { margin-top: var(--spacing-2xl); color: var(--color-text-muted); font-size: var(--font-size-xs); letter-spacing: 0.06em; text-transform: uppercase; }
+</style>

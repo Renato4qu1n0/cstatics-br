@@ -11,6 +11,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/images/");
   eleventyConfig.addPassthroughCopy("src/img/");
   eleventyConfig.addPassthroughCopy("src/favicon.ico");
+  eleventyConfig.addPassthroughCopy("src/admin/"); // painel do Decap CMS (copiado sem processar)
 
   // Watch targets
   eleventyConfig.addWatchTarget("src/assets/css/");
@@ -19,6 +20,31 @@ module.exports = function(eleventyConfig) {
   // Filtros úteis
   eleventyConfig.addFilter("readableDate", dateObj => {
     return new Date(dateObj).toLocaleDateString('pt-BR');
+  });
+
+  // Data no formato RFC-822 para o RSS
+  eleventyConfig.addFilter("rssDate", (value) => {
+    const d = value ? new Date(value) : new Date();
+    return (isNaN(d) ? new Date() : d).toUTCString();
+  });
+
+  // Normaliza um link de vídeo para a forma que funciona dentro de <iframe>.
+  // Aceita youtube.com/watch?v=, youtu.be/, /shorts/, ou já em /embed/.
+  // Preserva o instante inicial (t / start). Outros hosts passam sem alteração.
+  eleventyConfig.addFilter("embedUrl", (url) => {
+    if (!url || typeof url !== "string") return "";
+    const startParam = (u) => {
+      const m = u.match(/[?&](?:t|start)=(\d+)/);
+      return m ? "?start=" + m[1] : "";
+    };
+    let id = null;
+    let m;
+    if ((m = url.match(/[?&]v=([\w-]{11})/))) id = m[1];
+    else if ((m = url.match(/youtu\.be\/([\w-]{11})/))) id = m[1];
+    else if ((m = url.match(/\/shorts\/([\w-]{11})/))) id = m[1];
+    else if ((m = url.match(/\/embed\/([\w-]{11})/))) id = m[1];
+    if (id) return "https://www.youtube.com/embed/" + id + startParam(url);
+    return url; // não reconhecido — devolve como veio
   });
 
   eleventyConfig.addFilter("limit", (array, limit) => {

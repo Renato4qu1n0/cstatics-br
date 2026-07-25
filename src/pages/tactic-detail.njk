@@ -93,7 +93,7 @@ eleventyComputed:
         {% if tactic.videoUrl %}
           <section class="ld-section">
             <h2>Vídeo</h2>
-            <div class="video-container"><iframe src="{{ tactic.videoUrl }}" title="{{ tactic.title }}" allowfullscreen loading="lazy"></iframe></div>
+            <div class="video-container"><iframe src="{{ tactic.videoUrl | embedUrl }}" title="{{ tactic.title }}" allowfullscreen loading="lazy"></iframe></div>
           </section>
         {% endif %}
 

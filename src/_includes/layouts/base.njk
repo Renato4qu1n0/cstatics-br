@@ -43,6 +43,17 @@
   <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="{{ site.name }} — novidades" href="/feed.xml">
+
+  {# Analytics — só ativa quando configurado no site.json #}
+  {%- if site.analytics.plausibleDomain %}
+  <script defer data-domain="{{ site.analytics.plausibleDomain }}" src="https://plausible.io/js/script.js"></script>
+  {%- elif site.analytics.ga4Id %}
+  <script async src="https://www.googletagmanager.com/gtag/js?id={{ site.analytics.ga4Id }}"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','{{ site.analytics.ga4Id }}');</script>
+  {%- endif %}
+
   <!-- CSS (tactical.css por último: define a identidade) -->
   <link rel="stylesheet" href="/assets/css/main.css">
   <link rel="stylesheet" href="/assets/css/components.css">
