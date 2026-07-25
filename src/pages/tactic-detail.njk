@@ -11,6 +11,9 @@ eleventyComputed:
   title: "{{ tactic.title }} - Tática de {{ tactic.map }} no CS2 | CSTatics Brasil"
   description: "{{ tactic.shortDescription }}"
   ogImage: "/images/og-{{ tactic.mapSlug or (tactic.map | lower) }}.png"
+  keywords: "{{ tactic.title }}, tática {{ tactic.map }} CS2, estratégia {{ tactic.map }}, {{ tactic.category }} {{ tactic.map }}, Counter-Strike 2"
+  publishedTime: "{{ tactic.meta.created }}"
+  modifiedTime: "{{ tactic.meta.updated }}"
 ---
 
 {%- set sideLabel = "T" if tactic.side == "t-side" else "CT" -%}

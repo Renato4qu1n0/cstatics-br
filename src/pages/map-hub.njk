@@ -10,6 +10,7 @@ eleventyComputed:
   title: "{{ map.name }} CS2 - Lineups e táticas | CSTatics Brasil"
   description: "{{ map.description }}"
   ogImage: "/images/og-{{ map.slug }}.png"
+  keywords: "{{ map.name }} CS2, lineups {{ map.name }}, táticas {{ map.name }}, smokes {{ map.name }}, {{ map.name }} Counter-Strike 2"
 ---
 
 {%- set mapLineups = lineups.lineups | byMap(map.slug) -%}
@@ -135,6 +136,18 @@ eleventyComputed:
     {% endif %}
   </div>
 </section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Início", "item": {{ site.url | json | safe }} },
+    { "@type": "ListItem", "position": 2, "name": "Mapas", "item": {{ (site.url + "/tactics/") | json | safe }} },
+    { "@type": "ListItem", "position": 3, "name": {{ map.name | json | safe }}, "item": {{ (site.url + "/mapas/" + map.slug + "/") | json | safe }} }
+  ]
+}
+</script>
 
 <style>
   .maphub-hero {

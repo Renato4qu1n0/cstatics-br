@@ -11,6 +11,9 @@ eleventyComputed:
   title: "{{ lineup.title }} - Lineup de {{ lineup.map | capitalize }} no CS2 | CSTatics Brasil"
   description: "{{ lineup.shortDescription }}"
   ogImage: "/images/og-{{ lineup.map }}.png"
+  keywords: "{{ lineup.title }}, lineup {{ lineup.utility }} {{ lineup.map }}, {{ lineup.utility }} {{ lineup.map }} CS2, lineups {{ lineup.map }}, Counter-Strike 2"
+  publishedTime: "{{ lineup.meta.created }}"
+  modifiedTime: "{{ lineup.meta.updated }}"
 ---
 
 {%- set utilMap = { smoke: "Smoke", flash: "Flash", molotov: "Molotov", he: "Granada HE" } -%}

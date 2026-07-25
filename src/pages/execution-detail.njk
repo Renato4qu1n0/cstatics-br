@@ -11,6 +11,9 @@ eleventyComputed:
   title: "{{ exec.title }} - Execução de CS2 | CSTatics Brasil"
   description: "{{ exec.shortDescription }}"
   ogImage: "/images/og-{{ exec.map }}.png"
+  keywords: "{{ exec.title }}, execução {{ exec.map }} CS2, take {{ exec.site }} {{ exec.map }}, táticas {{ exec.map }}, Counter-Strike 2"
+  publishedTime: "{{ exec.meta.created }}"
+  modifiedTime: "{{ exec.meta.updated }}"
 ---
 
 {%- set diffMap = { facil: "Fácil", media: "Média", dificil: "Difícil" } -%}

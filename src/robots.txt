@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# Painel de conteúdo (Decap CMS) — não deve ser indexado
+Disallow: /admin/
+
 Sitemap: https://cstaticsbr.com.br/sitemap.xml

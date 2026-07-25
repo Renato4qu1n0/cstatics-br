@@ -11,6 +11,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/images/");
   eleventyConfig.addPassthroughCopy("src/img/");
   eleventyConfig.addPassthroughCopy("src/favicon.ico");
+  eleventyConfig.addPassthroughCopy("src/robots.txt"); // .txt não é template — precisa ser copiado
   eleventyConfig.addPassthroughCopy("src/admin/"); // painel do Decap CMS (copiado sem processar)
 
   // Watch targets

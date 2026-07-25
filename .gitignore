@@ -20,3 +20,4 @@ Thumbs.db
 
 # Eleventy / eleventy-img cache
 .cache/
+.vercel

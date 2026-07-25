@@ -5,6 +5,8 @@
   "locale": "pt-BR",
   "tagline": "Táticas e lineups de CS2 em português",
   "description": "O hub brasileiro de Counter-Strike 2: biblioteca de lineups (smokes, flashes, molotovs), táticas por mapa e estratégias de time. Aprenda as jogadas, monte seu playbook e evolua.",
+  "keywords": "lineups CS2, táticas CS2, Counter-Strike 2 português, smokes CS2, flashes, molotovs, granadas CS2, execuções CS2, Mirage, Inferno, Dust2, Nuke, Ancient, Anubis, Train",
+  "logo": "/images/web-app-manifest-512x512.png",
   "email": "cstaticsbr@protonmail.com",
   "defaultImage": "/images/og-cover.png",
   "social": {
