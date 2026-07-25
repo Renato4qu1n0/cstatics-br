@@ -1,0 +1,6 @@
+# A Vercel roda o build e gera dist/ do zero — não precisamos subir o build local.
+dist
+node_modules
+.remember
+memory
+*.log
