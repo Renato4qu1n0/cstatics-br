@@ -125,6 +125,11 @@
     letter-spacing: -0.02em;
   }
 
+  /* O título é o elemento LCP: renderiza imediatamente. A animação de entrada
+     (line-reveal) atrasaria o Largest Contentful Paint, então fica só nos
+     elementos de apoio (boot-in). */
+  .hero__title .line-reveal > span { animation: none; transform: none; }
+
   .hero__accent {
     color: var(--color-primary);
     text-shadow: 0 0 42px rgba(255, 176, 32, 0.32);
