@@ -1096,12 +1096,12 @@ body::before {
   margin-top: 0;
 }
 
-.footer__section h4 {
+.footer__section h3 {
   font-family: var(--font-mono);
   font-size: var(--font-size-xs);
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--color-text-light);
 }
 
 .footer__section a { transition: color var(--transition-fast); }
@@ -1140,7 +1140,7 @@ body::before {
   margin-left: auto;
   margin-right: auto;
   letter-spacing: 0.04em;
-  opacity: 0.7;
+  color: var(--color-text-light);
   text-transform: none;
 }
 

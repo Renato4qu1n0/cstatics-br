@@ -848,7 +848,7 @@ section {
   gap: var(--spacing-2xl);
 }
 
-.footer__section h4 {
+.footer__section h3 {
   color: var(--color-text);
   margin-bottom: var(--spacing-md);
   font-size: var(--font-size-lg);
@@ -914,7 +914,7 @@ section {
   text-align: center;
   padding: var(--spacing-xl) var(--spacing-xl);
   border-top: 1px solid rgba(79, 70, 229, 0.2);
-  color: var(--color-text-muted);
+  color: var(--color-text-light);
   font-size: var(--font-size-sm);
   background: rgba(0, 0, 0, 0.3);
 }
