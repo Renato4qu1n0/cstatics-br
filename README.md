@@ -113,10 +113,12 @@ O site é **data-driven**: para publicar uma nova lineup, adicione um objeto em 
 
 ---
 
-## 👨‍💻 Autor
+## 👨‍💻 Autors
 
 **Renato Aquino** — Software Engineer • Java Backend Developer
 GitHub: [@Renato4qu1n0](https://github.com/Renato4qu1n0)
+**Rafael Aquino** — Software Engineer • FullStack Developer
+Github: [@rafaaquino10](https://github.com/rafaaquino10)
 
 ## 🌐 Redes
 
